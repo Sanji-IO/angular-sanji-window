@@ -18,6 +18,11 @@
     "tests"
   ],
   "dependencies": {
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "bootstrap": "~3.2.0",
+    "angular": "~1.2.21",
+    "angular-route": "~1.2.21",
+    "angular-animate": "~1.2.21",
+    "font-awesome": "~4.1.0"
   }
 }
