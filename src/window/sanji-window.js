@@ -230,7 +230,7 @@
         }
       };
     })
-    .directive('sanjiWindow', function ($log, $controller, sanjiWindowConfig, sanjiWindowFactory) {
+    .directive('sanjiWindow', function ($log, $controller, sanjiWindowConfig) {
       return {
         templateUrl: 'templates/sanji-window.html',
         restrict: 'EA',
@@ -258,7 +258,6 @@
 
           // This is sanji-window which is manual version.
           if (link) {
-            // sanjiWindow = new sanjiWindowFactory({title: title, link: link});
             sanjiWindowConfig.title = title;
             sanjiWindowConfig.link = link;
             scope.sanjiWindowMgr = $controller(WindowMgr, {
