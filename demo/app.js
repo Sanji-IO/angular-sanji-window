@@ -3,14 +3,21 @@
   angular
     .module('demoApp', [
       'ngAnimate',
-      'ngRoute'
+      'ngRoute',
+      'sanji.window'
     ])
     .config(function ($routeProvider) {
       $routeProvider
         .when('/', {
           template: '<sanji-window title="{{item.title}}"' +
                       'content-url="{{item.url}}">' +
-                    '</sanji-window>'
+            '</sanji-window>',
+          controller: function($scope) {
+            $scope.item = {
+              title: 'Bundle',
+              url: 'bundle/main.html'
+            };
+          }
         })
         .otherwise({
           redirectTo: '/'

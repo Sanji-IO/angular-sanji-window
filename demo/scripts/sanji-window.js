@@ -202,7 +202,7 @@
         }
       };
     })
-    .directive('mxHide', function($animate) {
+    .directive('mxHide', ["$animate", function($animate) {
       return {
         restrict: 'A',
         scope: {
@@ -220,7 +220,7 @@
           });
         }
       };
-    })
+    }])
     .directive('sanjiReloadWindow', function () {
       return {
         restrict: 'EA',
@@ -230,17 +230,17 @@
         }
       };
     })
-    .directive('sanjiWindow', function ($log, $controller, sanjiWindowConfig, sanjiWindowFactory) {
+    .directive('sanjiWindow', ["$log", "$controller", "sanjiWindowConfig", "sanjiWindowFactory", function ($log, $controller, sanjiWindowConfig, sanjiWindowFactory) {
       return {
         templateUrl: 'templates/sanji-window.html',
         restrict: 'EA',
         replace: true,
-        controller: function($scope) {
+        controller: ["$scope", function($scope) {
           $scope.sanjiWindowStepMgr = $controller(SanjiWindowStepMgr);
           this.setNextStep = function(step) {
             $scope.sanjiWindowStepMgr.setNextStep(step);
           };
-        },
+        }],
         link: function postLink(scope, element, attrs) {
 
           var title = attrs.title || '',
@@ -276,5 +276,92 @@
           });
         }
       };
+    }]);
+}());
+
+;(function() { 'use strict';
+  angular.module('sanji.window')
+    .factory('sanjiWindowFactory', function() {
+
+      var genId = function() {
+
+        return '_' + Math.random().toString(36).substr(2, 9);
+
+      };
+
+      var SettingFactory = function(config, type) {
+
+        if ('auto' === type) {
+          angular.extend(this, config);
+        } else {
+          this.url = config.url;
+        }
+        this.id = genId();
+        this.isProcessing = false;
+        this.navigateContent = config.state || '';
+        this.recordState = [this.navigateContent];
+        this.toggleStatus = false;
+        this.animateClass = config.animateClass || 'slide-left';
+
+      };
+
+      return SettingFactory;
+
     });
+}());
+
+;(function() { 'use strict';
+  angular.module('sanji.window')
+    .service('sanjiWindowService', ["$http", "$q", "sanjiWindowFactory", "_", function($http, $q, sanjiWindowFactory, _) {
+
+      var self = this;
+
+      self.data = [];
+
+      self.init = function() {
+        var deferred = $q.defer();
+        $http
+          .get('/scripts/bundle.json')
+          .then(function(res) {
+            var obj = new sanjiWindowFactory(res.data.view, 'auto');
+            self.add(obj);
+            deferred.resolve(obj);
+          }, function(res) {
+            deferred.reject(res);
+          });
+        return deferred.promise;
+      };
+
+      self.get = function() {
+        return self.data;
+      };
+
+      self.add = function(sanjiWindow) {
+        self.data.push(sanjiWindow);
+      };
+
+      self.delete = function(obj) {
+        var i, tmp = this.data, len = tmp.length;
+        for (i = 0; i < len; i++) {
+          if (obj.id === tmp[i].id) {
+            tmp.splice(i, 1);
+            break;
+          }
+        }
+      };
+
+      self.getSettingByTitle = function(title) {
+        return _.find(self.data, {title: title});
+      };
+
+      self.fetch = function(title) {
+        var setting = self.getSettingByTitle(title);
+        return $http.get(setting.contentJson.resources.uri);
+      };
+
+      self.put = function(title, data) {
+        var setting = self.getSettingByTitle(title);
+        return $http.put(setting.contentJson.resources.uri, data);
+      };
+    }]);
 }());
