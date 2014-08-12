@@ -17,9 +17,10 @@ gulp.task('browser-sync', function() {
 // Sass task
 gulp.task('sass', function() {
 
-  return gulp.src()
-  .pipe(sass())
-  .pipe(gulp.dest('css'))
+  return gulp.src('./src/window/*.scss')
+  .pipe(plugins.sass())
+  .pipe(gulp.dest('./dist/window'))
+  .pipe(gulp.dest('./demo/styles'))
   .pipe(browserSync.reload({stream: true}));
 
 });
@@ -40,8 +41,8 @@ gulp.task('bs-reload', function() {
 });
 
 // Default task to be run with 'gulp
-gulp.task('default', ['browser-sync'], function() {
-  // gulp.watch('', ['sass']);
+gulp.task('default', ['browser-sync', 'sass'], function() {
+  gulp.watch('./src/window/*.scss', ['sass']);
   // gulp.watch('*.js', ['bs-reload']);
   gulp.watch('./demo/*.html', ['bs-reload']);
 });

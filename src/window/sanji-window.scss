@@ -43,7 +43,7 @@
 
   &.small {
     height: $content-height-small;
-    font-size: $font-size-base;
+    font-size: $mx-font-size-base;
   }
   &.medium {
     height: $content-height-medium;
@@ -185,7 +185,7 @@
     &.ng-hide-remove {
       display: block !important;
       // http://cubic-bezier.com/#.14,.94,.1,.82
-      @include transition(all .2s cubic-bezier(.14, .94, 1, .82));
+      @include transition(all, .2s, cubic-bezier(.14, .94, 1, .82));
     }
 
     // auto
