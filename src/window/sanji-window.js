@@ -248,8 +248,7 @@
               icon = attrs.iconClass || '',
               size = attrs.contentSize || '',
               padding = attrs.padding || '',
-              helpInfo = attrs.helpInfo || '',
-              sanjiWindow = null;
+              helpInfo = attrs.helpInfo || '';
 
           scope.icon = icon;
           scope.contentSize = size;
@@ -269,10 +268,6 @@
               scope.sanjiWindowMgr.setTitle(value);
             });
           }
-
-          scope.$on('$destroy', function() {
-            sanjiWindow = null;
-          });
         }
       };
     });
