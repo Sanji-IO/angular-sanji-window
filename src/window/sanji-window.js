@@ -172,26 +172,6 @@
         return service;
       };
     })
-    // .factory('sanjiWindowCacheFactory', function(localStorageService) {
-
-      // var getKey = function(type, id) {
-        // return type + id;
-      // };
-
-      // return {
-        // setMxWindowToggleStatus: function(id, status) {
-          // localStorageService.set(getKey('sanji-window-toggle-status', id), status);
-        // },
-        // getMxWindowToggleStatus: function(id) {
-          // var value = localStorageService.get(getKey('sanji-window-toggle-status', id));
-
-          // if ('string' === typeof value) {
-            // return ('true' === value);
-          // }
-          // return value;
-        // }
-      // };
-    // })
     .directive('sanjiWindowNextStep', function() {
       return {
         restrict: 'A',
