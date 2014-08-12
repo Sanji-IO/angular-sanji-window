@@ -1,0 +1,14 @@
+{
+  "name": "angular-sanji",
+  "version": "0.0.0",
+  "description": "Sanji angular library",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular-sanji"
+  ],
+  "author": "zackyang",
+  "license": "MIT"
+}

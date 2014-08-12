@@ -1,0 +1,19 @@
+{
+  "name": "angular-sanji",
+  "version": "0.0.0",
+  "authors": [
+    "zackyang <zack9433@gmail.com>"
+  ],
+  "description": "Sanji angualr library",
+  "keywords": [
+    "angular-sanji"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
