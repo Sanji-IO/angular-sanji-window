@@ -164,7 +164,7 @@
           link: '',
           isProcessing: false,
           navigateContent: '',
-          recordState: [globalConfig.navigateContent],
+          recordState: [this.navigateContent],
           toggleStatus: false,
           animateClass: 'slide-left'
         };
