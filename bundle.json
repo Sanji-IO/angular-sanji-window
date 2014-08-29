@@ -46,26 +46,23 @@
         "as": "lb"
       }
     ],
-    "info": {
-      "component": "list",
-      "items": [
-        {
-          "id": "textInput",
-          "label": "Name",
-          "ngModel": "name"
-        },
-        {
-          "id": "textInput",
-          "label": "Name",
-          "ngModel": "name"
-        },
-        {
-          "id": "textInput",
-          "label": "Hello",
-          "ngModel": "name"
-        }
-      ]
-    },
+    "info": [
+      {
+        "component": "list",
+        "items": [
+          {
+            "id": "textInput",
+            "label": "Name",
+            "ngModel": "name"
+          }
+        ]
+      },
+      {
+        "id": "map",
+        "component": "map",
+        "ngModel": "map"
+      }
+    ],
     "edit": {
       "form": {
         "action": "http://mar2000.apiary-mock.com/api/loadBalance",
