@@ -1,36 +1,33 @@
 <form class="form-horizontal" name="openvpnForm" role="form" ng-submit="submit()" mx-validator-method="blur" mx-validator-submit novalidate>
   <div class="form-group">
   
-  <label class="col-sm-4 control-label">
-    Name:
-  </label>
+    <label class="col-sm-4 control-label">
+      Enable:
+    </label>
   
   
-  <div class="col-sm-6">
-    <input name="name" type="text" class="form-control"
-      ng-model="current.name"
+    
       
-      placeholder="Your name"
+          <div class="col-xs-offset-2 col-sm-offset-4">
+          <label class="checkbox-inline">
+            <input name="enable" type="checkbox" ng-model="bundle.edit.enable">
+              enable
+            </label>
+          </div>
       
-      
-      mx-validator="ip,required"
-      
-      autocorrect="off" autocapitalize="off">
-  </div>
+    
   
 </div>
 <div class="form-group">
   
   <label class="col-sm-4 control-label">
-    Password:
+    Read Community:
   </label>
   
   
   <div class="col-sm-6">
-    <input name="pwd" type="password" class="form-control"
-      ng-model="current.pwd"
-      
-      placeholder="Password"
+    <input name="readCommunity" type="text" class="form-control"
+      ng-model="bundle.edit.readCommunity"
       
       
       mx-validator="required"
@@ -41,70 +38,38 @@
 </div>
 <div class="form-group">
   
-    <label class="col-sm-4 control-label">
-      checkbox:
-    </label>
+  <label class="col-sm-4 control-label">
+    Write Comminity:
+  </label>
   
   
-    
+  <div class="col-sm-6">
+    <input name="writeCommunity" type="text" class="form-control"
+      ng-model="bundle.edit.writeCommunity"
       
-          <div class="col-xs-offset-2 col-sm-offset-4">
-          <label class="checkbox-inline">
-            <input name="enable" type="checkbox" ng-model="current.enable">
-              hello
-            </label>
-          </div>
       
-          <div class="col-xs-offset-2 col-sm-offset-4">
-          <label class="checkbox-inline">
-            <input name="enable" type="checkbox" ng-model="current.enable">
-              world
-            </label>
-          </div>
+      mx-validator="required"
       
-    
+      autocorrect="off" autocapitalize="off">
+  </div>
   
 </div>
 <div class="form-group">
   
   <label class="col-sm-4 control-label">
-    radio:
+    Port:
   </label>
   
   
-    
+  <div class="col-sm-6">
+    <input name="port" type="text" class="form-control"
+      ng-model="bundle.edit.port"
       
-        <label class="checkbox-inline">
-        <input name="type" type="radio" value="test" ng-model="current.type">'
-        &nbsp;&nbsp;test
-        </label>
       
-        <label class="checkbox-inline">
-        <input name="type" type="radio" value="world" ng-model="current.type">'
-        &nbsp;&nbsp;world
-        </label>
+      mx-validator="required,number"
       
-    
-  
-</div>
-<div class="form-group">
-  
-    <label class="col-sm-4 control-label">
-      select:
-    </label>
-  
-  
-    
-      <div class="col-sm-6">
-        <select class="form-control" ng-model="current.iface" mx-validator="required" >
-          
-          <option value="test">test</option>
-          
-          <option value="world">world</option>
-          
-        </select>
-      </div>
-    
+      autocorrect="off" autocapitalize="off">
+  </div>
   
 </div>
 <div class="form-group">

@@ -4,7 +4,7 @@
   "description": "Sanji angular library",
   "main": "gulpfile.js",
   "dependencies": {
-    "sanji-window-compiler": "git+ssh://git@bitbucket.org:zack9433/sanji-window-compiler.git#v1.0.3"
+    "sanji-window-compiler": "git+ssh://git@bitbucket.org:zack9433/sanji-window-compiler.git#v1.0.5"
   },
   "devDependencies": {
     "browser-sync": "^1.3.5",

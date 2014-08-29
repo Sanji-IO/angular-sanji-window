@@ -10,5 +10,4 @@ gulp.task('sass', function() {
   .pipe(plugins.autoprefixer('last 2 version', 'ie 8', 'ie 9'))
   .pipe(gulp.dest('./dist/window'))
   .pipe(gulp.dest('./demo/styles'));
-  // .pipe(plugins.browserSync.reload({stream: true}));
 });

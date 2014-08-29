@@ -9,9 +9,7 @@ gulp.task('watch', ['browser-sync', 'html', 'sass', 'js'], function() {
     runSequence('sanji-window-compiler', 'bs-reload');
   });
   gulp.watch('./src/window/*.scss', function() {
-    runSequence('sass', function() {
-      browserSync.reload({stream: true});
-    });
+    runSequence('sass', 'bs-reload');
   });
   gulp.watch('./src/window/*.js', function(event) {
     runSequence('js', 'bs-reload');

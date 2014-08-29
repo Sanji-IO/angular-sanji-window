@@ -11,17 +11,23 @@
   <div class="col-sm-offset-1 col-sm-9">
     <dl class="dl-horizontal" bindonce>
     
-      <dt>Name:</dt>
-      <dd bo-text="name"></dd>
+      <dt>Read Community:</dt>
+      <dd bo-text="bundle.info.readCommunity"></dd>
+    
+      <dt>Write Community:</dt>
+      <dd bo-text="bundle.info.writeCommunity"></dd>
+    
+      <dt>Port:</dt>
+      <dd bo-text="bundle.info.port"></dd>
     
     </dl>
   </div>
 </div>
-<div class="mx-signal-tracker-info">
-  <div class="angular-google-map" google-map
-    options="map.options"
-    center="map.center"
-    zoom="map.zoom">
-    <div markers models="map.markers" coords="'self'" icon="'icon'"></div>
+<div class="angular-google-map-container">
+  <div google-map
+    options="bundle.info.map.options"
+    center="bundle.info.map.center"
+    zoom="bundle.info.map.zoom">
+    <div markers models="bundle.info.map.markers" coords="'self'" icon="'icon'"></div>
   </div>
 </div>

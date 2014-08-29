@@ -18,8 +18,16 @@
       BundleService
         .get()
         .then(function(model) {
+          console.log(model);
           vm.info = model;
           vm.edit = angular.copy(model);
+          vm.info.map = {
+            center: {
+              latitude: 45,
+              longitude: -73
+            },
+            zoom: 8
+          }
           $scope.sanjiWindowMgr.goToInfoState();
         }, function() {
           console.log('Bundle controller activate error.');

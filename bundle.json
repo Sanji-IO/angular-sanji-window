@@ -51,14 +51,20 @@
         "component": "list",
         "items": [
           {
-            "id": "textInput",
-            "label": "Name",
-            "ngModel": "name"
+            "label": "Read Community",
+            "ngModel": "readCommunity"
+          },
+          {
+            "label": "Write Community",
+            "ngModel": "writeCommunity"
+          },
+          {
+            "label": "Port",
+            "ngModel": "port"
           }
         ]
       },
       {
-        "id": "map",
         "component": "map",
         "ngModel": "map"
       }
@@ -69,63 +75,38 @@
         "method": "put",
         "fields": [
           {
-            "id": "textInput",
-            "component": "textInput",
-            "placeholder": "Your name",
-            "disabled": false,
-            "label": "Name",
-            "ngModel": "name",
-            "validation": [{
-              "validator": "ip",
-              "errorMsg": "This is not ip format"
-            }, "required"]
-          },
-          {
-            "id": "passwordInput",
-            "component": "passwordInput",
-            "placeholder": "Password",
-            "disabled": false,
-            "label": "Password",
-            "ngModel": "pwd",
-            "validation": {
-              "validator": "required",
-              "errorMsg": "This is required"
-            }
-          },
-          {
-            "id": "checkbox",
+            "id": "enable",
             "component": "checkbox",
             "disabled": false,
-            "label": "checkbox",
+            "label": "Enable",
             "ngModel": "enable",
             "options": [
-              "hello",
-              "world"
+              "enable"
             ]
           },
           {
-            "id": "radio",
-            "component": "radio",
+            "id": "readCommunity",
+            "component": "textInput",
             "disabled": false,
-            "label": "radio",
-            "ngModel": "type",
-            "options": [
-              "test",
-              "world"
-            ]
+            "label": "Read Community",
+            "ngModel": "readCommunity",
+            "validation": "required"
           },
           {
-            "id": "select",
-            "component": "select",
-            "as": "lb",
+            "id": "writeCommunity",
+            "component": "textInput",
             "disabled": false,
-            "label": "select",
-            "ngModel": "iface",
-            "validation": "required",
-            "options": [
-              "test",
-              "world"
-            ]
+            "label": "Write Comminity",
+            "ngModel": "writeCommunity",
+            "validation": "required"
+          },
+          {
+            "id": "port",
+            "component": "textInput",
+            "disabled": false,
+            "label": "Port",
+            "ngModel": "port",
+            "validation": ["required", "number"]
           }
         ]
       }
