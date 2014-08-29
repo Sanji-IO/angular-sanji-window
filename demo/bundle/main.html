@@ -1,29 +1,39 @@
-<div ng-switch="sanjiWindowMgr.getWindowStatus()">
+<div ng-controller="BundleCtrl as bundle"
+  ng-switch="sanjiWindowMgr.getWindowStatus()">
   <div ng-switch-default>
     <div class="center-container--small">
       <div class="content--medium text-center">
-        <div ng-include="'templates/sanji-window-loading.html'"></div>
+        <i class="fa fa-spinner fa-4x fa-spin"></i>
+        <p class="lead"><small>Loading...</small></p>
       </div>
     </div>
   </div>
-  <div ng-class="sanjiWindowMgr.sanjiWindow.animateClass" ng-switch-when="sanji-connection-problem">
+  <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-connection-problem">
     <div class="center-container--medium">
       <div class="content--medium text-center">
-        <sanji-reload-window reload-window="reload()"></sanji-reload-window>
+        <i class="fa fa-frown-o fa-4x"></i>
+        <p class="lead">
+          <small>Connection problem, please reload it.</small>
+        </p>
+        <butotn type="button" class="mx-btn mx-btn-primary" ng-click="reloadWindow()">
+          <i class="fa fa-refresh"></i>&nbsp;&nbsp;
+          Reload
+        </butotn>
       </div>
     </div>
   </div>
-  <div ng-class="sanjiWindowMgr.sanjiWindow.animateClass" ng-switch-when="sanji-processing">
+  <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-processing">
     <div class="center-container--medium">
       <div class="content--medium text-center">
-        <div ng-include="'templates/sanji-window-processing.html'"></div>
+        <i class="fa fa-cog fa-4x fa-spin"></i>
+        <p class="lead"><small>Processing...</small></p>
       </div>
     </div>
   </div>
-  <div ng-class="sanjiWindowMgr.sanjiWindow.animateClass" ng-switch-when="sanji-info">
+  <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-info">
     <div ng-include="'bundle/info.html'"></div>
   </div>
-  <div ng-class="sanjiWindowMgr.sanjiWindow.animateClass" ng-switch-when="sanji-edit">
+  <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-edit">
     <div class="row">
       <div class="col-sm-12">
         <div ng-include="'bundle/edit.html'"></div>

@@ -1,8 +1,7 @@
 @import "variables";
 @import "mixins";
 
-.mx-panel {
-  @extend .panel;
+.panel {
   @include sexy-border-shadow();
 }
 

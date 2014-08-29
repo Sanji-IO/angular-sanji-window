@@ -1,65 +1,43 @@
-var gulp = require('gulp'),
-    plugins = require('gulp-load-plugins')(),
-    browserSync = require('browser-sync'),
-    prefix = require('gulp-autoprefixer');
+'use strict';
 
-// Static server
-gulp.task('browser-sync', function() {
+var gulp = require('gulp');
 
-  browserSync({
-    server: {
-      baseDir: './demo'
+require('require-dir')('./gulp');
+
+// Development task to be run with gulp
+gulp.task('serve', ['sanji-window-compiler'], function() {
+  gulp.start('watch');
+});
+
+// Build task to be run with gulp
+gulp.task('default', ['clean'], function() {
+  gulp.start('build');
+});
+
+// Compile snaji window template files
+gulp.task('sanji-window-compiler', function() {
+  var path = require('path');
+  var fs = require('fs');
+  var SanjiWindowCompiler = require('sanji-window-compiler');
+
+  fs.readFile(path.resolve(__dirname, './bundle.json'), function(err, data) {
+
+    var bundle;
+    var compiler = new SanjiWindowCompiler();
+
+    if (err) {
+      throw err;
     }
+
+    try {
+      bundle = JSON.parse(data);
+    } catch(err) {
+      throw err;
+    }
+
+    console.log('===== compile bundle.json =====');
+    console.log(compiler.jsonOutputInfoHtml('./demo/bundle/info.html', bundle));
+    console.log(compiler.jsonOutputEditHtml('./demo/bundle/edit.html', bundle));
   });
 
-});
-
-// Sass task
-gulp.task('sass', function() {
-
-  return gulp.src('./src/window/*.scss')
-  .pipe(plugins.sass())
-  .pipe(prefix('last 2 version', 'ie 8', 'ie 9'))
-  .pipe(gulp.dest('./dist/window'))
-  .pipe(gulp.dest('./demo/styles'))
-  .pipe(browserSync.reload({stream: true}));
-
-});
-
-// JavaScript task
-gulp.task('js', function() {
-
-  return gulp.src('./src/window/*.js')
-  .pipe(plugins.jshint())
-  .pipe(plugins.jshint.reporter('default'))
-  .pipe(plugins.concat('sanji-window.js'))
-  .pipe(plugins.ngAnnotate())
-  .pipe(gulp.dest('./dist/window'))
-  .pipe(gulp.dest('./demo/scripts'))
-  .pipe(plugins.rename('sanji-window.min.js'))
-  .pipe(plugins.uglify())
-  .pipe(gulp.dest('./dist/window'));
-
-});
-
-// Template task
-gulp.task('html', function() {
-
-  return gulp.src('./src/window/*.html')
-  .pipe(gulp.dest('./dist/window'))
-  .pipe(gulp.dest('./demo/templates'));
-
-});
-
-// Reload all browsers
-gulp.task('bs-reload', function() {
-  browserSync.reload();
-});
-
-// Default task to be run with 'gulp
-gulp.task('default', ['browser-sync', 'html', 'sass', 'js'], function() {
-  gulp.watch('./src/window/*.scss', ['sass']);
-  gulp.watch('./src/window/*.js', ['js', 'bs-reload']);
-  gulp.watch('./src/window/*.html', ['html', 'bs-reload']);
-  gulp.watch('./demo/**/*.html', ['bs-reload']);
 });

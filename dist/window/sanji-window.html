@@ -1,78 +1,27 @@
-<div class="mx-panel">
+<div class="panel">
   <div class="mx-panel-heading clearfix">
     <div class="mx-panel-heading__title pull-left">
-      <i class="fa" ng-class="icon"></i>&nbsp;&nbsp;<span ng-bind="sanjiWindowMgr.getTitle()"></span>
+      <span ng-bind="title"></span>
     </div>
-    <div class="text-right">
-      <a class="mx-panel-heading-btn__help" ng-if="helpInfoUrl.length"
-        ng-dialog="{{helpInfoUrl}}" ng-dialog-close-previous>
+    <div class="pull-right">
+      <a class="mx-panel-heading-btn__help" ng-if="helpInfoUrl"
+        ng-dialog="helpUrl" ng-dialog-close-previous>
         <i class="fa fa-info"></i>
       </a>
       <a ng-click="sanjiWindowMgr.toggleWidget()" class="mx-panel-heading-btn">
-        <i class="fa"
-          ng-class="{true: 'fa-plus-square-o', false: 'fa-minus-square-o'}[sanjiWindowMgr.window.toggleStatus]">
-        </i>
+        <i class="fa" ng-class="{true: 'fa-plus-square-o', false: 'fa-minus-square-o'}[sanjiWindowMgr.toggleStatus]"></i>
       </a>
     </div>
   </div>
-  <div class="mx-slide-toggle"
-    ng-class="{'footer': sanjiWindowMgr.isShowFooter()}"
-    mx-hide="sanjiWindowMgr.window.toggleStatus">
-    <div class="mx-panel-body" ng-class="[contentSize,padding]">
-      <div ng-if="undefined !== sanjiWindowMgr.getLink()" ng-include="sanjiWindowMgr.getLink()"></div>
-      <!-- <div ng-if="undefined === sanjiWindowMgr.getLink()"> -->
-        <!-- <div sanji-window-custom-content-controller ng-switch="sanjiWindowMgr.getWindowStatus()"> -->
-          <!-- <div ng-switch-default> -->
-            <!-- <div class="center-container--medium"> -->
-              <!-- <div class="content--small text-center"> -->
-                <!-- <div ng-include="'/template/common/loading.html'"></div> -->
-              <!-- </div> -->
-            <!-- </div> -->
-          <!-- </div> -->
-          <!-- <div ng-class="sanjiWindowMgr.window.animateClass" ng-switch-when="mx-connection-problem"> -->
-            <!-- <div class="center-container--medium"> -->
-              <!-- <div class="content--medium text-center"> -->
-                <!-- <mx-reload-window reload-window="reload()"></mx-reload-window> -->
-              <!-- </div> -->
-            <!-- </div> -->
-          <!-- </div> -->
-          <!-- <div ng-class="sanjiWindowMgr.window.animateClass" ng-switch-when="mx-processing"> -->
-            <!-- <div class="center-container--medium"> -->
-              <!-- <div class="content--medium text-center"> -->
-                <!-- <div ng-include="'/template/common/processing.html'"></div> -->
-              <!-- </div> -->
-            <!-- </div> -->
-          <!-- </div> -->
-          <!-- <div ng-class="sanjiWindowMgr.window.animateClass" ng-switch-when="mx-info"> -->
-            <!-- <div sanji-window-custom-info-content></div> -->
-          <!-- </div> -->
-          <!-- <div ng-class="sanjiWindowMgr.window.animateClass" ng-switch-when="mx-edit"> -->
-            <!-- <div class="row"> -->
-              <!-- <div class="col-sm-12"> -->
-                <!-- <div sanji-window-custom-edit-content></div> -->
-              <!-- </div> -->
-            <!-- </div> -->
-          <!-- </div> -->
-        <!-- </div> -->
-      <!-- </div> -->
+  <div class="mx-slide-toggle" sanji-hide="sanjiWindowMgr.toggleStatus">
+    <div class="panel-body">
+      <div ng-if="!!contentUrl" ng-include="contentUrl"></div>
     </div>
-    <div class="mx-panel-footer clearfix" ng-show="sanjiWindowMgr.isShowFooter()">
-      <div class="row">
-        <div class="col-xs-6 text-left">
-          <button class="mx-btn mx-btn-info" ng-click="sanjiWindowMgr.goBack()">
-            <i class="fa fa-arrow-left"></i>
-            Back
-          </button>
-        </div>
-        <div class="col-xs-6 text-right">
-        <button class="mx-btn mx-btn-primary"
-          ng-hide="sanjiWindowStepMgr.isEnd()"
-          ng-click="sanjiWindowMgr.navigateTo(sanjiWindowStepMgr.step.name)">
-            Next
-            <i class="fa fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
+    <div class="panel-footer clearfix" ng-show="'sanji-edit'===sanjiWindowMgr.getWindowStatus()">
+      <button class="btn btn-info" ng-click="sanjiWindowMgr.goBack()">
+        <i class="fa fa-arrow-left"></i>
+        Back
+      </button>
     </div>
   </div>
 </div>

@@ -1,0 +1,118 @@
+<form class="form-horizontal" name="openvpnForm" role="form" ng-submit="submit()" mx-validator-method="blur" mx-validator-submit novalidate>
+  <div class="form-group">
+  
+  <label class="col-sm-4 control-label">
+    Name:
+  </label>
+  
+  
+  <div class="col-sm-6">
+    <input name="name" type="text" class="form-control"
+      ng-model="current.name"
+      
+      placeholder="Your name"
+      
+      
+      mx-validator="ip,required"
+      
+      autocorrect="off" autocapitalize="off">
+  </div>
+  
+</div>
+<div class="form-group">
+  
+  <label class="col-sm-4 control-label">
+    Password:
+  </label>
+  
+  
+  <div class="col-sm-6">
+    <input name="pwd" type="password" class="form-control"
+      ng-model="current.pwd"
+      
+      placeholder="Password"
+      
+      
+      mx-validator="required"
+      
+      autocorrect="off" autocapitalize="off">
+  </div>
+  
+</div>
+<div class="form-group">
+  
+    <label class="col-sm-4 control-label">
+      checkbox:
+    </label>
+  
+  
+    
+      
+          <div class="col-xs-offset-2 col-sm-offset-4">
+          <label class="checkbox-inline">
+            <input name="enable" type="checkbox" ng-model="current.enable">
+              hello
+            </label>
+          </div>
+      
+          <div class="col-xs-offset-2 col-sm-offset-4">
+          <label class="checkbox-inline">
+            <input name="enable" type="checkbox" ng-model="current.enable">
+              world
+            </label>
+          </div>
+      
+    
+  
+</div>
+<div class="form-group">
+  
+  <label class="col-sm-4 control-label">
+    radio:
+  </label>
+  
+  
+    
+      
+        <label class="checkbox-inline">
+        <input name="type" type="radio" value="test" ng-model="current.type">'
+        &nbsp;&nbsp;test
+        </label>
+      
+        <label class="checkbox-inline">
+        <input name="type" type="radio" value="world" ng-model="current.type">'
+        &nbsp;&nbsp;world
+        </label>
+      
+    
+  
+</div>
+<div class="form-group">
+  
+    <label class="col-sm-4 control-label">
+      select:
+    </label>
+  
+  
+    
+      <div class="col-sm-6">
+        <select class="form-control" ng-model="current.iface" mx-validator="required" >
+          
+          <option value="test">test</option>
+          
+          <option value="world">world</option>
+          
+        </select>
+      </div>
+    
+  
+</div>
+<div class="form-group">
+  <div class="col-xs-2 col-xs-offset-8 text-right">
+    <button class="btn btn-primary" ng-disabled="openvpnForm">
+      <i class="fa fa-save"></i> Save
+    </button>
+  </div>
+</div>
+
+</form>

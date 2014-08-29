@@ -1,0 +1,137 @@
+{
+  "name": "openvpn",
+  "version": "1.0",
+  "author": "Zack YL Shih",
+  "email": "ZackYL.Shih@moxa.com",
+  "description": "This is an openvpn model",
+  "license": "MOXA",
+  "main": "openvpn.py",
+  "argument": "",
+  "priority": 82,
+  "retry": 200,
+  "retryInterval": 500,
+  "hook": [],
+  "dependencies": {},
+  "repository": {},
+  "resources": [
+    {
+      "uri": "/network/openvpn/files/",
+      "downloadFile": {
+        "path": "/home/model/network/openvpn/config/files/",
+        "name": "export.tar"
+      }
+    },
+    {
+      "methods": ["put", "get"],
+      "uri": "/network/openvpn",
+      "uploadFile": {
+        "allowedFiles": [
+          "static.key",
+          "clientCa.crt",
+          "clientPublic.crt",
+          "clientPrivate.key",
+          "tlsAuth.key",
+          "client.opvn"
+        ],
+        "path": "/home/model/network/openvpn/config/files/"
+      }
+    }
+  ],
+  "view": {
+    "title": "Test",
+    "resource": "http://mar2000.apiary-mock.com/api/loadBalance",
+    "externalResources": [
+      {
+        "url": "/api/loadBanlance",
+        "as": "lb"
+      }
+    ],
+    "info": {
+      "component": "list",
+      "items": [
+        {
+          "id": "textInput",
+          "label": "Name",
+          "ngModel": "name"
+        },
+        {
+          "id": "textInput",
+          "label": "Name",
+          "ngModel": "name"
+        },
+        {
+          "id": "textInput",
+          "label": "Hello",
+          "ngModel": "name"
+        }
+      ]
+    },
+    "edit": {
+      "form": {
+        "action": "http://mar2000.apiary-mock.com/api/loadBalance",
+        "method": "put",
+        "fields": [
+          {
+            "id": "textInput",
+            "component": "textInput",
+            "placeholder": "Your name",
+            "disabled": false,
+            "label": "Name",
+            "ngModel": "name",
+            "validation": [{
+              "validator": "ip",
+              "errorMsg": "This is not ip format"
+            }, "required"]
+          },
+          {
+            "id": "passwordInput",
+            "component": "passwordInput",
+            "placeholder": "Password",
+            "disabled": false,
+            "label": "Password",
+            "ngModel": "pwd",
+            "validation": {
+              "validator": "required",
+              "errorMsg": "This is required"
+            }
+          },
+          {
+            "id": "checkbox",
+            "component": "checkbox",
+            "disabled": false,
+            "label": "checkbox",
+            "ngModel": "enable",
+            "options": [
+              "hello",
+              "world"
+            ]
+          },
+          {
+            "id": "radio",
+            "component": "radio",
+            "disabled": false,
+            "label": "radio",
+            "ngModel": "type",
+            "options": [
+              "test",
+              "world"
+            ]
+          },
+          {
+            "id": "select",
+            "component": "select",
+            "as": "lb",
+            "disabled": false,
+            "label": "select",
+            "ngModel": "iface",
+            "validation": "required",
+            "options": [
+              "test",
+              "world"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
