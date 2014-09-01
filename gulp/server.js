@@ -10,7 +10,8 @@ gulp.task('browser-sync', function() {
     './demo/scripts/*.js',
     '!./demo/scripts/sanji-window.js',
     './demo/index.html',
-    './demo/app.js'
+    './demo/app.js',
+    './demo/bundle/main.html'
   ], {
     server: {
       baseDir: './demo'

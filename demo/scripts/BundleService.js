@@ -8,7 +8,8 @@
 
     // Members definition
     var bundleModel = {};
-    bundleModel.get = getModel;
+    bundleModel.read = getModel;
+    bundleModel.update = putModel;
 
     return bundleModel;
 
@@ -19,6 +20,22 @@
 
       $http
         .get('http://sanjiapi.apiary-mock.com/network/snmpd')
+        .then(function(res) {
+          deferred.resolve(res.data);
+        }, function(res) {
+          deferred.reject(res.data);
+        });
+
+      return deferred.promise;
+
+    };
+
+    function putModel() {
+
+      var deferred = $q.defer();
+
+      $http
+        .delete('http://sanjiapi.apiary-mock.com/network/snmpd')
         .then(function(res) {
           deferred.resolve(res.data);
         }, function(res) {

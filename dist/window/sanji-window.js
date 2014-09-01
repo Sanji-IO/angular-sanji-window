@@ -1,11 +1,10 @@
 ;(function() { 'use strict';
 
   angular
-    .module('sanji.window', ['google-maps', 'pasvaz.bindonce'])
+    .module('sanji.window', ['google-maps', 'pasvaz.bindonce', 'sanji.validator'])
     .constant('_', window._)
     .provider('sanjiWindowConfig', SanjiWindowConfig)
     .directive('mxHide', sanjiHide)
-    .directive('sanjiReloadWindow', sanjiReloadWindow)
     .directive('sanjiWindow',sanjiWindow);
 
   function SanjiWindowConfig() {
@@ -48,7 +47,7 @@
         title: '',
         contentUrl: '',
         helpUrl: '',
-        navigateContent: '',
+        navigateContent: 'sanji-loading',
         recordState: [this.navigateContent],
         animateClass: 'slide-left',
         isProcessing: false,
@@ -82,6 +81,11 @@
         return service.navigateContent;
       };
 
+      service.goToLoadingState = function() {
+        service.reset();
+        service.navigateTo('sanji-loading');
+      };
+
       service.goToProcessingState = function() {
         service.reset();
         service.navigateTo('sanji-processing');
@@ -112,8 +116,6 @@
 
       service.reset = function() {
         service.recordState.length = 0;
-        // Push default state
-        service.recordState.push('');
       };
 
       service.setToggleStatus = function(status) {
@@ -159,16 +161,6 @@
     };
   }
   sanjiHide.$inject = ["$animate"];
-
-  function sanjiReloadWindow() {
-    return {
-      restrict: 'EA',
-      templateUrl: 'templates/sanji-window-connect-problem.html',
-      scope: {
-        'reloadWindow': '&'
-      }
-    };
-  }
 
   function sanjiWindow($log, $controller, sanjiWindowConfig) {
     return {
