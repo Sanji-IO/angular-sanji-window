@@ -16,6 +16,7 @@ html, body {
 
 /* Space out content a bit */
 body {
+  overflow-x: hidden;
   padding-top: 20px;
   padding-bottom: 20px;
 }
