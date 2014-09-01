@@ -13,9 +13,7 @@
   margin-right: 20px; }
 
 .mx-panel-heading {
-  -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -127,8 +125,8 @@
   overflow: hidden; }
   .mx-slide-toggle.ng-hide-add, .mx-slide-toggle.ng-hide-remove {
     display: block !important;
-    -webkit-transition: all 0.2s cubic-bezier(0.14, 0.94, 1, 0.82);
-    transition: all 0.2s cubic-bezier(0.14, 0.94, 1, 0.82); }
+    -webkit-transition: all, 0.2s, cubic-bezier(0.14, 0.94, 1, 0.82);
+    transition: all, 0.2s, cubic-bezier(0.14, 0.94, 1, 0.82); }
   .mx-slide-toggle.ng-hide-add.ng-hide-add-active, .mx-slide-toggle.ng-hide-remove {
     max-height: 0; }
   .mx-slide-toggle.ng-hide-add, .mx-slide-toggle.ng-hide-remove.ng-hide-remove-active {
