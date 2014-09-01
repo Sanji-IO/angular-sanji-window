@@ -1,3 +1,4 @@
+@import "bourbon";
 @import "variables";
 @import "mixins";
 
@@ -266,3 +267,42 @@
 
 }
 
+/* ------------------------------------------- */
+/* Slide Left
+/* ------------------------------------------- */
+
+.slide-left {
+  &.ng-animate {
+    transition: all 0 ease-in-out;
+  }
+
+  max-width: 100%;
+
+  &.ng-enter {
+    @include transform(translateX(1200px));
+    @include transition-duration(300ms);
+    opacity: 0;
+  }
+
+  &.ng-enter.ng-enter-active {
+    @include transform(translateX(0));
+    @include transition-duration(300ms);
+    opacity: 1;
+  }
+
+  &.ng-leave {
+    position: absolute;
+    @include transition-duration(10ms);
+    opacity: 0;
+  }
+
+  &.ng-leave.ng-leave-active {
+    @include transition-duration(10ms);
+    opacity: 0;
+  }
+
+  &.ng-enter, &.ng-leave {
+    width: 100%;
+    height: 100%;
+  }
+}
