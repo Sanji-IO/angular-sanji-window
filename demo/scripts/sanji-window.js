@@ -50,8 +50,6 @@
         this.toggleStatus = false;
       }
 
-      // Configurer.init(service, globalConfig);
-
       Service.prototype.setTitle = function(title) {
         this.title = title;
       };
