@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="text-right">
+      <button type="button" class="btn btn-primary" ng-click="sanjiWindowMgr.goToEditState()">
+        <i class="fa fa-edit"></i>Edit
+      </button>
+    </div>
+  </div>
+</div>
+<div class="angular-google-map-container">
+  <div google-map
+    options="bundle.info.options"
+    center="bundle.info.center"
+    zoom="bundle.info.zoom">
+    <div markers models="bundle.info.markers" coords="'self'" icon="'icon'"></div>
+  </div>
+</div>

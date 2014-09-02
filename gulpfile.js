@@ -36,8 +36,34 @@ gulp.task('sanji-window-compiler', function() {
     }
 
     console.log('===== compile bundle.json =====');
-    console.log(compiler.jsonOutputInfoHtml('./demo/bundle/info.html', bundle));
-    console.log(compiler.jsonOutputEditHtml('./demo/bundle/edit.html', bundle));
+    console.log(compiler.jsonOutputMainHtml('./demo/bundle/' + bundle.name + '/main.html', bundle));
+    console.log(compiler.jsonOutputInfoHtml('./demo/bundle/' + bundle.name + '/info.html', bundle));
+    console.log(compiler.jsonOutputEditHtml('./demo/bundle/' + bundle.name + '/edit.html', bundle));
+    console.log(compiler.jsonOutputControllerJs('./demo/scripts/' + bundle.name + '.ctrl.js', bundle));
+    console.log(compiler.jsonOutputServiceJs('./demo/scripts/' + bundle.name + '.srv.js', bundle));
+  });
+
+  fs.readFile(path.resolve(__dirname, './mapBundle.json'), function(err, data) {
+
+    var bundle;
+    var compiler = new SanjiWindowCompiler();
+
+    if (err) {
+      throw err;
+    }
+
+    try {
+      bundle = JSON.parse(data);
+    } catch(err) {
+      throw err;
+    }
+
+    console.log('===== compile map bundle.json =====');
+    console.log(compiler.jsonOutputMainHtml('./demo/bundle/' + bundle.name + '/main.html', bundle));
+    console.log(compiler.jsonOutputInfoHtml('./demo/bundle/' + bundle.name + '/info.html', bundle));
+    console.log(compiler.jsonOutputEditHtml('./demo/bundle/' + bundle.name + '/edit.html', bundle));
+    console.log(compiler.jsonOutputControllerJs('./demo/scripts/' + bundle.name + '.ctrl.js', bundle));
+    console.log(compiler.jsonOutputServiceJs('./demo/scripts/' + bundle.name + '.srv.js', bundle));
   });
 
 });

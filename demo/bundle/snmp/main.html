@@ -1,4 +1,4 @@
-<div ng-controller="BundleCtrl as bundle"
+<div ng-controller="snmpCtrl as bundle"
   ng-switch="sanjiWindowMgr.getWindowStatus()">
   <div ng-switch-when="sanji-loading">
     <div class="center-container--small">
@@ -31,12 +31,12 @@
     </div>
   </div>
   <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-info">
-    <div ng-include="'bundle/info.html'"></div>
+    <div ng-include="'/bundle/snmp/info.html'"></div>
   </div>
   <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-edit">
     <div class="row">
       <div class="col-sm-12">
-        <div ng-include="'bundle/edit.html'"></div>
+        <div ng-include="'/bundle/snmp/edit.html'"></div>
       </div>
     </div>
   </div>

@@ -1,0 +1,41 @@
+{
+  "name": "map",
+  "version": "1.0",
+  "author": "Zack Yang",
+  "email": "zackcf.yang@moxa.com",
+  "description": "This is an map model",
+  "license": "MOXA",
+  "main": "map.py",
+  "argument": "",
+  "priority": 82,
+  "retry": 200,
+  "retryInterval": 500,
+  "hook": [],
+  "dependencies": {},
+  "repository": {},
+  "resources": [],
+  "view": {
+    "title": "Test",
+    "resource": "http://sanjiwindowapi.apiary-mock.com/map",
+    "methods": ["get", "put"],
+    "info": [
+      {
+        "component": "map"
+      }
+    ],
+    "edit": {
+      "form": {
+        "method": "put",
+        "fields": [
+          {
+            "id": "interval",
+            "component": "textInput",
+            "disabled": false,
+            "label": "Interval",
+            "ngModel": "interval"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -3,17 +3,13 @@
   angular
     .module('sanji.window', ['google-maps', 'pasvaz.bindonce', 'sanji.validator', 'ngAnimate'])
     .constant('_', window._)
-    .provider('sanjiWindowConfig', SanjiWindowConfig)
+    .provider('SanjiWindowConfig', SanjiWindowConfig)
     .directive('mxHide', sanjiHide)
     .directive('sanjiWindow',sanjiWindow);
 
   function SanjiWindowConfig() {
 
     var Configurer, globalConfig;
-
-    var genId = function() {
-      return '_' + Math.random().toString(36).substr(2, 9);
-    };
 
     Configurer = {};
     Configurer.init = function(object, config) {
@@ -42,100 +38,112 @@
 
     this.$get = function() {
 
-      var service = {
-        id: genId(),
-        title: '',
-        contentUrl: '',
-        helpUrl: '',
-        navigateContent: 'sanji-loading',
-        recordState: [this.navigateContent],
-        animateClass: 'slide-left',
-        isProcessing: false,
-        toggleStatus: false
+      // var service = {
+        // id: genId(),
+        // title: '',
+        // contentUrl: '',
+        // helpUrl: '',
+        // navigateContent: 'sanji-loading',
+        // recordState: [this.navigateContent],
+        // animateClass: 'slide-left',
+        // isProcessing: false,
+        // toggleStatus: false
+      // };
+
+      function Service() {
+        this.id = '_' + Math.random().toString(36).substr(2, 9);
+        this.title = '';
+        this.contentUrl = '';
+        this.helpUrl = '';
+        this.navigateContent = 'sanji-loading';
+        this.recordState = [this.navigateContent];
+        this.animateClass = 'slide-left';
+        this.isProcessing = false;
+        this.toggleStatus = false;
+      }
+
+      // Configurer.init(service, globalConfig);
+
+      Service.prototype.setTitle = function(title) {
+        this.title = title;
       };
 
-      Configurer.init(service, globalConfig);
-
-      service.setTitle = function(title) {
-        service.title = title;
+      Service.prototype.getTitle = function() {
+        return this.title;
       };
 
-      service.getTitle = function() {
-        return service.title;
+      Service.prototype.setContentUrl = function(url) {
+        this.contentUrl = url;
       };
 
-      service.setContentUrl = function(url) {
-        service.contentUrl = url;
+      Service.prototype.setHelpUrl = function(url) {
+        this.helpUrl = url;
       };
 
-      service.setHelpUrl = function(url) {
-        service.helpUrl = url;
+      Service.prototype.navigateTo = function(state) {
+        this.recordState.push(state);
+        this.navigateContent = state;
       };
 
-      service.navigateTo = function(state) {
-        service.recordState.push(state);
-        service.navigateContent = state;
+      Service.prototype.getWindowStatus = function() {
+        return this.navigateContent;
       };
 
-      service.getWindowStatus = function() {
-        return service.navigateContent;
+      Service.prototype.goToLoadingState = function() {
+        this.reset();
+        this.navigateTo('sanji-loading');
       };
 
-      service.goToLoadingState = function() {
-        service.reset();
-        service.navigateTo('sanji-loading');
+      Service.prototype.goToProcessingState = function() {
+        this.reset();
+        this.navigateTo('sanji-processing');
       };
 
-      service.goToProcessingState = function() {
-        service.reset();
-        service.navigateTo('sanji-processing');
+      Service.prototype.goToInfoState = function() {
+        this.navigateTo('sanji-info');
       };
 
-      service.goToInfoState = function() {
-        service.navigateTo('sanji-info');
+      Service.prototype.goToEditState = function() {
+        this.navigateTo('sanji-edit');
       };
 
-      service.goToEditState = function() {
-        service.navigateTo('sanji-edit');
+      Service.prototype.goToAddState = function() {
+        this.navigateTo('sanji-add');
       };
 
-      service.goToAddState = function() {
-        service.navigateTo('sanji-add');
+      Service.prototype.goToProblemState = function() {
+        this.reset();
+        this.navigateTo('sanji-connection-problem');
       };
 
-      service.goToProblemState = function() {
-        service.reset();
-        service.navigateTo('sanji-connection-problem');
-      };
-
-      service.goBack = function() {
-        var states = service.recordState;
+      Service.prototype.goBack = function() {
+        var states = this.recordState;
         states.pop();
-        service.navigateContent = states[states.length - 1];
+        this.navigateContent = states[states.length - 1];
       };
 
-      service.reset = function() {
-        service.recordState.length = 0;
+      Service.prototype.reset = function() {
+        this.recordState.length = 0;
       };
 
-      service.setToggleStatus = function(status) {
-        service.toggleStatus = status;
+      Service.prototype.setToggleStatus = function(status) {
+        this.toggleStatus = status;
       };
 
-      service.toggleWidget = function() {
-        service.toggleStatus = !service.toggleStatus;
-        if (angular.isDefined(service.cacheAdapter)) {
-          service.cacheAdapter.put(service.title, service.toggleStatus);
+      Service.prototype.toggleWidget = function() {
+        this.toggleStatus = !this.toggleStatus;
+        if (angular.isDefined(this.cacheAdapter)) {
+          this.cacheAdapter.put(this.title, this.toggleStatus);
         }
       };
 
-      service.afterShow = function() {
-        if (angular.isFunction(service.afterShow)) {
-          service.afterShow();
+      Service.prototype.afterShow = function() {
+        if (angular.isFunction(this.afterShow)) {
+          this.afterShow();
         }
       };
 
-      return service;
+      return Service;
 
     };
 
@@ -161,7 +169,7 @@
     };
   }
 
-  function sanjiWindow($log, $controller, sanjiWindowConfig) {
+  function sanjiWindow($log, $controller, SanjiWindowConfig) {
     return {
       templateUrl: 'templates/sanji-window.html',
       restrict: 'EA',
@@ -172,10 +180,10 @@
         helpUrl: '@'
       },
       link: function postLink(scope) {
-        sanjiWindowConfig.setTitle(scope.title);
-        sanjiWindowConfig.setContentUrl(scope.contentUrl);
-        sanjiWindowConfig.setHelpUrl(scope.helpUrl);
-        scope.sanjiWindowMgr = sanjiWindowConfig;
+        scope.sanjiWindowMgr = new SanjiWindowConfig();
+        scope.sanjiWindowMgr.setTitle(scope.title);
+        scope.sanjiWindowMgr.setContentUrl(scope.contentUrl);
+        scope.sanjiWindowMgr.setHelpUrl(scope.helpUrl);
       }
     };
   }

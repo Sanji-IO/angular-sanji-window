@@ -39,7 +39,8 @@
   ],
   "view": {
     "title": "Test",
-    "resource": "http://mar2000.apiary-mock.com/api/loadBalance",
+    "resource": "http://sanjiapi.apiary-mock.com/network/snmpd",
+    "methods": ["get", "put"],
     "externalResources": [
       {
         "url": "/api/loadBanlance",
@@ -63,15 +64,10 @@
             "ngModel": "port"
           }
         ]
-      },
-      {
-        "component": "map",
-        "ngModel": "map"
       }
     ],
     "edit": {
       "form": {
-        "action": "http://mar2000.apiary-mock.com/api/loadBalance",
         "method": "put",
         "fields": [
           {

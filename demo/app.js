@@ -1,10 +1,15 @@
 ;(function() { 'use strict';
 
+  // This is for sanji bundle module
+  angular
+    .module('sanji.bundle', []);
+
   angular
     .module('demoApp', [
       'ngAnimate',
       'ngRoute',
-      'sanji.window'
+      'sanji.window',
+      'sanji.bundle'
     ])
     .config(function ($routeProvider) {
       $routeProvider
@@ -12,20 +17,21 @@
           template: [
             '<sanji-window title="{{item.title}}"',
             'content-url="{{item.url}}">',
+            '</sanji-window>',
+            '<hr/>',
+            '<sanji-window title="{{item2.title}}"',
+            'content-url="{{item2.url}}">',
             '</sanji-window>'
-            // '<sanji-window title="{{item2.title}}"',
-            // 'content-url="{{item2.url}}">',
-            // '</sanji-window>'
           ].join(''),
           controller: function($scope) {
             $scope.item = {
               title: 'Bundle',
-              url: 'bundle/main.html'
+              url: 'bundle/snmp/main.html'
             };
-            // $scope.item2 = {
-              // title: 'Test',
-              // url: 'bundle/main.html'
-            // };
+            $scope.item2 = {
+              title: 'Test',
+              url: 'bundle/map/main.html'
+            };
           }
         })
         .otherwise({
