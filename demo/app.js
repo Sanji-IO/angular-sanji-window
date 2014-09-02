@@ -25,11 +25,11 @@
           ].join(''),
           controller: function($scope) {
             $scope.item = {
-              title: 'Bundle',
+              title: 'snmp',
               url: 'bundle/snmp/main.html'
             };
             $scope.item2 = {
-              title: 'Test',
+              title: 'map',
               url: 'bundle/map/main.html'
             };
           }
