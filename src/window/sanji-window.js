@@ -38,18 +38,6 @@
 
     this.$get = function() {
 
-      // var service = {
-        // id: genId(),
-        // title: '',
-        // contentUrl: '',
-        // helpUrl: '',
-        // navigateContent: 'sanji-loading',
-        // recordState: [this.navigateContent],
-        // animateClass: 'slide-left',
-        // isProcessing: false,
-        // toggleStatus: false
-      // };
-
       function Service() {
         this.id = '_' + Math.random().toString(36).substr(2, 9);
         this.title = '';
