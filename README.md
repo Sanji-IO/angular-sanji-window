@@ -1,4 +1,4 @@
-angular-sanji
-=============
+angular-sanji-window
+====================
 
 Sanji front-end library
