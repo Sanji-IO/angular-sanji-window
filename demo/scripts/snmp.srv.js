@@ -1,7 +1,7 @@
 ;(function() { 'use strict';
 
   angular
-    .module('sanji.bundle')
+    .module('sanji.window')
     .factory('snmpService', snmpService);
 
   function snmpService($http, $q) {

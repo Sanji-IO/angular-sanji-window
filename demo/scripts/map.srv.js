@@ -1,7 +1,7 @@
 ;(function() { 'use strict';
 
   angular
-    .module('sanji.bundle')
+    .module('sanji.window')
     .factory('mapService', mapService);
 
   function mapService($http, $q) {

@@ -1,15 +1,10 @@
 ;(function() { 'use strict';
 
-  // This is for sanji bundle module
-  angular
-    .module('sanji.bundle', []);
-
   angular
     .module('demoApp', [
       'ngAnimate',
       'ngRoute',
-      'sanji.window',
-      'sanji.bundle'
+      'sanji.window'
     ])
     .config(function ($routeProvider) {
       $routeProvider

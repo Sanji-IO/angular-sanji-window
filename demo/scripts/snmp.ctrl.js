@@ -1,7 +1,7 @@
 ;(function() { 'use strict';
 
   angular
-    .module('sanji.bundle')
+    .module('sanji.window')
     .controller('snmpCtrl', snmpCtrl);
 
   function snmpCtrl($log, $scope, snmpService) {
