@@ -4,7 +4,8 @@ node_js:
   - "0.10"
 
 before_script:
-  - "echo -e \"Host bitbucket.org\n\tStrictHostKeyChecking no\n\" >> ~/.ssh/config"
+  - cat ~/.ssh/config
+  - echo -e "Host bitbucket.org\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
 branches:
   only:
