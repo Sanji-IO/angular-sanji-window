@@ -11,6 +11,9 @@ before_install:
   - npm install -g bower
   - bower install
 
+before_script:
+  - ./node_modules/protractor/bin/webdriver-manager update
+
 env:
   global:
     - secure: "lFVTGnPbx5CBNy/e2dd9bBIK92DfJ9LIQw1qbqZsPVhS6IpETIG+fvAGUliFA/JEY2JvNFrUt1AeqoS7KJWT4K+ov73gNItFYal5MjsF9jfIfc5apqhghlnnh0VVlgqTgsmb78yvuvK+7b9EScQWK6P8ZvARFo/TnFVq7xB9Oo8="
