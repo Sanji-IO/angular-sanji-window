@@ -5,7 +5,7 @@ var gulp = require('gulp')
 var protractor = require('gulp-protractor').protractor;
 var browserSync = require('browser-sync');
 
-gulp.task('e2e', ['protractor']);
+gulp.task('test:e2e', ['protractor']);
 gulp.task('webdriver-update', ['browser-sync:e2e'], protractor.webdriver_update);
 gulp.task('protractor', ['webdriver-update'], function(done) {
   gulp
