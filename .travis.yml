@@ -8,7 +8,7 @@ before_install:
   - base64 --decode --ignore-garbage ~/.ssh/travis_key_base64 > ~/.ssh/id_rsa
   - chmod 600 ~/.ssh/id_rsa
   - echo -e "Host bitbucket.org\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - bower install -g bower
+  - npm install -g bower
   - bower install
 
 env:
