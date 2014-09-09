@@ -1,7 +1,7 @@
 {
-  "name": "angular-sanji",
+  "name": "angular-sanji-window",
   "version": "0.0.0",
-  "description": "Sanji angular library",
+  "description": "Sanji window",
   "main": "gulpfile.js",
   "dependencies": {
     "sanji-window-compiler": "git+ssh://git@bitbucket.org:zack9433/sanji-window-compiler.git#v1.0.11"
@@ -37,15 +37,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zack9433/angular-sanji.git"
+    "url": "https://github.com/zack9433/angular-sanji-window.git"
   },
   "bugs": {
-    "url": "https://github.com/zack9433/angular-sanji/issues"
+    "url": "https://github.com/zack9433/angular-sanji-window/issues"
   },
   "keywords": [
-    "angular-sanji"
+    "angular-sanji",
+    "angular-sanji-window"
   ],
   "author": "zackyang",
   "license": "MIT",
-  "homepage": "https://github.com/zack9433/angular-sanji"
+  "homepage": "https://github.com/zack9433/angular-sanji-window"
 }
