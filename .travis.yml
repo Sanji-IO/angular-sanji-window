@@ -5,6 +5,8 @@ node_js:
 
 before_install:
   - echo -e "Host bitbucket.org\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
+env:
   - secure: "Hrbf24uWbnTt8EMMhkTiAhJ0452rP9v3OpZ3w+YEljuNwQ4Ls6LusJkdckqSU+4XneXh3g5lq1rPlSQaSvXBPFxGu/IAsPhCr8EXkiqsyI6Qb1/QrwH3VrDjg/s4wNNpzlBPYOPXGbThcECFY1hEaXKLuGrwhYgHAF3cfuPheJM="
   - secure: "HexmWa3ND561Bd9YYHWIXaTLHtFosnbUaGmYbDPZjoQ7RBSAeXqUHpuvBJh8QkL7qSCiadHZeBLAzltvVZVHNyzLPO0PJQGld560FcpNJxdo8PJiuZw12oDSnKEXDpmvAOhVX3QffseTbJCYmSK9Jm4tSHF22G3H+OvRbDRkorc="
   - secure: "VadIft04fO/Y9g1rLjwhGHoPsKDVLjU267jzgJ+fx/IPHEo52iMNrGGOkYN2IVTnyNS7rRB9JV1g9gtR4mCZWZxH90BPKS9LUjMmUfA7hJ6myVTPPvzcYSAQvs5bcqcckna0dm8T9yNZkhhC84A9DTnfMI7DyIF128hiRrHZlSo="
