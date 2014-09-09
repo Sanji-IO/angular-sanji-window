@@ -1,7 +1,7 @@
 // e2e tests.
 'use strict';
 
-var gulp = require('gulp')
+var gulp = require('gulp');
 var protractor = require('gulp-protractor').protractor;
 var browserSync = require('browser-sync');
 
