@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="text-right">
+      <button type="button" class="btn btn-primary" ng-click="sanjiWindowMgr.goToEditState()">
+        <i class="fa fa-edit"></i>Edit
+      </button>
+    </div>
+  </div>
+</div>
+<c3chart bindto-id="channelLineChart"
+  chart-data="bundle.info.points"
+  chart-columns="bundle.info.columns"></c3chart>

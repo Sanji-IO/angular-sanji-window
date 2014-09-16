@@ -1,0 +1,42 @@
+{
+  "name": "lineChart",
+  "version": "1.0",
+  "author": "Zack Yang",
+  "email": "zackcf.yang@moxa.com",
+  "description": "This is an map model",
+  "license": "MOXA",
+  "main": "map.py",
+  "argument": "",
+  "priority": 82,
+  "retry": 200,
+  "retryInterval": 500,
+  "hook": [],
+  "dependencies": {},
+  "repository": {},
+  "resources": [],
+  "view": {
+    "title": "line chart",
+    "resource": "http://sanjiwindowapi.apiary-mock.com/linechart",
+    "methods": ["get", "put"],
+    "info": [
+      {
+        "id": "channelLineChart",
+        "component": "lineChart"
+      }
+    ],
+    "edit": {
+      "form": {
+        "method": "put",
+        "fields": [
+          {
+            "id": "interval",
+            "component": "textInput",
+            "disabled": false,
+            "label": "Interval",
+            "ngModel": "interval"
+          }
+        ]
+      }
+    }
+  }
+}

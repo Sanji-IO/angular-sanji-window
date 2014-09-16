@@ -1,17 +1,21 @@
 ;(function() { 'use strict';
 
   angular
-    .module('demoApp')
-    .controller('BundleCtrl', BundleCtrl);
+    .module('sanji.window')
+    .controller('lineChartCtrl', lineChartCtrl);
 
-  function BundleCtrl($log, $scope, BundleService) {
+  function lineChartCtrl($log, $scope, lineChartService) {
 
     // Members definition
     var vm = this; // vm means ViewModle
     var sanjiWindowMgr = $scope.sanjiWindowMgr;
+    
     vm.info = null;
+    
+    
     vm.edit = null;
     vm.submit = submit;
+    
     vm.activate = activate;
     vm.reload = reload;
 
@@ -19,23 +23,14 @@
 
     // Member function implement
     function activate() {
-      BundleService
+      lineChartService
         .read()
         .then(function(model) {
-          // vm.info = model;
-          // vm.edit = angular.copy(model);
-
-          // This is for google map
-          vm.info = {
-            center: {
-              latitude: 45,
-              longitude: -73
-            },
-            zoom: 8
-          };
+          vm.info = model;
+          vm.edit = angular.copy(model);
           sanjiWindowMgr.goToInfoState();
         }, function() {
-          $log.info('Bundle controller activate error.');
+          $log.info('lineChart controller activate error.');
         });
     }
 
@@ -43,19 +38,21 @@
       sanjiWindowMgr.goToLoadingState();
       activate();
     }
-
+    
     function submit() {
       sanjiWindowMgr.goToProcessingState();
-      BundleService
+      lineChartService
+        
         .update()
+        
+        
         .then(function() {
           sanjiWindowMgr.goToInfoState();
         }, function() {
           sanjiWindowMgr.goToProblemState();
         });
     }
-
+    
   }
 
 }());
-
