@@ -172,9 +172,19 @@
       },
       link: function postLink(scope) {
         scope.sanjiWindowMgr = new SanjiWindowConfig();
-        scope.sanjiWindowMgr.setTitle(scope.title);
-        scope.sanjiWindowMgr.setContentUrl(scope.contentUrl);
-        scope.sanjiWindowMgr.setHelpUrl(scope.helpUrl);
+
+        if (scope.contentUrl) {
+          scope.sanjiWindowMgr.setContentUrl(scope.contentUrl);
+        } else {
+          throw new Error('Sanji window content url not defined!');
+        }
+
+        if (scope.title) {
+          scope.sanjiWindowMgr.setTitle(scope.title);
+        }
+        if (scope.helpUrl) {
+          scope.sanjiWindowMgr.setHelpUrl(scope.helpUrl);
+        }
       }
     };
   }
