@@ -75,6 +75,10 @@
         return this.navigateContent;
       };
 
+      Service.prototype.isEqualToCurrentState = function(state) {
+        return (this.navigateContent === state ) ? true : false;
+      };
+
       Service.prototype.goToLoadingState = function() {
         this.reset();
         this.navigateTo('sanji-loading');
