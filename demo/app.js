@@ -15,28 +15,13 @@
         loadedModules: ['sanji.window']
       });
     })
-    .controller('AppCtrl', function($scope, $http, $ocLazyLoad, $injector) {
+    .controller('AppCtrl', function(BundleService) {
+
       var app = this;
 
-      $http
-      .get('http://sanjiwindowapi.apiary-mock.com/bundles')
-      .then(function(res) {
-
-        var files = [], bundles = res.data;
-
-        for (var i = 0; i < bundles.length; i++) {
-          files.push(bundles[i].url.service);
-          files.push(bundles[i].url.controller);
-        }
-
-        // app.bundles = res.data;
-        $ocLazyLoad.load({
-          name: 'sanji.window',
-          files: files
-        })
-        .then(function() {
-          app.bundles = res.data;
-        });
+      BundleService.init()
+      .then(function(bundles) {
+        app.bundles = bundles;
       });
 
     });
