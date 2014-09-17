@@ -10,18 +10,7 @@
     .config(function ($routeProvider) {
       $routeProvider
         .when('/', {
-          template: [
-            '<sanji-window title="{{item.title}}"',
-            'content-url="{{item.url}}">',
-            '</sanji-window>',
-            '<hr/>',
-            '<sanji-window title="{{item2.title}}"',
-            'content-url="{{item2.url}}">',
-            '</sanji-window>',
-            '<sanji-window title="{{item3.title}}"',
-            'content-url="{{item3.url}}">',
-            '</sanji-window>'
-          ].join(''),
+          templateUrl: 'templates/main.html',
           controller: function($scope) {
             $scope.item = {
               title: 'snmp',
