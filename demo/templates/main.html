@@ -8,9 +8,16 @@
       </ul>
     </nav>
   </div>
-  <div class="col-sm-9">
-    <sanji-window title="{{item.title}}" content-url="{{item.url}}"></sanji-window>
-    <sanji-window title="{{item2.title}}" content-url="{{item2.url}}"></sanji-window>
-    <sanji-window title="{{item3.title}}" content-url="{{item3.url}}"></sanji-window>
+  <!-- tab content -->
+  <div class="col-sm-9 tab-content">
+    <div class="tab-pane active text-style" id="tab1">
+      <sanji-window title="{{item.title}}" content-url="{{item.url}}"></sanji-window>
+    </div>
+    <div class="tab-pane text-style" id="tab2">
+      <sanji-window title="{{item2.title}}" content-url="{{item2.url}}"></sanji-window>
+    </div>
+    <div class="tab-pane text-style" id="tab3">
+      <sanji-window title="{{item3.title}}" content-url="{{item3.url}}"></sanji-window>
+    </div>
   </div>
 </div>
