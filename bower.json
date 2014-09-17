@@ -20,20 +20,21 @@
   "dependencies": {
     "lodash": "~2.4.1",
     "bootstrap": "~3.2.0",
-    "angular": "~1.2.23",
-    "angular-route": "~1.2.23",
-    "angular-animate": "~1.2.23",
+    "angular": "~1.2.25",
+    "angular-route": "~1.2.25",
+    "angular-animate": "~1.2.25",
     "font-awesome": "~4.1.0",
     "angular-google-maps": "~1.2.1",
     "angular-bindonce": "~0.3.1",
     "sanji-validator": "~1.0.2",
     "c3": "~0.3.0",
-    "c3-angular-sample": "https://github.com/MOXA-WEB/c3-angular-sample.git#master"
+    "c3-angular-sample": "https://github.com/MOXA-WEB/c3-angular-sample.git#master",
+    "oclazyload": "~0.3.7"
   },
   "devDependencies": {
-    "angular-mocks": "~1.2.23"
+    "angular-mocks": "~1.2.25"
   },
   "resolutions": {
-    "angular": "1.2.23"
+    "angular": "1.2.25"
   }
 }
