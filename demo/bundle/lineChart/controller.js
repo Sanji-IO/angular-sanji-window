@@ -2,20 +2,20 @@
 
   angular
     .module('sanji.window')
-    .controller('snmpCtrl', snmpCtrl);
+    .controller('lineChartCtrl', lineChartCtrl);
 
-  function snmpCtrl($log, $scope, snmpService) {
+  function lineChartCtrl($log, $scope, lineChartService) {
 
     // Members definition
     var vm = this; // vm means ViewModle
     var sanjiWindowMgr = $scope.sanjiWindowMgr;
-    
+
     vm.info = null;
-    
-    
+
+
     vm.edit = null;
     vm.submit = submit;
-    
+
     vm.activate = activate;
     vm.reload = reload;
 
@@ -23,14 +23,14 @@
 
     // Member function implement
     function activate() {
-      snmpService
+      lineChartService
         .read()
         .then(function(model) {
           vm.info = model;
           vm.edit = angular.copy(model);
           sanjiWindowMgr.goToInfoState();
         }, function() {
-          $log.info('snmp controller activate error.');
+          $log.info('lineChart controller activate error.');
         });
     }
 
@@ -38,21 +38,21 @@
       sanjiWindowMgr.goToLoadingState();
       activate();
     }
-    
+
     function submit() {
       sanjiWindowMgr.goToProcessingState();
-      snmpService
-        
+      lineChartService
+
         .update()
-        
-        
+
+
         .then(function() {
           sanjiWindowMgr.goToInfoState();
         }, function() {
           sanjiWindowMgr.goToProblemState();
         });
     }
-    
+
   }
 
 }());

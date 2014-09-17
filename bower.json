@@ -21,7 +21,6 @@
     "lodash": "~2.4.1",
     "bootstrap": "~3.2.0",
     "angular": "~1.2.25",
-    "angular-route": "~1.2.25",
     "angular-animate": "~1.2.25",
     "font-awesome": "~4.1.0",
     "angular-google-maps": "~1.2.1",

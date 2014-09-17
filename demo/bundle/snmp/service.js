@@ -2,33 +2,33 @@
 
   angular
     .module('sanji.window')
-    .factory('lineChartService', lineChartService);
+    .factory('snmpService', snmpService);
 
-  function lineChartService($http, $q) {
+  function snmpService($http, $q) {
 
     // Members definition
     var bundleModel = {};
-    
-    
-    
-    
+
+
+
+
     bundleModel.read = getModel
-    
+
     bundleModel.update = putModel
-    
-    
+
+
 
     return bundleModel;
 
     // Member function implement
-    
-    
-    
-    
+
+
+
+
     function getModel() {
       var deferred = $q.defer();
       $http
-        .get('http://sanjiwindowapi.apiary-mock.com/linechart')
+        .get('http://sanjiapi.apiary-mock.com/network/snmpd')
         .then(function(res) {
           deferred.resolve(res.data);
         }, function(res) {
@@ -36,11 +36,11 @@
         });
       return deferred.promise;
     };
-    
+
     function putModel() {
       var deferred = $q.defer();
       $http
-        .put('http://sanjiwindowapi.apiary-mock.com/linechart')
+        .put('http://sanjiapi.apiary-mock.com/network/snmpd')
         .then(function(res) {
           deferred.resolve(res.data);
         }, function(res) {
@@ -48,8 +48,8 @@
         });
       return deferred.promise;
     };
-    
-    
+
+
   }
 
 }());

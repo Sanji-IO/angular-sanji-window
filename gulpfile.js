@@ -39,8 +39,8 @@ gulp.task('sanji-window-compiler', function() {
     console.log(compiler.jsonOutputMainHtml('./demo/bundle/' + bundle.name + '/main.html', bundle));
     console.log(compiler.jsonOutputInfoHtml('./demo/bundle/' + bundle.name + '/info.html', bundle));
     console.log(compiler.jsonOutputEditHtml('./demo/bundle/' + bundle.name + '/edit.html', bundle));
-    console.log(compiler.jsonOutputControllerJs('./demo/scripts/' + bundle.name + '.ctrl.js', bundle));
-    console.log(compiler.jsonOutputServiceJs('./demo/scripts/' + bundle.name + '.srv.js', bundle));
+    console.log(compiler.jsonOutputControllerJs('./demo/bundle/' + bundle.name + '/controller.js', bundle));
+    console.log(compiler.jsonOutputServiceJs('./demo/bundle/' + bundle.name + '/service.js', bundle));
   });
 
   fs.readFile(path.resolve(__dirname, './mapBundle.json'), function(err, data) {
@@ -62,8 +62,8 @@ gulp.task('sanji-window-compiler', function() {
     console.log(compiler.jsonOutputMainHtml('./demo/bundle/' + bundle.name + '/main.html', bundle));
     console.log(compiler.jsonOutputInfoHtml('./demo/bundle/' + bundle.name + '/info.html', bundle));
     console.log(compiler.jsonOutputEditHtml('./demo/bundle/' + bundle.name + '/edit.html', bundle));
-    console.log(compiler.jsonOutputControllerJs('./demo/scripts/' + bundle.name + '.ctrl.js', bundle));
-    console.log(compiler.jsonOutputServiceJs('./demo/scripts/' + bundle.name + '.srv.js', bundle));
+    console.log(compiler.jsonOutputControllerJs('./demo/bundle/' + bundle.name + '/controller.js', bundle));
+    console.log(compiler.jsonOutputServiceJs('./demo/bundle/' + bundle.name + '/service.js', bundle));
   });
 
   fs.readFile(path.resolve(__dirname, './lineChartBundle.json'), function(err, data) {
@@ -85,8 +85,8 @@ gulp.task('sanji-window-compiler', function() {
     console.log(compiler.jsonOutputMainHtml('./demo/bundle/' + bundle.name + '/main.html', bundle));
     console.log(compiler.jsonOutputInfoHtml('./demo/bundle/' + bundle.name + '/info.html', bundle));
     console.log(compiler.jsonOutputEditHtml('./demo/bundle/' + bundle.name + '/edit.html', bundle));
-    console.log(compiler.jsonOutputControllerJs('./demo/scripts/' + bundle.name + '.ctrl.js', bundle));
-    console.log(compiler.jsonOutputServiceJs('./demo/scripts/' + bundle.name + '.srv.js', bundle));
+    console.log(compiler.jsonOutputControllerJs('./demo/bundle/' + bundle.name + '/controller.js', bundle));
+    console.log(compiler.jsonOutputServiceJs('./demo/bundle/' + bundle.name + '/service.js', bundle));
   });
 
 });

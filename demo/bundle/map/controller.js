@@ -9,13 +9,13 @@
     // Members definition
     var vm = this; // vm means ViewModle
     var sanjiWindowMgr = $scope.sanjiWindowMgr;
-    
+
     vm.info = null;
-    
-    
+
+
     vm.edit = null;
     vm.submit = submit;
-    
+
     vm.activate = activate;
     vm.reload = reload;
 
@@ -38,21 +38,21 @@
       sanjiWindowMgr.goToLoadingState();
       activate();
     }
-    
+
     function submit() {
       sanjiWindowMgr.goToProcessingState();
       mapService
-        
+
         .update()
-        
-        
+
+
         .then(function() {
           sanjiWindowMgr.goToInfoState();
         }, function() {
           sanjiWindowMgr.goToProblemState();
         });
     }
-    
+
   }
 
 }());
