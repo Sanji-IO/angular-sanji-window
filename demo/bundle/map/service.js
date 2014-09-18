@@ -8,23 +8,23 @@
 
     // Members definition
     var bundleModel = {};
-
-
-
-
+    
+    
+    
+    
     bundleModel.read = getModel
-
+    
     bundleModel.update = putModel
-
-
+    
+    
 
     return bundleModel;
 
     // Member function implement
-
-
-
-
+    
+    
+    
+    
     function getModel() {
       var deferred = $q.defer();
       $http
@@ -36,7 +36,7 @@
         });
       return deferred.promise;
     };
-
+    
     function putModel() {
       var deferred = $q.defer();
       $http
@@ -48,8 +48,8 @@
         });
       return deferred.promise;
     };
-
-
+    
+    
   }
 
 }());

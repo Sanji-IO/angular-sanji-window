@@ -15,11 +15,12 @@
         loadedModules: ['sanji.window']
       });
     })
+    .value('io', io)
     .controller('AppCtrl', function(BundleService) {
 
       var app = this;
 
-      BundleService.init()
+      BundleService.getAll()
       .then(function(bundles) {
         app.bundles = bundles;
       });

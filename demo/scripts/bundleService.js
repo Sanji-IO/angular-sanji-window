@@ -4,18 +4,27 @@
     .module('demoApp')
     .service('BundleService', BundleService);
 
-    function BundleService($http, $q, $ocLazyLoad) {
+    function BundleService($http, $q, $ocLazyLoad, io) {
 
       // Members definition
       var self = this;
 
       self.bundles = [];
       self.MODULE_NAME = 'sanji.window';
-      self.init = init;
+      self.getAll = getAll;
       self.lazyLoadBundle = lazyLoadBundle;
 
-      // Member function implement
+      init();
+
       function init() {
+        var socket = io.connect('http://localhost');
+        socket.on('news', function (data) {
+          console.log(data);
+        });
+      }
+
+      // Member function implement
+      function getAll() {
         var deferred = $q.defer();
 
         $http
