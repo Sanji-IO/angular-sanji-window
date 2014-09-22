@@ -1,0 +1,43 @@
+<div ng-controller="testCtrl as bundle"
+  ng-switch="sanjiWindowMgr.getWindowStatus()">
+  <div ng-switch-when="sanji-loading">
+    <div class="center-container--small">
+      <div class="content--medium text-center">
+        <i class="fa fa-spinner fa-4x fa-spin"></i>
+        <p class="lead"><small>Loading...</small></p>
+      </div>
+    </div>
+  </div>
+  <div class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-connection-problem">
+    <div class="center-container--medium">
+      <div class="content--medium text-center">
+        <i class="fa fa-frown-o fa-4x"></i>
+        <p class="lead">
+          <small>There is a problem, please reload it.</small>
+        </p>
+        <button type="button" class="btn btn-primary" ng-click="bundle.reload()">
+          <i class="fa fa-refresh"></i>&nbsp;&nbsp;
+          Reload
+        </button>
+      </div>
+    </div>
+  </div>
+  <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-processing">
+    <div class="center-container--medium">
+      <div class="content--medium text-center">
+        <i class="fa fa-cog fa-4x fa-spin"></i>
+        <p class="lead"><small>Processing...</small></p>
+      </div>
+    </div>
+  </div>
+  <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-info">
+    <div ng-include="'/bundle/test/info.html'"></div>
+  </div>
+  <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-edit">
+    <div class="row">
+      <div class="col-sm-12">
+        <div ng-include="'/bundle/test/edit.html'"></div>
+      </div>
+    </div>
+  </div>
+</div>

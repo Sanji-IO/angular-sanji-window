@@ -4,6 +4,7 @@
   "description": "Sanji window",
   "main": "gulpfile.js",
   "dependencies": {
+    "lodash": "^2.4.1",
     "sanji-window-compiler": "git+ssh://git@bitbucket.org:zack9433/sanji-window-compiler.git#v1.0.12"
   },
   "devDependencies": {
@@ -34,6 +35,7 @@
     "require-dir": "^0.1.0",
     "run-sequence": "^0.3.6",
     "socket.io": "^1.1.0",
+    "watchr": "^2.4.11",
     "wiredep": "^1.8.5"
   },
   "scripts": {

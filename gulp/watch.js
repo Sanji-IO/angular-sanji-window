@@ -11,7 +11,7 @@ gulp.task('watch', ['browser-sync', 'html', 'sass', 'js'], function() {
   gulp.watch('./src/window/*.scss', function() {
     runSequence('sass', 'bs-reload');
   });
-  gulp.watch('./src/window/*.js', function(event) {
+  gulp.watch('./src/window/*.js', function() {
     runSequence('js', 'bs-reload');
   });
   gulp.watch('./src/window/*.html', function() {

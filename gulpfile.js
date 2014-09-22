@@ -90,3 +90,32 @@ gulp.task('sanji-window-compiler', function() {
   });
 
 });
+
+gulp.task('add-test-window', function() {
+  var path = require('path');
+  var fs = require('fs');
+  var SanjiWindowCompiler = require('sanji-window-compiler');
+
+  fs.readFile(path.resolve(__dirname, './testBundle.json'), function(err, data) {
+
+    var bundle;
+    var compiler = new SanjiWindowCompiler();
+
+    if (err) {
+      throw err;
+    }
+
+    try {
+      bundle = JSON.parse(data);
+    } catch(err) {
+      throw err;
+    }
+
+    console.log('===== compile bundle.json =====');
+    console.log(compiler.jsonOutputMainHtml('./demo/bundle/' + bundle.name + '/main.html', bundle));
+    console.log(compiler.jsonOutputInfoHtml('./demo/bundle/' + bundle.name + '/info.html', bundle));
+    console.log(compiler.jsonOutputEditHtml('./demo/bundle/' + bundle.name + '/edit.html', bundle));
+    console.log(compiler.jsonOutputControllerJs('./demo/bundle/' + bundle.name + '/controller.js', bundle));
+    console.log(compiler.jsonOutputServiceJs('./demo/bundle/' + bundle.name + '/service.js', bundle));
+  });
+});

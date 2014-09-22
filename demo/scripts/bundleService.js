@@ -4,7 +4,7 @@
     .module('demoApp')
     .service('BundleService', BundleService);
 
-    function BundleService($http, $q, $ocLazyLoad, io) {
+    function BundleService($rootScope, $http, $q, $ocLazyLoad, io, _) {
 
       // Members definition
       var self = this;
@@ -18,8 +18,23 @@
 
       function init() {
         var socket = io.connect('http://localhost');
-        socket.on('news', function (data) {
-          console.log(data);
+        socket.on('sanji.bundle.new', function(bundles) {
+          var index = self.bundles.length;
+          var tmp = [index, 0];
+          var args = tmp.concat(bundles);
+
+          self.lazyLoadBundle(bundles)
+          .then(function() {
+            self.bundles.splice.apply(self.bundles, args);
+          });
+        });
+
+        socket.on('sanji.bundle.delete', function(res) {
+          var index = _.findIndex(self.bundles, res);
+          if (-1 !== index) {
+            self.bundles.splice(index, 1);
+            $rootScope.$digest();
+          }
         });
       }
 
@@ -28,28 +43,26 @@
         var deferred = $q.defer();
 
         $http
-        .get('http://sanjiwindowapi.apiary-mock.com/bundles')
+        .get('/api/bundles')
         .then(function(res) {
-
-          var files = [], bundles = res.data, len = bundles.length;
-
-          for (var i = 0; i < len; i++) {
-            files.push(bundles[i].url.service);
-            files.push(bundles[i].url.controller);
-          }
-
-          self.lazyLoadBundle(files)
+          self.lazyLoadBundle(res.data)
           .then(function() {
             self.bundles = res.data;
             deferred.resolve(self.bundles);
           });
-
         });
 
         return deferred.promise;
       }
 
-      function lazyLoadBundle(files) {
+      function lazyLoadBundle(bundles) {
+        var files = [], len = bundles.length;
+
+        for (var i = 0; i < len; i++) {
+          files.push(bundles[i].url.service);
+          files.push(bundles[i].url.controller);
+        }
+
         return $ocLazyLoad.load({
           name: self.MODULE_NAME,
           files: files
