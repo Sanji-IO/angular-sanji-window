@@ -10,12 +10,12 @@ gulp.task('serve', ['sanji-window-compiler'], function() {
 });
 
 // Build task to be run with gulp
-gulp.task('default', ['clean'], function() {
+gulp.task('default', ['clean:dist'], function() {
   gulp.start('build');
 });
 
 // Compile snaji window template files
-gulp.task('sanji-window-compiler', function() {
+gulp.task('sanji-window-compiler', ['clean:serve'], function() {
   var path = require('path');
   var fs = require('fs');
   var SanjiWindowCompiler = require('sanji-window-compiler');
