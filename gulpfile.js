@@ -4,11 +4,6 @@ var gulp = require('gulp');
 
 require('require-dir')('./gulp');
 
-// Development task to be run with gulp
-gulp.task('serve', ['sanji-window-compiler'], function() {
-  gulp.start('watch');
-});
-
 // Build task to be run with gulp
 gulp.task('default', ['clean:dist'], function() {
   gulp.start('build');
@@ -20,7 +15,7 @@ gulp.task('sanji-window-compiler', ['clean:serve'], function() {
   var fs = require('fs');
   var SanjiWindowCompiler = require('sanji-window-compiler');
 
-  fs.readFile(path.resolve(__dirname, './bundle.json'), function(err, data) {
+  fs.readFile(path.resolve(__dirname, './bundle/bundle.json'), function(err, data) {
 
     var bundle;
     var compiler = new SanjiWindowCompiler();
@@ -43,7 +38,7 @@ gulp.task('sanji-window-compiler', ['clean:serve'], function() {
     console.log(compiler.jsonOutputServiceJs('./demo/bundle/' + bundle.name + '/service.js', bundle));
   });
 
-  fs.readFile(path.resolve(__dirname, './mapBundle.json'), function(err, data) {
+  fs.readFile(path.resolve(__dirname, './bundle/mapBundle.json'), function(err, data) {
 
     var bundle;
     var compiler = new SanjiWindowCompiler();
@@ -66,7 +61,7 @@ gulp.task('sanji-window-compiler', ['clean:serve'], function() {
     console.log(compiler.jsonOutputServiceJs('./demo/bundle/' + bundle.name + '/service.js', bundle));
   });
 
-  fs.readFile(path.resolve(__dirname, './lineChartBundle.json'), function(err, data) {
+  fs.readFile(path.resolve(__dirname, './bundle/lineChartBundle.json'), function(err, data) {
 
     var bundle;
     var compiler = new SanjiWindowCompiler();
@@ -96,7 +91,7 @@ gulp.task('add-test-window', function() {
   var fs = require('fs');
   var SanjiWindowCompiler = require('sanji-window-compiler');
 
-  fs.readFile(path.resolve(__dirname, './testBundle.json'), function(err, data) {
+  fs.readFile(path.resolve(__dirname, './bundle/testBundle.json'), function(err, data) {
 
     var bundle;
     var compiler = new SanjiWindowCompiler();
