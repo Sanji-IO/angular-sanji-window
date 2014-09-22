@@ -6,3 +6,4 @@ node_modules/
 bower_components/
 npm-debug.log
 travis_key_encrypt.sh
+demo/bundle
