@@ -17,6 +17,7 @@ gulp.task('test:unit', function() {
 
   var files = bowerDeps.js.concat([
     'demo/scripts/sanji-window.js',
+    'demo/scripts/socket.io.js',
     'demo/app.js',
     'test/unit/**/*.js'
   ]);
