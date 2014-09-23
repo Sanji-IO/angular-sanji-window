@@ -58,7 +58,9 @@ gulp test:unit
 ```
 
 ### E2E test
-Before running e2e test, make sure to install selinum driver `./node_modules/protractor/bin/webdriver-manager update`
+Before running e2e test, make sure to install selinum driver.
+`./node_modules/protractor/bin/webdriver-manager update`
+
 ```sh
 gulp test:e2e
 ```
