@@ -25,7 +25,7 @@ Sanji window UI is develped based on angular. This is one fo sanji ui module.
 bower install angular-sanji-window --save
 ```
 
-This will copy the sanji-validator files into a `bower_components` folder, along with its dependencies. Load the script files in your application:
+This will copy the sanji-window files into a `bower_components` folder, along with its dependencies. Load the script files in your application:
 
 ```html
 <link rel="stylesheet" href="bower_components/angular-sanji-window/dist/sanji-window.css">
