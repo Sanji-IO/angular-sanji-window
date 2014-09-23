@@ -4,7 +4,7 @@
     .module('sanji.window', ['google-maps', 'pasvaz.bindonce', 'sanji.validator', 'ngAnimate'])
     .constant('_', window._)
     .provider('SanjiWindowConfig', SanjiWindowConfig)
-    .directive('mxHide', sanjiHide)
+    .directive('sanjiHideWindow', sanjiHideWindow)
     .directive('sanjiWindow',sanjiWindow);
 
   function SanjiWindowConfig() {
@@ -20,14 +20,6 @@
 
       object.getCacheAdapter = function() {
         return config.cacheAdapter;
-      };
-
-      object.setAfterShow = function(afterShow) {
-        config.afterShow = afterShow;
-      };
-
-      object.getAfterShow = function() {
-        return config.afterShow;
       };
 
     };
@@ -127,32 +119,22 @@
         }
       };
 
-      Service.prototype.afterShow = function() {
-        if (angular.isFunction(this.afterShow)) {
-          this.afterShow();
-        }
-      };
-
       return Service;
 
     };
 
   }
 
-  function sanjiHide($animate) {
+  function sanjiHideWindow($animate) {
     return {
       restrict: 'A',
-      scope: {
-        'mxHide': '=',
-        'afterHide': '&',
-        'afterShow': '&'
-      },
-      link: function(scope, elem) {
-        scope.$watch('mxHide', function(newValue) {
-          if (newValue) {
-            $animate.addClass(elem, 'ng-hide', scope.afterHide);
+      link: function(scope, elem, attrs) {
+        attrs.$observe('sanjiHideWindow', function(newValue) {
+          var result = ('true' === newValue) ? true : false;
+          if (result) {
+            $animate.addClass(elem, 'ng-hide');
           } else {
-            $animate.removeClass(elem, 'ng-hide', scope.afterShow);
+            $animate.removeClass(elem, 'ng-hide');
           }
         });
       }
@@ -175,7 +157,7 @@
         if (scope.contentUrl) {
           scope.sanjiWindowMgr.setContentUrl(scope.contentUrl);
         } else {
-          throw new Error('Sanji window content url not defined!');
+          $log.error('Sanji window content url not defined!');
         }
 
         if (scope.title) {
