@@ -33,89 +33,9 @@
 .mx-panel-body {
   position: relative;
   overflow: auto; }
-  .mx-panel-body.small {
-    height: 250px;
-    font-size: 15px; }
-  .mx-panel-body.medium {
-    height: 390px; }
-  .mx-panel-body.large {
-    height: 530px; }
 
 .mx-panel-footer {
   height: 64px; }
-
-.mx-list-container, .mx-window-body-container--sm, .mx-window-body-container--medium, .mx-window-body-container--large {
-  overflow-y: auto;
-  overflow-x: hidden; }
-
-.mx-list-container {
-  max-height: 260px; }
-
-.mx-window-body-container--sm {
-  max-height: 250px; }
-
-.mx-window-body-container--medium {
-  max-height: 390px; }
-
-.mx-window-body-container--large {
-  max-height: 530px; }
-
-.center-container--small, .center-container--medium, .center-container--larger {
-  position: relative;
-  width: 100%; }
-  .center-container--small > .content--small, .center-container--small .content--medium, .center-container--small .content--larger, .center-container--small .content-full-width--small, .center-container--medium > .content--small, .center-container--medium .content--medium, .center-container--medium .content--larger, .center-container--medium .content-full-width--small, .center-container--larger > .content--small, .center-container--larger .content--medium, .center-container--larger .content--larger, .center-container--larger .content-full-width--small {
-    overflow: hidden;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0; }
-
-.center-container--small {
-  height: 170px; }
-  .center-container--small > .content--small {
-    width: 50%;
-    height: 30%; }
-  .center-container--small > .content-full-width--small {
-    width: 100%;
-    height: 30%; }
-  .center-container--small > .content--medium {
-    width: 60%;
-    height: 60%; }
-  .center-container--small > .content--larger {
-    width: 100%;
-    height: 60%; }
-
-.center-container--medium {
-  height: 310px; }
-  .center-container--medium > .content--small {
-    width: 50%;
-    height: 30%; }
-  .center-container--medium > .content-full-width--small {
-    width: 100%;
-    height: 30%; }
-  .center-container--medium > .content--medium {
-    width: 60%;
-    height: 60%; }
-  .center-container--medium > .content--larger {
-    width: 100%;
-    height: 60%; }
-
-.center-container--larger {
-  height: 400px; }
-  .center-container--larger > .content--small {
-    width: 50%;
-    height: 30%; }
-  .center-container--larger > .content-full-width--small {
-    width: 100%;
-    height: 30%; }
-  .center-container--larger > .content--medium {
-    width: 60%;
-    height: 60%; }
-  .center-container--larger > .content--larger {
-    width: 100%;
-    height: 60%; }
 
 .mx-module-info-wrap {
   width: 200px;
@@ -135,30 +55,6 @@
     max-height: 0; }
   .mx-slide-toggle.footer.ng-hide-add, .mx-slide-toggle.footer.ng-hide-remove.ng-hide-remove-active {
     max-height: 1564px; }
-  .mx-slide-toggle.small.ng-hide-add.ng-hide-add-active, .mx-slide-toggle.small.ng-hide-remove {
-    max-height: 0; }
-  .mx-slide-toggle.small.ng-hide-add, .mx-slide-toggle.small.ng-hide-remove.ng-hide-remove-active {
-    max-height: 250px; }
-  .mx-slide-toggle.small.footer.ng-hide-add.ng-hide-add-active, .mx-slide-toggle.small.footer.ng-hide-remove {
-    max-height: 0; }
-  .mx-slide-toggle.small.footer.ng-hide-add, .mx-slide-toggle.small.footer.ng-hide-remove.ng-hide-remove-active {
-    max-height: 314px; }
-  .mx-slide-toggle.medium.ng-hide-add.ng-hide-add-active, .mx-slide-toggle.medium.ng-hide-remove {
-    max-height: 0; }
-  .mx-slide-toggle.medium.ng-hide-add, .mx-slide-toggle.medium.ng-hide-remove.ng-hide-remove-active {
-    max-height: 390px; }
-  .mx-slide-toggle.medium.footer.ng-hide-add.ng-hide-add-active, .mx-slide-toggle.medium.footer.ng-hide-remove {
-    max-height: 0; }
-  .mx-slide-toggle.medium.footer.ng-hide-add, .mx-slide-toggle.medium.footer.ng-hide-remove.ng-hide-remove-active {
-    max-height: 454px; }
-  .mx-slide-toggle.large.ng-hide-add.ng-hide-add-active, .mx-slide-toggle.large.ng-hide-remove {
-    max-height: 0; }
-  .mx-slide-toggle.large.ng-hide-add, .mx-slide-toggle.large.ng-hide-remove.ng-hide-remove-active {
-    max-height: 530px; }
-  .mx-slide-toggle.large.footer.ng-hide-add.ng-hide-add-active, .mx-slide-toggle.large.footer.ng-hide-remove {
-    max-height: 0; }
-  .mx-slide-toggle.large.footer.ng-hide-add, .mx-slide-toggle.large.footer.ng-hide-remove.ng-hide-remove-active {
-    max-height: 594px; }
 
 /* ------------------------------------------- */
 /* Slide Left
