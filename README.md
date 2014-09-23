@@ -28,7 +28,8 @@ bower install angular-sanji-window --save
 This will copy the sanji-validator files into a `bower_components` folder, along with its dependencies. Load the script files in your application:
 
 ```html
-<script src="bower_components/angular-sanji-window/dist/angular-sanji-window.js"></script>
+<link rel="stylesheet" href="bower_components/angular-sanji-window/dist/sanji-window.css">
+<script src="bower_components/angular-sanji-window/dist/sanji-window.js"></script>
 ```
 
 ```javascript
