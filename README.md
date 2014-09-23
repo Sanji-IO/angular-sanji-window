@@ -16,11 +16,11 @@ Sanji window UI is develped based on angular. This is one fo sanji ui module.
 - [lodash](https://github.com/lodash/lodash)
 
 ## Browser Support
-* Chrome
-* Firefox
-* Safari
+- Chrome
+- Firefox
+- Safari
 
-## Quick Configuration
+## Quick Usage
 ```sh
 bower install angular-sanji-window --save
 ```
@@ -34,3 +34,31 @@ This will copy the sanji-validator files into a `bower_components` folder, along
 
 ```javascript
 angular.module('yourApp', ['sanji.window']);
+```
+
+## Project Setup
+```sh
+npm install
+bower install
+```
+
+## Development
+```sh
+gulp serve
+```
+
+## Test
+```sh
+npm test
+```
+
+### Unit test
+```sh
+gulp test:unit
+```
+
+### E2E test
+Before running e2e test, make sure to install selinum driver `./node_modules/protractor/bin/webdriver-manager update`
+```sh
+gulp test:e2e
+```
