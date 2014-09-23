@@ -16,14 +16,30 @@
       });
     })
     .value('io', io)
-    .controller('AppCtrl', function(BundleService) {
+    .value('_', _)
+    .controller('AppCtrl', function(BundleService, _) {
 
       var app = this;
 
       BundleService.getAll()
       .then(function(bundles) {
+        _.forEach(bundles, function(bundle, index) {
+          if (0 === index) {
+            bundle.isShow = true;
+          } else {
+            bundle.isShow = false;
+          }
+        });
         app.bundles = bundles;
       });
+
+      app.setShowContentStatus = function(selectedBundle) {
+        _.forEach(app.bundles, function(bundle) {
+          bundle.isShow = false;
+        });
+
+        selectedBundle.isShow = true;
+      };
 
     });
 

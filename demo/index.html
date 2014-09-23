@@ -30,7 +30,7 @@
           <nav class="nav-sidebar">
             <ul class="nav tabs">
               <li ng-repeat="bundle in app.bundles track by $index" ng-class="{ active: 0===$index }">
-                <a ng-href="#{{bundle.title}}" data-toggle="tab" ng-bind="bundle.title"></a>
+                <a ng-href="#{{bundle.title}}" data-toggle="tab" ng-bind="bundle.title" ng-click="app.setShowContentStatus(bundle)"></a>
               </li>
             </ul>
           </nav>
@@ -38,7 +38,9 @@
         <!-- tab content -->
         <div class="col-sm-9 tab-content">
           <div class="tab-pane text-style" ng-repeat="bundle in app.bundles track by $index" ng-class="{ active: 0===$index }" id="{{bundle.title}}">
-            <sanji-window title="{{bundle.title}}" content-url="{{bundle.url.template}}"></sanji-window>
+            <div ng-if="bundle.isShow">
+              <sanji-window title="{{bundle.title}}" content-url="{{bundle.url.template}}"></sanji-window>
+            </div>
           </div>
         </div>
       </div>
