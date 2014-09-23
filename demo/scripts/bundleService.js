@@ -44,6 +44,7 @@
 
         $http
         .get('/api/bundles')
+        // .get('http://sanjiwindowapi.apiary-mock.com/bundles')
         .then(function(res) {
           self.lazyLoadBundle(res.data)
           .then(function() {
