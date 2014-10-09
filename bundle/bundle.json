@@ -43,8 +43,8 @@
     "methods": ["get", "put"],
     "externalResources": [
       {
-        "url": "/api/loadBanlance",
-        "as": "lb"
+        "field": "file",
+        "url": "/api/loadBanlance"
       }
     ],
     "info": [
@@ -103,6 +103,13 @@
             "label": "Port",
             "ngModel": "port",
             "validation": ["required", "number"]
+          },
+          {
+            "_id": "file",
+            "id": "fileInput",
+            "component": "fileInput",
+            "label": "File",
+            "ngModel": "file"
           }
         ]
       }

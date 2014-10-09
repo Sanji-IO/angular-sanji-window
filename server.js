@@ -15,7 +15,7 @@ var BUNDLE_PATH = 'demo/bundle';
 
 // For live reload
 app.use(require('connect-livereload')({
-  src: "' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':3000/browser-sync-client.1.3.6.js?v=1"
+  src: "' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':3000/browser-sync/browser-sync-client.1.5.1.js?v=1"
 }));
 
 // Disable caching of scripts for easier testing

@@ -4,10 +4,6 @@
       <span ng-bind="title"></span>
     </div>
     <div class="pull-right">
-      <a class="mx-panel-heading-btn__help" ng-if="helpInfoUrl"
-        ng-dialog="helpUrl" ng-dialog-close-previous>
-        <i class="fa fa-info"></i>
-      </a>
       <a ng-click="sanjiWindowMgr.toggleWidget()" class="mx-panel-heading-btn">
         <i class="fa" ng-class="{true: 'fa-plus-square-o', false: 'fa-minus-square-o'}[sanjiWindowMgr.toggleStatus]"></i>
       </a>
