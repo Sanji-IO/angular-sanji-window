@@ -119,6 +119,17 @@
         }
       };
 
+      Service.prototype.isShowFooter = function() {
+        var excludeStatusArray = [
+          'sanji-loading',
+          'sanji-info',
+          'sanji-processing',
+          'sanji-connection-problem'
+        ];
+
+        return (-1 !== _.indexOf(excludeStatusArray, this.navigateContent)) ? false : true;
+      };
+
       return Service;
 
     };

@@ -13,7 +13,7 @@
     <div class="panel-body">
       <div ng-if="!!contentUrl" ng-include="contentUrl"></div>
     </div>
-    <div class="panel-footer clearfix" ng-show="'sanji-edit'===sanjiWindowMgr.getWindowStatus()">
+    <div class="panel-footer clearfix" ng-show="sanjiWindowMgr.isShowFooter()">
       <button class="btn btn-info" ng-click="sanjiWindowMgr.goBack()">
         <i class="fa fa-arrow-left"></i>
         Back
