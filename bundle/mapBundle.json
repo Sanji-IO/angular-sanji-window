@@ -32,7 +32,7 @@
             "component": "textInput",
             "disabled": false,
             "label": "Interval",
-            "ngModel": "interval"
+            "model": "interval"
           }
         ]
       }

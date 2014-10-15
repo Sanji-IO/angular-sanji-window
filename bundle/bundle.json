@@ -53,15 +53,15 @@
         "items": [
           {
             "label": "Read Community",
-            "ngModel": "readCommunity"
+            "model": "readCommunity"
           },
           {
             "label": "Write Community",
-            "ngModel": "writeCommunity"
+            "model": "writeCommunity"
           },
           {
             "label": "Port",
-            "ngModel": "port"
+            "model": "port"
           }
         ]
       }
@@ -75,7 +75,7 @@
             "component": "checkbox",
             "disabled": false,
             "label": "Enable",
-            "ngModel": "enable",
+            "model": "enable",
             "options": [
               "enable"
             ]
@@ -85,7 +85,7 @@
             "component": "textInput",
             "disabled": false,
             "label": "Read Community",
-            "ngModel": "readCommunity",
+            "model": "readCommunity",
             "validation": "required"
           },
           {
@@ -93,7 +93,7 @@
             "component": "textInput",
             "disabled": false,
             "label": "Write Comminity",
-            "ngModel": "writeCommunity",
+            "model": "writeCommunity",
             "validation": "required"
           },
           {
@@ -101,7 +101,7 @@
             "component": "textInput",
             "disabled": false,
             "label": "Port",
-            "ngModel": "port",
+            "model": "port",
             "validation": ["required", "number"]
           },
           {
@@ -109,7 +109,7 @@
             "id": "fileInput",
             "component": "fileInput",
             "label": "File",
-            "ngModel": "file"
+            "model": "file"
           }
         ]
       }

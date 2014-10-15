@@ -1,7 +1,7 @@
 ;(function() { 'use strict';
 
   angular
-    .module('sanji.window', ['google-maps', 'pasvaz.bindonce', 'sanji.validator', 'ngAnimate', 'angularFileUpload'])
+    .module('sanji.window', ['pasvaz.bindonce', 'sanji.validator', 'ngAnimate', 'angularFileUpload'])
     .constant('_', window._)
     .provider('SanjiWindowConfig', SanjiWindowConfig)
     .directive('sanjiHideWindow', sanjiHideWindow)
