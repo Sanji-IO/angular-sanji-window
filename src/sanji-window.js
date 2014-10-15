@@ -7,7 +7,7 @@
     .directive('sanjiHideWindow', sanjiHideWindow)
     .directive('sanjiWindow',sanjiWindow);
 
-  function SanjiWindowConfig() {
+  function SanjiWindowConfig(_) {
 
     var Configurer, globalConfig;
 

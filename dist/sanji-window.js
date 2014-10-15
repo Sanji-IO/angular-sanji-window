@@ -7,7 +7,7 @@
     .directive('sanjiHideWindow', sanjiHideWindow)
     .directive('sanjiWindow',sanjiWindow);
 
-  function SanjiWindowConfig() {
+  function SanjiWindowConfig(_) {
 
     var Configurer, globalConfig;
 
@@ -119,11 +119,23 @@
         }
       };
 
+      Service.prototype.isShowFooter = function() {
+        var excludeStatusArray = [
+          'sanji-loading',
+          'sanji-info',
+          'sanji-processing',
+          'sanji-connection-problem'
+        ];
+
+        return (-1 !== _.indexOf(excludeStatusArray, this.navigateContent)) ? false : true;
+      };
+
       return Service;
 
     };
 
   }
+  SanjiWindowConfig.$inject = ["_"];
 
   function sanjiHideWindow($animate) {
     return {
