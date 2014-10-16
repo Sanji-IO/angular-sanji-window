@@ -100,7 +100,7 @@
         data: '='
       },
       link: function postLink(scope) {
-        scope.sanjiWindowMgr = new SanjiWindowConfig();
+        scope.sanjiWindowMgr = angular.copy(SanjiWindowConfig);
 
         if (scope.contentUrl) {
           scope.sanjiWindowMgr.setContentUrl(scope.contentUrl);
