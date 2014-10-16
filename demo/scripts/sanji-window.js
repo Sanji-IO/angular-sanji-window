@@ -34,7 +34,6 @@
         this.id = '_' + Math.random().toString(36).substr(2, 9);
         this.title = '';
         this.contentUrl = '';
-        this.helpUrl = '';
         this.navigateContent = 'sanji-loading';
         this.recordState = [this.navigateContent];
         this.animateClass = 'slide-left';
@@ -52,10 +51,6 @@
 
       Service.prototype.setContentUrl = function(url) {
         this.contentUrl = url;
-      };
-
-      Service.prototype.setHelpUrl = function(url) {
-        this.helpUrl = url;
       };
 
       Service.prototype.navigateTo = function(state) {
@@ -162,7 +157,7 @@
       scope: {
         title: '@',
         contentUrl: '@',
-        helpUrl: '@'
+        data: '='
       },
       link: function postLink(scope) {
         scope.sanjiWindowMgr = new SanjiWindowConfig();
@@ -175,9 +170,6 @@
 
         if (scope.title) {
           scope.sanjiWindowMgr.setTitle(scope.title);
-        }
-        if (scope.helpUrl) {
-          scope.sanjiWindowMgr.setHelpUrl(scope.helpUrl);
         }
       }
     };
