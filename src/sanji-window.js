@@ -3,11 +3,10 @@
 
   angular
     .module('sanji.window', ['pasvaz.bindonce', 'sanji.validator', 'angularFileUpload'])
-    .constant('_', window._)
     .service('SanjiWindowConfig', SanjiWindowConfig)
     .directive('sanjiWindow',sanjiWindow);
 
-  function SanjiWindowConfig(_) {
+  function SanjiWindowConfig() {
     this.id = '_' + Math.random().toString(36).substr(2, 9);
     this.title = '';
     this.contentUrl = '';
@@ -87,7 +86,7 @@
       'sanji-connection-problem'
     ];
 
-    return (-1 !== _.indexOf(excludeStatusArray, this.navigateContent)) ? false : true;
+    return (-1 !== excludeStatusArray.indexOf(this.navigateContent)) ? false : true;
   };
 
   function sanjiWindow($log, $controller, SanjiWindowConfig) {

@@ -3,13 +3,8 @@
     <div class="mx-panel-heading__title pull-left">
       <span ng-bind="title"></span>
     </div>
-    <div class="pull-right">
-      <a ng-click="sanjiWindowMgr.toggleWidget()" class="mx-panel-heading-btn">
-        <i class="fa" ng-class="{true: 'fa-plus-square-o', false: 'fa-minus-square-o'}[sanjiWindowMgr.toggleStatus]"></i>
-      </a>
-    </div>
   </div>
-  <div class="mx-slide-toggle" sanji-hide-window="{{sanjiWindowMgr.toggleStatus}}">
+  <div class="mx-slide-toggle">
     <div class="panel-body">
       <div ng-if="!!contentUrl" ng-include="contentUrl"></div>
     </div>
