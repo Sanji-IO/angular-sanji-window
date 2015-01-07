@@ -14,6 +14,12 @@
     this.recordState = [this.navigateContent];
     this.animateClass = 'slide-left';
     this.isProcessing = false;
+    this.excludeStatusArray = [
+      'sanji-loading',
+      'sanji-info',
+      'sanji-processing',
+      'sanji-connection-problem'
+    ];
   }
 
   SanjiWindowConfig.prototype.setTitle = function(title) {
@@ -79,14 +85,11 @@
   };
 
   SanjiWindowConfig.prototype.isShowFooter = function() {
-    var excludeStatusArray = [
-      'sanji-loading',
-      'sanji-info',
-      'sanji-processing',
-      'sanji-connection-problem'
-    ];
+    return (-1 !== this.excludeStatusArray.indexOf(this.navigateContent)) ? false : true;
+  };
 
-    return (-1 !== excludeStatusArray.indexOf(this.navigateContent)) ? false : true;
+  SanjiWindowConfig.prototype.addHideFooterStatus = function(status) {
+    this.excludeStatusArray.push(status);
   };
 
   function sanjiWindow($log, $controller, SanjiWindowConfig) {
