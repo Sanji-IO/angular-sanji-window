@@ -32,11 +32,9 @@ gulp.task('express-server', function(done) {
 
 // Static server
 gulp.task('browser-sync', ['express-server'], function() {
-  browserSync.init(files, {
-    proxy: {
-      host: "http://localhost",
-      port: 4000
-    },
+  browserSync({
+    files: files,
+    proxy: 'localhost:4000',
     open: true,
     browser: 'google chrome'
   });

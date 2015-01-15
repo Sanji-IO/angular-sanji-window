@@ -28,7 +28,7 @@
     "ng-file-upload": "~1.6.12"
   },
   "devDependencies": {
-    "angular-google-maps": "~1.2.1",
+    "angular-google-maps": "~2.0.12",
     "angular-mocks": "~1.2.26",
     "angular-animate": "~1.2.26",
     "c3": "~0.3.0",

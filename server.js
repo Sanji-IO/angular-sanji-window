@@ -15,7 +15,7 @@ var BUNDLE_PATH = 'demo/bundle';
 
 // For live reload
 app.use(require('connect-livereload')({
-  src: "' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':3000/browser-sync/browser-sync-client.1.5.1.js?v=1"
+  src: "' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':3000/browser-sync/browser-sync-client.1.9.0.js?v=1"
 }));
 
 // Disable caching of scripts for easier testing
@@ -66,7 +66,7 @@ watchr.watch({
       });
 
       if (0 < newBundles.length) {
-        // console.log('emit: ', newBundles);
+        console.log('emit: ', newBundles);
         io.sockets.emit('sanji.bundle.new', newBundles);
       }
     }
@@ -75,7 +75,7 @@ watchr.watch({
       _.forEach(bundleFolders, function(folderName, index) {
         if (-1 !== fullPath.indexOf(folderName)) {
           bundleFolders.splice(index, 1);
-          // console.log('remove: ', bundleFolders);
+          console.log('remove: ', bundleFolders);
           io.sockets.emit('sanji.bundle.delete', {title: folderName});
           return false;
         }
@@ -103,11 +103,11 @@ function createBundleObj(folder) {
   if (-1 !== files.indexOf('main.html')) {
     bundle.url.template = 'bundle/' + folder + '/main.html';
   }
-  if (-1 !== files.indexOf('controller.js')) {
-    bundle.url.controller = 'bundle/' + folder + '/controller.js';
+  if (-1 !== files.indexOf(folder + '.ctrl.js')) {
+    bundle.url.controller = 'bundle/' + folder + '/' + folder + '.ctrl.js';
   }
-  if (-1 !== files.indexOf('service.js')) {
-    bundle.url.service = 'bundle/' + folder + '/service.js';
+  if (-1 !== files.indexOf(folder + '.srv.js')) {
+    bundle.url.service = 'bundle/' + folder + '/' + folder + '.srv.js';
   }
 
   return bundle;
