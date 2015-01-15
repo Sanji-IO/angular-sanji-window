@@ -16,7 +16,7 @@
   "resources": [],
   "view": {
     "title": "line chart",
-    "resource": "http://sanjiwindowapi.apiary-mock.com/linechart",
+    "resource": "http://private-9af53-sanjiwindowapi.apiary-mock.com/linechart",
     "methods": ["get", "put"],
     "info": [
       {

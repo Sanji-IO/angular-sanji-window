@@ -39,7 +39,7 @@
   ],
   "view": {
     "title": "Test",
-    "resource": "http://sanjiapi.apiary-mock.com/network/snmpd",
+    "resource": "http://private-9af53-sanjiwindowapi.apiary-mock.com/network/snmpd",
     "methods": ["get", "put"],
     "externalResources": [
       {
