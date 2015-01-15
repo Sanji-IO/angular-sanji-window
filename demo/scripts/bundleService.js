@@ -17,7 +17,7 @@
       init();
 
       function init() {
-        var socket = io.connect('http://localhost');
+        var socket = io.connect('http://localhost:4000');
         socket.on('sanji.bundle.new', function(bundles) {
           var index = self.bundles.length;
           var tmp = [index, 0];
