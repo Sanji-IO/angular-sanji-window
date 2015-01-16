@@ -34,11 +34,12 @@
       });
 
       app.setShowContentStatus = function(selectedBundle) {
-        _.forEach(app.bundles, function(bundle) {
-          bundle.isShow = false;
-        });
-
         selectedBundle.isShow = true;
+        // _.forEach(app.bundles, function(bundle) {
+          // if (bundle.title !== selectedBundle.title) {
+            // bundle.isShow = false;
+          // }
+        // });
       };
 
     });
