@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('sanji.window', ['pasvaz.bindonce', 'sanji.validator', 'angularFileUpload'])
+    .module('sanji.window', ['sanji.validator', 'angularFileUpload'])
     .service('SanjiWindowConfig', SanjiWindowConfig)
     .directive('sanjiWindow',sanjiWindow);
 
