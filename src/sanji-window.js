@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('sanji.window', ['sanji.validator', 'angularFileUpload'])
+    .module('sanji.window', [])
     .service('SanjiWindowConfig', SanjiWindowConfig)
     .directive('sanjiWindow',sanjiWindow);
 
