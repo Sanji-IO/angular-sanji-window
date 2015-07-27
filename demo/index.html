@@ -1,0 +1,50 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Demo Sanji Window</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/sanji-window.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="demoApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">Sanji Window Demo</h3>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <sanji-window title="Ethernet" content-url="templates/ethernet-main.html"></sanji-window>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p><span class="glyphicon glyphicon-heart"></span> from the Sanji team</p>
+      </div>
+    </div>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="scripts/sanji-window.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <!-- endbuild -->
+
+</body>
+</html>

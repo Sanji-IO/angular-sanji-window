@@ -1,0 +1,96 @@
+.panel {
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 2px solid #ccc; }
+
+.mx-panel-heading-btn {
+  display: block;
+  color: white; }
+
+.mx-panel-heading-btn__help {
+  display: block;
+  margin-right: 20px; }
+
+.mx-panel-heading {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 6px 13px 1px 13px;
+  color: white;
+  background-color: #727171;
+  border-color: #f4f4f4;
+  cursor: pointer; }
+
+.mx-panel-heading__title {
+  font-size: 13px;
+  letter-spacing: 0.0625em; }
+  .mx-panel-heading__title i.fa {
+    font-size: 14px; }
+
+.mx-panel-body {
+  position: relative;
+  overflow: auto; }
+
+.mx-panel-footer {
+  height: 64px; }
+
+.mx-module-info-wrap {
+  width: 200px;
+  margin: 0 auto; }
+
+.mx-slide-toggle {
+  overflow: hidden; }
+  .mx-slide-toggle.ng-hide-add,
+  .mx-slide-toggle.ng-hide-remove {
+    display: block !important;
+    -webkit-transition: all, 0.2s, cubic-bezier(0.14, 0.94, 1, 0.82);
+    transition: all, 0.2s, cubic-bezier(0.14, 0.94, 1, 0.82); }
+  .mx-slide-toggle.ng-hide-add.ng-hide-add-active,
+  .mx-slide-toggle.ng-hide-remove {
+    max-height: 0; }
+  .mx-slide-toggle.ng-hide-add,
+  .mx-slide-toggle.ng-hide-remove.ng-hide-remove-active {
+    max-height: 1500px; }
+  .mx-slide-toggle.footer.ng-hide-add.ng-hide-add-active,
+  .mx-slide-toggle.footer.ng-hide-remove {
+    max-height: 0; }
+  .mx-slide-toggle.footer.ng-hide-add,
+  .mx-slide-toggle.footer.ng-hide-remove.ng-hide-remove-active {
+    max-height: 1564px; }
+
+/* ------------------------------------------- */
+/* Slide Left
+/* ------------------------------------------- */
+.slide-left {
+  max-width: 100%; }
+  .slide-left.ng-animate {
+    -webkit-transition: all 0 ease-in-out;
+            transition: all 0 ease-in-out; }
+  .slide-left.ng-enter {
+    -webkit-transform: translateX(1200px);
+    -ms-transform: translateX(1200px);
+    transform: translateX(1200px);
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+    opacity: 0; }
+  .slide-left.ng-enter.ng-enter-active {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+    opacity: 1; }
+  .slide-left.ng-leave {
+    position: absolute;
+    -webkit-transition-duration: 10ms;
+    transition-duration: 10ms;
+    opacity: 0; }
+  .slide-left.ng-leave.ng-leave-active {
+    -webkit-transition-duration: 10ms;
+    transition-duration: 10ms;
+    opacity: 0; }
+  .slide-left.ng-enter, .slide-left.ng-leave {
+    width: 100%;
+    height: 100%; }
