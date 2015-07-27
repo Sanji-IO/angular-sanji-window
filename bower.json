@@ -18,7 +18,13 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "demo",
+    "gulpfile.js",
+    "karma.conf.js",
+    "package.json",
+    "protractor_conf.js",
+    "README.md"
   ],
   "dependencies": {
     "bootstrap": "~3.3.5",
