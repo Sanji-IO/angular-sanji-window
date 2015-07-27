@@ -3,7 +3,10 @@ angular-sanji-window [![Build Status](https://travis-ci.org/Sanji-IO/angular-san
 
 Sanji window UI is develped based on angular. This is one fo sanji ui module.
 
-#Table of contents
+# Demo
+[Demo site](http://sanji-io.github.io/angular-sanji-window/demo/)
+
+# Table of contents
 
 - [Requirements](#requirements)
 - [Browser Support](#browser-support)
