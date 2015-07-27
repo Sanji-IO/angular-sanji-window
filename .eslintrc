@@ -7,7 +7,7 @@
   "globals": {
     "angular": 1
   },
-  "plugins": [ 'angular' ],
+  "plugins": [ "angular" ],
   "rules": {
     "strict": [2, "global"],
     "quotes": [2, "single", "avoid-escape"],
