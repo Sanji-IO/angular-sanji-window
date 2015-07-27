@@ -1,93 +1,80 @@
 'use strict';
 
 var gulp = require('gulp');
+var browserSync = require('browser-sync').create();
+var plugins = require('gulp-load-plugins')();
+var del = require('del');
+var combiner = require('stream-combiner2');
 
-require('require-dir')('./gulp');
+var processCss = function() {
+  return combiner(plugins.sass({
+    includePaths: require('node-bourbon').includePaths
+  }), plugins.autoprefixer('last 2 version', 'ie 8', 'ie 9'));
+};
+
+var processJs = function() {
+  return combiner(plugins.ngAnnotate());
+};
+
+gulp.task('serve', ['sass:demo', 'js:demo', 'tpl:demo'], function() {
+  browserSync.init({
+    server: './demo'
+  });
+
+  gulp.watch([ 'src/*.html' ], ['tpl:demo']);
+  gulp.watch([ 'src/*.scss', 'demo/styles/main.css' ], ['sass:demo']).on('change', browserSync.stream);
+  gulp.watch([ 'src/*.js' ], ['js:demo']).on('change', browserSync.reload);
+  gulp.watch([ 'demo/index.html', 'demo/templates/*.html' ]).on('change', browserSync.reload);
+  gulp.watch([ 'demo/app.js' ]).on('change', browserSync.reload);
+});
+
+gulp.task('build', ['sass:build', 'js:build', 'tpl:build']);
+
+gulp.task('clean', function (cb) {
+  del(['dserveist'], cb);
+});
+
+gulp.task('sass:demo', function() {
+  return gulp.src([ 'src/*.scss' ])
+  .pipe(processCss())
+  .pipe(gulp.dest('demo/styles'));
+});
+
+gulp.task('sass:build', function() {
+  return gulp.src([ 'src/*.scss' ])
+  .pipe(processCss())
+  .pipe(gulp.dest('dist'));
+});
+
+gulp.task('js-lint', function() {
+  return gulp.src('src/*.js')
+  .pipe(plugins.eslint())
+  .pipe(plugins.eslint.format())
+  .pipe(plugins.eslint.failOnError());
+});
+
+gulp.task('js:demo', ['js-lint'], function() {
+  return gulp.src('src/*.js')
+  .pipe(processJs())
+  .pipe(gulp.dest('demo/scripts'));
+});
+
+gulp.task('js:build', ['js-lint'], function() {
+  return gulp.src('src/*.js')
+  .pipe(processJs())
+  .pipe(gulp.dest('dist'));
+});
+
+gulp.task('tpl:demo', function() {
+  return gulp.src('src/*.html')
+  .pipe(gulp.dest('demo/templates'));
+});
+
+gulp.task('tpl:build', function() {
+  return gulp.src('src/*.html')
+  .pipe(gulp.dest('dist'));
+});
 
 // Build task to be run with gulp
-gulp.task('default', ['clean:dist'], function() {
-  gulp.start('build');
-});
+gulp.task('default', ['serve']);
 
-// Compile snaji window template files
-gulp.task('sanji-window-compiler', ['clean:serve'], function() {
-  var path = require('path');
-  var fs = require('fs');
-  var SanjiWindowCompiler = require('sanji-window-compiler');
-
-  fs.readFile(path.resolve(__dirname, './bundle/bundle.json'), function(err, data) {
-
-    var bundle;
-    var compiler = new SanjiWindowCompiler();
-
-    if (err) {
-      throw err;
-    }
-
-    try {
-      bundle = JSON.parse(data);
-    } catch(err) {
-      throw err;
-    }
-
-    console.log('===== compile bundle.json =====');
-    console.log(compiler.jsonOutputMainHtml('./demo/bundle/' + bundle.name + '/main.html', bundle));
-    console.log(compiler.jsonOutputInfoHtml('./demo/bundle/' + bundle.name + '/info.html', bundle));
-    console.log(compiler.jsonOutputEditHtml('./demo/bundle/' + bundle.name + '/edit.html', bundle));
-    console.log(compiler.jsonOutputControllerJs('./demo/bundle/' + bundle.name + '/' + bundle.name + '.ctrl.js', bundle));
-    console.log(compiler.jsonOutputServiceJs('./demo/bundle/' + bundle.name + '/' + bundle.name + '.srv.js', bundle));
-  });
-
-  fs.readFile(path.resolve(__dirname, './bundle/lineChartBundle.json'), function(err, data) {
-
-    var bundle;
-    var compiler = new SanjiWindowCompiler();
-
-    if (err) {
-      throw err;
-    }
-
-    try {
-      bundle = JSON.parse(data);
-    } catch(err) {
-      throw err;
-    }
-
-    console.log('===== compile line chart bundle.json =====');
-    console.log(compiler.jsonOutputMainHtml('./demo/bundle/' + bundle.name + '/main.html', bundle));
-    console.log(compiler.jsonOutputInfoHtml('./demo/bundle/' + bundle.name + '/info.html', bundle));
-    console.log(compiler.jsonOutputEditHtml('./demo/bundle/' + bundle.name + '/edit.html', bundle));
-    console.log(compiler.jsonOutputControllerJs('./demo/bundle/' + bundle.name + '/' + bundle.name + '.ctrl.js', bundle));
-    console.log(compiler.jsonOutputServiceJs('./demo/bundle/' + bundle.name + '/' + bundle.name + '.srv.js', bundle));
-  });
-
-});
-
-gulp.task('add-test-window', function() {
-  var path = require('path');
-  var fs = require('fs');
-  var SanjiWindowCompiler = require('sanji-window-compiler');
-
-  fs.readFile(path.resolve(__dirname, './bundle/testBundle.json'), function(err, data) {
-
-    var bundle;
-    var compiler = new SanjiWindowCompiler();
-
-    if (err) {
-      throw err;
-    }
-
-    try {
-      bundle = JSON.parse(data);
-    } catch(err) {
-      throw err;
-    }
-
-    console.log('===== compile bundle.json =====');
-    console.log(compiler.jsonOutputMainHtml('./demo/bundle/' + bundle.name + '/main.html', bundle));
-    console.log(compiler.jsonOutputInfoHtml('./demo/bundle/' + bundle.name + '/info.html', bundle));
-    console.log(compiler.jsonOutputEditHtml('./demo/bundle/' + bundle.name + '/edit.html', bundle));
-    console.log(compiler.jsonOutputControllerJs('./demo/bundle/' + bundle.name + '/' + bundle.name + '.ctrl.js', bundle));
-    console.log(compiler.jsonOutputServiceJs('./demo/bundle/' + bundle.name + '/' + bundle.name + '.srv.js', bundle));
-  });
-});

@@ -1,0 +1,9 @@
+<div ng-controller="EthernetController as vm"
+  ng-switch="sanjiWindowMgr.getWindowStatus()">
+  <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-info">
+    <div ng-include="'templates/ethernet-info.html'"></div>
+  </div>
+  <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-edit">
+    <div ng-include="'templates/ethernet-edit.html'"></div>
+  </div>
+</div>

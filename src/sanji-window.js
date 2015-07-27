@@ -1,10 +1,37 @@
-;(function() {
-  'use strict';
+'use strict';
 
+(function() {
   angular
     .module('sanji.window', [])
     .service('SanjiWindowConfig', SanjiWindowConfig)
-    .directive('sanjiWindow',sanjiWindow);
+    .directive('sanjiWindow', sanjiWindow);
+
+  function sanjiWindow($log, $controller, SanjiWindowConfig) {
+    return {
+      templateUrl: 'templates/sanji-window.html',
+      restrict: 'EA',
+      replace: true,
+      scope: {
+        title: '@',
+        contentUrl: '@',
+        data: '='
+      },
+      link: function postLink(scope) {
+        scope.sanjiWindowMgr = angular.copy(SanjiWindowConfig);
+
+        if (scope.contentUrl) {
+          scope.sanjiWindowMgr.setContentUrl(scope.contentUrl);
+        }
+        else {
+          $log.error('Sanji window content url not defined!');
+        }
+
+        if (scope.title) {
+          scope.sanjiWindowMgr.setTitle(scope.title);
+        }
+      }
+    };
+  }
 
   function SanjiWindowConfig() {
     this.id = '_' + Math.random().toString(36).substr(2, 9);
@@ -91,31 +118,4 @@
   SanjiWindowConfig.prototype.addHideFooterStatus = function(status) {
     this.excludeStatusArray.push(status);
   };
-
-  function sanjiWindow($log, $controller, SanjiWindowConfig) {
-    return {
-      templateUrl: 'templates/sanji-window.html',
-      restrict: 'EA',
-      replace: true,
-      scope: {
-        title: '@',
-        contentUrl: '@',
-        data: '='
-      },
-      link: function postLink(scope) {
-        scope.sanjiWindowMgr = angular.copy(SanjiWindowConfig);
-
-        if (scope.contentUrl) {
-          scope.sanjiWindowMgr.setContentUrl(scope.contentUrl);
-        } else {
-          $log.error('Sanji window content url not defined!');
-        }
-
-        if (scope.title) {
-          scope.sanjiWindowMgr.setTitle(scope.title);
-        }
-      }
-    };
-  }
-
 }());

@@ -1,0 +1,18 @@
+<div class="col-sm-3 text-right pull-right clearfix">
+  <button type="button" class="btn btn-primary" ng-click="sanjiWindowMgr.goToEditState()">
+    <i class="fa fa-edit"></i>
+    <span>Edit</span>
+  </button>
+</div>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <dl class="dl-horizontal">
+      <dt>IP:</dt>
+      <dd ng-bind="::vm.ethernet.ip"></dd>
+      <dt>Netmask:</dt>
+      <dd ng-bind="::vm.ethernet.netmask"></dd>
+      <dt>Gateway:</dt>
+      <dd ng-bind="::vm.ethernet.gateway"></dd>
+    </dl>
+  </div>
+</div>

@@ -2,15 +2,13 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Demo Sanji Window</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="bower_components/c3/c3.css" />
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/sanji-window.css">
     <!-- endbuild -->
   </head>
@@ -25,23 +23,9 @@
         <h3 class="text-muted">Sanji Window Demo</h3>
       </div>
 
-      <div class="row" ng-controller="AppCtrl as app">
-        <div class="col-sm-3">
-          <nav class="nav-sidebar">
-            <ul class="nav tabs">
-              <li ng-repeat="bundle in app.bundles track by $index" ng-class="{ active: 0===$index }">
-                <a ng-href="#{{bundle.title}}" data-toggle="tab" ng-bind="bundle.title" ng-click="app.setShowContentStatus(bundle)"></a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <!-- tab content -->
-        <div class="col-sm-9 tab-content">
-          <div class="tab-pane text-style" ng-repeat="bundle in app.bundles track by $index" ng-class="{ active: 0===$index }" id="{{bundle.title}}">
-            <div ng-if="bundle.isShow">
-              <sanji-window title="{{bundle.title}}" content-url="{{bundle.url.template}}"></sanji-window>
-            </div>
-          </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <sanji-window title="Ethernet" content-url="templates/ethernet-main.html"></sanji-window>
         </div>
       </div>
 
@@ -50,33 +34,16 @@
       </div>
     </div>
 
-    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="bower_components/ng-file-upload/angular-file-upload-html5-shim.min.js"></script>
-
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/d3/d3.js"></script>
-    <script src="bower_components/c3/c3.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
-    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
-    <script src="bower_components/oclazyload/dist/oclazyload.js"></script>
-    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
-    <script src="bower_components/angular-bindonce/bindonce.js"></script>
-    <script src="bower_components/c3-angular-sample/js/c3js-directive.js"></script>
-    <script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
-    <script src="bower_components/sanji-validator/dist/sanji-validator.js"></script>
     <script src="scripts/sanji-window.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="app.js"></script>
-        <script src="scripts/bundleService.js"></script>
+        <script src="scripts/app.js"></script>
         <!-- endbuild -->
 
 </body>

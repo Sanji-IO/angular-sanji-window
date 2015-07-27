@@ -11,9 +11,7 @@ Sanji window UI is develped based on angular. This is one fo sanji ui module.
 
 ## Requirements
 
-- jQuery
 - AngularJS
-- [lodash](https://github.com/lodash/lodash)
 
 ## Browser Support
 - Chrome
@@ -44,23 +42,10 @@ bower install
 
 ## Development
 ```sh
-gulp serve
+npm start
 ```
 
-## Test
+## Release
 ```sh
-npm test
-```
-
-### Unit test
-```sh
-gulp test:unit
-```
-
-### E2E test
-Before running e2e test, make sure to install selinum driver.
-`./node_modules/protractor/bin/webdriver-manager update`
-
-```sh
-gulp test:e2e
+npm run build
 ```
