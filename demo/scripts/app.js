@@ -5,9 +5,17 @@
       'ngAnimate',
       'sanji.window'
     ])
+    .controller('AppController', AppController)
     .controller('EthernetController', EthernetController);
 
-  function EthernetController($scope) {
+  function AppController($window) {
+    var vm = this;
+    vm.alert = function() {
+      $window.alert('Go back callback alert!');
+    };
+  }
+
+  function EthernetController($scope, $window) {
     var vm = this;
     var sanjiWindowMgr = $scope.sanjiWindowMgr;
     vm.ethernet = {

@@ -14,7 +14,8 @@
       scope: {
         title: '@',
         contentUrl: '@',
-        data: '='
+        data: '=',
+        contentBack: '&'
       },
       link: function postLink(scope) {
         scope.sanjiWindowMgr = angular.copy(SanjiWindowConfig);
@@ -28,6 +29,10 @@
 
         if (scope.title) {
           scope.sanjiWindowMgr.setTitle(scope.title);
+        }
+
+        if (angular.isFunction(scope.contentBack)) {
+          scope.sanjiWindowMgr.setContentBackCallback = scope.contentBack;
         }
       }
     };
@@ -48,6 +53,7 @@
       'sanji-processing',
       'sanji-connection-problem'
     ];
+    this.setContentBackCallback = null;
   }
 
   SanjiWindowConfig.prototype.setTitle = function(title) {
@@ -104,6 +110,11 @@
 
   SanjiWindowConfig.prototype.goBack = function() {
     var states = this.recordState;
+
+    if (null !== this.setContentBackCallback && angular.isFunction(this.setContentBackCallback)) {
+      this.setContentBackCallback();
+    }
+
     states.pop();
     this.navigateContent = states[states.length - 1];
   };
