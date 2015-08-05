@@ -1,6 +1,6 @@
 {
   "name": "angular-sanji-window",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Sanji window",
   "main": "gulpfile.js",
   "dependencies": {
