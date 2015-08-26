@@ -12,7 +12,7 @@ var appRoot = path.join(__dirname, 'app');
 var config = {
   context: appRoot,
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'sanji-window.js'
   },
   resolve: {
