@@ -1,7 +1,3 @@
-import 'bootstrap';
-import 'angular';
-// import 'angular-animate';
-
 import './sanji-window.scss';
 import './sanji-window.tpl.html';
 import SanjiWindowConfig from './sanji-window.service';

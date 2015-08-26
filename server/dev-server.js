@@ -2,7 +2,7 @@
 
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config');
+var config = require('../webpack.dev');
 new WebpackDevServer(webpack(config), {
   hot: true,
   historyApiFallback: true,

@@ -1,3 +1,4 @@
+import 'bootstrap';
 import 'angular';
 import './sanji-window';
 

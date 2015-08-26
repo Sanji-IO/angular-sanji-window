@@ -4,8 +4,8 @@
   "description": "Sanji window",
   "scripts": {
     "test": "NODE_ENV=test karma start",
-    "start": "NODE_ENV=development node dev-server",
-    "build": "rm -rf dist && NODE_ENV=production webpack --dispaly-modules"
+    "start": "NODE_ENV=development node server/dev-server.js",
+    "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.build.js --display-modules"
   },
   "devDependencies": {
     "babel-core": "~5.8.22",
@@ -16,6 +16,7 @@
     "eslint": "~1.2.0",
     "eslint-loader": "~1.0.0",
     "eslint-plugin-angular": "~0.4.0",
+    "extract-text-webpack-plugin": "~0.8.2",
     "file-loader": "~0.8.4",
     "html-webpack-plugin": "~1.6.0",
     "karma": "~0.13.9",

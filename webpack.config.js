@@ -2,8 +2,6 @@
 
 var path = require('path');
 var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var WebpackNotifierPlugin = require('webpack-notifier');
 var bourbon = require('node-bourbon').includePaths;
 var NODE_ENV = process.env.NODE_ENV;
 var bowerRoot = path.join(__dirname, 'bower_components');
@@ -31,14 +29,7 @@ var config = {
     ],
     loaders: [
       {test: /\.js$/, loader: 'ng-annotate!babel', exclude: /(node_modules|bower_components)/},
-      {test: /\.html$/, loader: 'ng-cache?prefix=[dir]/[dir]', exclude: /(node_modules|bower_components)/},
-      {test: /\.css$/, loader: 'style!css'},
-      {test: /\.scss/, loader: 'style!css!sass?includePaths[]=' + bourbon},
-      {test: /\.(png|jpg|gif|jpeg)$/, loader: 'url-loader?limit=8192'},
-      {test: /\.(woff|woff2)$/, loader: "url?limit=10000&minetype=application/font-woff"},
-      {test: /\.ttf$/, loader: "file"},
-      {test: /\.eot$/, loader: "file"},
-      {test: /\.svg$/, loader: "file"}
+      {test: /\.html$/, loader: 'ng-cache?prefix=[dir]/[dir]', exclude: /(node_modules|bower_components)/}
     ],
     noParse: []
   },
@@ -55,43 +46,5 @@ var config = {
     new webpack.NoErrorsPlugin()
   ]
 };
-
-if ('test' === NODE_ENV) {
-}
-
-if ('development' === NODE_ENV) {
-  config.ip = 'localhost';
-  config.port = 8080;
-  config.debug = true;
-  config.devtool = 'eval-source-map';
-  config.entry = {
-    'angular-module': [
-      'webpack/hot/dev-server',
-      'webpack-dev-server/client?http://' + config.ip + ':' + config.port,
-      './app.js'
-    ]
-  };
-  config.plugins.push(
-    new webpack.HotModuleReplacementPlugin(),
-    new WebpackNotifierPlugin({title: 'Webpack'}),
-    new HtmlWebpackPlugin({
-      template: 'app/index.html',
-      inject: 'body',
-      hash: true
-    })
-  );
-}
-
-if ('production' === NODE_ENV) {
-  config.devtool = 'source-map';
-  config.entry = {
-    'angular-module': './sanji-window/index.js'
-  };
-  config.output.libraryTarget = 'umd';
-  config.plugins.push(
-    new WebpackNotifierPlugin({title: 'Webpack'}),
-    new webpack.optimize.DedupePlugin()
-  );
-}
 
 module.exports = config;

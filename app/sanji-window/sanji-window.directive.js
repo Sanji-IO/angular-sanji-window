@@ -1,5 +1,3 @@
-import 'angular';
-
 const injectMap = new WeakMap();
 const $inject = ['$log', 'sanjiWindowConfig'];
 class SanjiWindowDirective {
