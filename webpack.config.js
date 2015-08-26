@@ -15,6 +15,8 @@ var config = {
   },
   resolve: {
     root: [bowerRoot, nodeRoot],
+    // npm-linked packages can locate missing dependencies in app's node_modules
+    fallback: nodeRoot,
     alias: {
       'bootstrap': bowerRoot + '/bootstrap/dist/css/bootstrap.min.css'
     },
