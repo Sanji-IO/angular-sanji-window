@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Sanji Window Demo</title>
+</head>
+
+<body ng-app="webapp">
+  <!--[if lt IE 8]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div class="container">
+    <div class="header">
+      <h3 class="text-muted">Sanji Window Demo</h3>
+    </div>
+
+    <div class="row" ng-controller="AppController as vm">
+      <div class="col-sm-12">
+        <sanji-window title="Ethernet"
+        content-url="mx-ethernet-main.tpl.html"
+        content-back="vm.alert()">
+        </sanji-window>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p><span class="glyphicon glyphicon-heart"></span> from the Sanji team</p>
+    </div>
+  </div>
+
+  <script type ="text/ng-template" id="mx-ethernet-main.tpl.html">
+    <div ng-controller="EthernetController as vm"
+      ng-switch="sanjiWindowMgr.getWindowStatus()">
+      <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-info">
+        <div ng-include="'mx-ethernet-info.tpl.html'"></div>
+      </div>
+      <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-edit">
+        <div ng-include="'mx-ethernet-edit.tpl.html'"></div>
+      </div>
+    </div>
+  </script>
+
+  <script type ="text/ng-template" id="mx-ethernet-info.tpl.html">
+    <div class="col-sm-3 text-right pull-right clearfix">
+      <button type="button" class="btn btn-primary" ng-click="sanjiWindowMgr.goToEditState()">
+        <i class="fa fa-edit"></i>
+        <span>Edit</span>
+      </button>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <dl class="dl-horizontal">
+          <dt>IP:</dt>
+          <dd ng-bind="::vm.ethernet.ip"></dd>
+          <dt>Netmask:</dt>
+          <dd ng-bind="::vm.ethernet.netmask"></dd>
+          <dt>Gateway:</dt>
+          <dd ng-bind="::vm.ethernet.gateway"></dd>
+        </dl>
+      </div>
+    </div>
+  </script>
+
+  <script type ="text/ng-template" id="mx-ethernet-edit.tpl.html">
+    <form class="form-horizontal"
+      role="form"
+      name="form"
+      ng-submit=""
+      novalidate>
+
+      <div class="form-group">
+        <label for="ip{{::$index +1}}" class="col-sm-4 control-label">
+          IP:
+        </label>
+        <div class="col-sm-6">
+          <input id="ip"
+            ng-model="vm.ethernet.ip"
+            name="ip"
+            type="text"
+            class="form-control"
+            placeholder="0.0.0.0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="netmask" class="col-sm-4 control-label">
+          Netmask:
+        </label>
+        <div class="col-sm-6">
+          <input id="netmask"
+            ng-model="vm.ethernet.netmask"
+            name="netmask"
+            type="text"
+            class="form-control"
+            placeholder="0.0.0.0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="gateway" class="col-sm-4 control-label">
+          Gateway:
+        </label>
+        <div class="col-sm-6">
+          <input id="gateway"
+            ng-model="vm.ethernet.gateway"
+            name="gateway"
+            type="text"
+            class="form-control"
+            placeholder="0.0.0.0"
+            >
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-2 col-xs-offset-8 text-right">
+          <button class="btn btn-primary">
+            <span>Save</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </script>
+</body>
+
+</html>
