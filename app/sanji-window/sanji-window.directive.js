@@ -1,5 +1,5 @@
 const injectMap = new WeakMap();
-const $inject = ['$log', 'sanjiWindowConfig'];
+const $inject = ['$log', 'sanjiWindowService'];
 class SanjiWindowDirective {
   constructor(injects) {
     SanjiWindowDirective.directiveFactory.$inject.forEach((item, index) => {
@@ -18,7 +18,7 @@ class SanjiWindowDirective {
   }
 
   link(scope) {
-    let config = injectMap.get(SanjiWindowDirective.sanjiWindowConfig);
+    let config = injectMap.get(SanjiWindowDirective.sanjiWindowService);
     let $log = injectMap.get(SanjiWindowDirective.$log);
 
     scope.sanjiWindowMgr = angular.copy(config);

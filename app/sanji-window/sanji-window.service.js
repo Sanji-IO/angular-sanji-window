@@ -1,4 +1,4 @@
-class SanjiWindowConfig {
+class SanjiWindowService {
   constructor() {
     this.id = '_' + Math.random().toString(36).substr(2, 9);
     this.title = '';
@@ -94,4 +94,4 @@ class SanjiWindowConfig {
     this.excludeStatusArray.push(status);
   }
 }
-export default SanjiWindowConfig;
+export default SanjiWindowService;

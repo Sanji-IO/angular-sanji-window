@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _sanjiWindowDirective2 = _interopRequireDefault(_sanjiWindowDirective);
 	
-	angular.module('sanji.window', []).service('sanjiWindowConfig', _sanjiWindowService2['default']).directive('sanjiWindow', _sanjiWindowDirective2['default'].directiveFactory);
+	angular.module('sanji.window', []).service('sanjiWindowService', _sanjiWindowService2['default']).directive('sanjiWindow', _sanjiWindowDirective2['default'].directiveFactory);
 
 /***/ },
 /* 1 */
@@ -93,7 +93,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
 	var injectMap = new WeakMap();
-	var $inject = ['$log', 'sanjiWindowConfig'];
+	var $inject = ['$log', 'sanjiWindowService'];
 	
 	var SanjiWindowDirective = (function () {
 	  function SanjiWindowDirective(injects) {
@@ -117,7 +117,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(SanjiWindowDirective, [{
 	    key: 'link',
 	    value: function link(scope) {
-	      var config = injectMap.get(SanjiWindowDirective.sanjiWindowConfig);
+	      var config = injectMap.get(SanjiWindowDirective.sanjiWindowService);
 	      var $log = injectMap.get(SanjiWindowDirective.$log);
 	
 	      scope.sanjiWindowMgr = angular.copy(config);
@@ -169,9 +169,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var SanjiWindowConfig = (function () {
-	  function SanjiWindowConfig() {
-	    _classCallCheck(this, SanjiWindowConfig);
+	var SanjiWindowService = (function () {
+	  function SanjiWindowService() {
+	    _classCallCheck(this, SanjiWindowService);
 	
 	    this.id = '_' + Math.random().toString(36).substr(2, 9);
 	    this.title = '';
@@ -185,7 +185,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.oneTimeBackCallback = null;
 	  }
 	
-	  _createClass(SanjiWindowConfig, [{
+	  _createClass(SanjiWindowService, [{
 	    key: 'setTitle',
 	    value: function setTitle(title) {
 	      this.title = title;
@@ -277,10 +277,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }]);
 	
-	  return SanjiWindowConfig;
+	  return SanjiWindowService;
 	})();
 	
-	exports['default'] = SanjiWindowConfig;
+	exports['default'] = SanjiWindowService;
 	module.exports = exports['default'];
 
 /***/ },
