@@ -7,8 +7,8 @@
   ],
   "description": "Sanji window is a dashboard window",
   "main": [
-    "dist/sanji-window.min.js",
-    "dist/sanji-window.min.css"
+    "dist/sanji-window.js",
+    "dist/sanji-window.css"
   ],
   "keywords": [
     "angular-sanji",
