@@ -1,5 +1,5 @@
 const injectMap = new WeakMap();
-const $inject = ['$log', 'sanjiWindowService'];
+const $inject = ['$log'];
 class SanjiWindowDirective {
   constructor(injects) {
     SanjiWindowDirective.directiveFactory.$inject.forEach((item, index) => {
@@ -9,33 +9,13 @@ class SanjiWindowDirective {
     this.templateUrl = 'sanji-window.tpl.html';
     this.restrict = 'EA';
     this.replace = true;
-    this.scope = {
-      title: '@',
-      contentUrl: '@',
-      data: '=',
-      contentBack: '&'
-    };
+    this.transclude = true;
+    this.controller = 'SanjiWindowController';
   }
 
-  link(scope) {
-    let config = injectMap.get(SanjiWindowDirective.sanjiWindowService);
-    let $log = injectMap.get(SanjiWindowDirective.$log);
-
-    scope.sanjiWindowMgr = angular.copy(config);
-
-    if (scope.contentUrl) {
-      scope.sanjiWindowMgr.setContentUrl(scope.contentUrl);
-    }
-    else {
-      $log.error('Sanji window content url not defined!');
-    }
-
-    if (scope.title) {
-      scope.sanjiWindowMgr.setTitle(scope.title);
-    }
-
-    if (angular.isFunction(scope.contentBack)) {
-      scope.sanjiWindowMgr.setContentBackCallback = scope.contentBack;
+  link(scope, elemnt, attrs) {
+    if (attrs.title) {
+      scope.sanjiWindowMgr.setTitle(attrs.title);
     }
   }
 

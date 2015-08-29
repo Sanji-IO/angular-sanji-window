@@ -24,9 +24,18 @@
 
     <div class="row" ng-controller="AppController as vm">
       <div class="col-sm-12">
-        <sanji-window title="Ethernet"
-        content-url="mx-ethernet-main.tpl.html"
-        content-back="vm.alert()">
+        <sanji-window title="Ethernet">
+
+          <div ng-controller="EthernetController as vm"
+            ng-switch="sanjiWindowMgr.getWindowStatus()">
+            <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-info">
+              <div ng-include="'mx-ethernet-info.tpl.html'"></div>
+            </div>
+            <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-edit">
+              <div ng-include="'mx-ethernet-edit.tpl.html'"></div>
+            </div>
+          </div>
+
         </sanji-window>
       </div>
     </div>
@@ -35,18 +44,6 @@
       <p><span class="glyphicon glyphicon-heart"></span> from the Sanji team</p>
     </div>
   </div>
-
-  <script type ="text/ng-template" id="mx-ethernet-main.tpl.html">
-    <div ng-controller="EthernetController as vm"
-      ng-switch="sanjiWindowMgr.getWindowStatus()">
-      <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-info">
-        <div ng-include="'mx-ethernet-info.tpl.html'"></div>
-      </div>
-      <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-edit">
-        <div ng-include="'mx-ethernet-edit.tpl.html'"></div>
-      </div>
-    </div>
-  </script>
 
   <script type ="text/ng-template" id="mx-ethernet-info.tpl.html">
     <div class="col-sm-3 text-right pull-right clearfix">

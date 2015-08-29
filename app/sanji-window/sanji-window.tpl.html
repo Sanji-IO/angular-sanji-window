@@ -2,12 +2,13 @@
   <div class="panel">
     <div class="mx-panel-heading clearfix">
       <div class="mx-panel-heading__title pull-left">
-        <span ng-bind="title"></span>
+        <span ng-bind="sanjiWindowMgr.title"></span>
       </div>
     </div>
     <div class="mx-slide-toggle">
       <div class="panel-body">
-        <div ng-if="!!contentUrl" ng-include="contentUrl"></div>
+        <div ng-transclude></div>
+        <!-- <div ng-if="!!contentUrl" ng-include="contentUrl"></div> -->
       </div>
       <div class="panel-footer clearfix" ng-show="sanjiWindowMgr.isShowFooter()">
         <button type="button" class="btn btn-info" ng-click="sanjiWindowMgr.goBack()">
