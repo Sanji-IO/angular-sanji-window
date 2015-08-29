@@ -60,17 +60,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	__webpack_require__(1);
 	
-	__webpack_require__(4);
+	__webpack_require__(5);
 	
-	var _sanjiWindowService = __webpack_require__(3);
+	var _sanjiWindowService = __webpack_require__(4);
 	
 	var _sanjiWindowService2 = _interopRequireDefault(_sanjiWindowService);
 	
-	var _sanjiWindowDirective = __webpack_require__(2);
+	var _sanjiWindowController = __webpack_require__(2);
+	
+	var _sanjiWindowController2 = _interopRequireDefault(_sanjiWindowController);
+	
+	var _sanjiWindowDirective = __webpack_require__(3);
 	
 	var _sanjiWindowDirective2 = _interopRequireDefault(_sanjiWindowDirective);
 	
-	angular.module('sanji.window', []).service('sanjiWindowService', _sanjiWindowService2['default']).directive('sanjiWindow', _sanjiWindowDirective2['default'].directiveFactory);
+	angular.module('sanji.window', []).service('sanjiWindowService', _sanjiWindowService2['default']).controller('SanjiWindowController', _sanjiWindowController2['default']).directive('sanjiWindow', _sanjiWindowDirective2['default'].directiveFactory);
 
 /***/ },
 /* 1 */
@@ -88,12 +92,45 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	var $inject = ['$log', '$scope', 'sanjiWindowService'];
+	
+	var SanjiWindowController = function SanjiWindowController() {
+	  var _this = this;
+	
+	  for (var _len = arguments.length, injects = Array(_len), _key = 0; _key < _len; _key++) {
+	    injects[_key] = arguments[_key];
+	  }
+	
+	  _classCallCheck(this, SanjiWindowController);
+	
+	  SanjiWindowController.$inject.forEach(function (item, index) {
+	    return _this[item] = injects[index];
+	  });
+	  this.$scope.sanjiWindowMgr = angular.copy(this.sanjiWindowService);
+	};
+	
+	SanjiWindowController.$inject = $inject;
+	exports['default'] = SanjiWindowController;
+	module.exports = exports['default'];
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
 	var injectMap = new WeakMap();
-	var $inject = ['$log', 'sanjiWindowService'];
+	var $inject = ['$log'];
 	
 	var SanjiWindowDirective = (function () {
 	  function SanjiWindowDirective(injects) {
@@ -106,34 +143,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.templateUrl = 'sanji-window.tpl.html';
 	    this.restrict = 'EA';
 	    this.replace = true;
-	    this.scope = {
-	      title: '@',
-	      contentUrl: '@',
-	      data: '=',
-	      contentBack: '&'
-	    };
+	    this.transclude = true;
+	    this.controller = 'SanjiWindowController';
 	  }
 	
 	  _createClass(SanjiWindowDirective, [{
 	    key: 'link',
-	    value: function link(scope) {
-	      var config = injectMap.get(SanjiWindowDirective.sanjiWindowService);
-	      var $log = injectMap.get(SanjiWindowDirective.$log);
-	
-	      scope.sanjiWindowMgr = angular.copy(config);
-	
-	      if (scope.contentUrl) {
-	        scope.sanjiWindowMgr.setContentUrl(scope.contentUrl);
-	      } else {
-	        $log.error('Sanji window content url not defined!');
-	      }
-	
-	      if (scope.title) {
-	        scope.sanjiWindowMgr.setTitle(scope.title);
-	      }
-	
-	      if (angular.isFunction(scope.contentBack)) {
-	        scope.sanjiWindowMgr.setContentBackCallback = scope.contentBack;
+	    value: function link(scope, elemnt, attrs) {
+	      if (attrs.title) {
+	        scope.sanjiWindowMgr.setTitle(attrs.title);
 	      }
 	    }
 	  }], [{
@@ -156,7 +174,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -284,10 +302,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports) {
 
-	var v1="<div class=\"panel\">\n    <div class=\"mx-panel-heading clearfix\">\n      <div class=\"mx-panel-heading__title pull-left\">\n        <span ng-bind=\"title\"></span>\n      </div>\n    </div>\n    <div class=\"mx-slide-toggle\">\n      <div class=\"panel-body\">\n        <div ng-if=\"!!contentUrl\" ng-include=\"contentUrl\"></div>\n      </div>\n      <div class=\"panel-footer clearfix\" ng-show=\"sanjiWindowMgr.isShowFooter()\">\n        <button type=\"button\" class=\"btn btn-info\" ng-click=\"sanjiWindowMgr.goBack()\">\n          <i class=\"fa fa-arrow-left\"></i>\n          Back\n        </button>\n      </div>\n    </div>\n  </div>";
+	var v1="<div class=\"panel\">\n    <div class=\"mx-panel-heading clearfix\">\n      <div class=\"mx-panel-heading__title pull-left\">\n        <span ng-bind=\"sanjiWindowMgr.title\"></span>\n      </div>\n    </div>\n    <div class=\"mx-slide-toggle\">\n      <div class=\"panel-body\">\n        <div ng-transclude></div>\n        <!-- <div ng-if=\"!!contentUrl\" ng-include=\"contentUrl\"></div> -->\n      </div>\n      <div class=\"panel-footer clearfix\" ng-show=\"sanjiWindowMgr.isShowFooter()\">\n        <button type=\"button\" class=\"btn btn-info\" ng-click=\"sanjiWindowMgr.goBack()\">\n          <i class=\"fa fa-arrow-left\"></i>\n          Back\n        </button>\n      </div>\n    </div>\n  </div>";
 	window.angular.module(["ng"]).run(["$templateCache",function(c){c.put("sanji-window.tpl.html", v1)}]);
 	module.exports=v1;
 
