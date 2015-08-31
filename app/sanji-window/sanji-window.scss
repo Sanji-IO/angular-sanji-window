@@ -5,12 +5,7 @@
 md-card {
   position: relative;
   > .card-header {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    padding-top: 20px;
-    padding-left: 16px;
-    color: #000;
+    background-color: #f7f7f7;
 
     md-icon {
       padding-bottom: 3px;

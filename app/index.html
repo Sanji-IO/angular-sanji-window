@@ -44,39 +44,41 @@
   </div>
 
   <script type ="text/ng-template" id="mx-ethernet-info.tpl.html">
-    <md-menu md-position-mode="target-right target">
-      <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-        <md-icon md-menu-origin md-svg-icon="webapp:more-vert"></md-icon>
-      </md-button>
-      <md-menu-content width="2">
-        <md-menu-item>
-          <md-button>
-            <div layout="row">
-              <md-icon md-menu-origin md-svg-icon="webapp:refresh"></md-icon>
-              <p flex>Refresh</p>
-            </div>
-          </md-button>
-        </md-menu-item>
-        <md-menu-item>
-          <md-button ng-click="sanjiWindowMgr.goToEditState()">
-            <div layout="row">
-              <md-icon md-menu-origin md-svg-icon="webapp:settings"></md-icon>
-              <p flex>Setting</p>
-            </div>
-          </md-button>
-        </md-menu-item>
-      </md-menu-content>
-    </md-menu>
-    <md-content class="ethernet-info">
-      <small class="md-subheader">IP</small>
-      <h2 ng-bind="::vm.ethernet.ip"></h2>
-      <br/>
-      <small class="md-subheader">Netmask</small>
-      <h2 ng-bind="::vm.ethernet.netmask"></h2>
-      <br/>
-      <small class="md-subheader">Gateway</small>
-      <h2 ng-bind="::vm.ethernet.gateway"></h2>
-    </md-content>
+    <div class="ethernet-info">
+      <md-menu md-position-mode="target-right target">
+        <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+          <md-icon md-menu-origin md-svg-icon="webapp:more-vert"></md-icon>
+        </md-button>
+        <md-menu-content width="2">
+          <md-menu-item>
+            <md-button>
+              <div layout="row">
+                <md-icon md-menu-origin md-svg-icon="webapp:refresh"></md-icon>
+                <p flex>Refresh</p>
+              </div>
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="sanjiWindowMgr.goToEditState()">
+              <div layout="row">
+                <md-icon md-menu-origin md-svg-icon="webapp:settings"></md-icon>
+                <p flex>Setting</p>
+              </div>
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+      <md-content>
+        <small class="md-subheader">IP</small>
+        <h2 ng-bind="::vm.ethernet.ip"></h2>
+        <br/>
+        <small class="md-subheader">Netmask</small>
+        <h2 ng-bind="::vm.ethernet.netmask"></h2>
+        <br/>
+        <small class="md-subheader">Gateway</small>
+        <h2 ng-bind="::vm.ethernet.gateway"></h2>
+      </md-content>
+    </div>
   </script>
 
   <script type ="text/ng-template" id="mx-ethernet-edit.tpl.html">
