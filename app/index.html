@@ -10,60 +10,73 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>Sanji Window Demo</title>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
 </head>
 
-<body ng-app="webapp">
+<body ng-app="webapp" layout="column">
   <!--[if lt IE 8]>
   <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div class="container">
-    <div class="header">
-      <h3 class="text-muted">Sanji Window Demo</h3>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h3>Sanji Window Demo</h3>
     </div>
+  </md-toolbar>
+  <div layout="row" layout-padding layout-align="center center">
+    <div flex="33" flex-offset="66">
+      <sanji-window title="Ethernet">
 
-    <div class="row" ng-controller="AppController as vm">
-      <div class="col-sm-12">
-        <sanji-window title="Ethernet">
-
-          <div ng-controller="EthernetController as vm"
-            ng-switch="sanjiWindowMgr.getWindowStatus()">
-            <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-info">
-              <div ng-include="'mx-ethernet-info.tpl.html'"></div>
-            </div>
-            <div ng-class="sanjiWindowMgr.animateClass" ng-switch-when="sanji-edit">
-              <div ng-include="'mx-ethernet-edit.tpl.html'"></div>
-            </div>
+        <div ng-controller="EthernetController as vm" ng-switch="sanjiWindowMgr.getWindowStatus()">
+          <div ng-switch-when="sanji-info">
+            <div ng-include="'mx-ethernet-info.tpl.html'"></div>
           </div>
+          <div ng-switch-when="sanji-edit">
+            <div ng-include="'mx-ethernet-edit.tpl.html'"></div>
+          </div>
+        </div>
 
-        </sanji-window>
-      </div>
+      </sanji-window>
     </div>
-
-    <div class="footer">
-      <p><span class="glyphicon glyphicon-heart"></span> from the Sanji team</p>
-    </div>
+  </div>
+  <div layout="row" layout-align="center center">
+    <span class="md-caption">from the Sanji Team</span>
   </div>
 
   <script type ="text/ng-template" id="mx-ethernet-info.tpl.html">
-    <div class="col-sm-3 text-right pull-right clearfix">
-      <button type="button" class="btn btn-primary" ng-click="sanjiWindowMgr.goToEditState()">
-        <i class="fa fa-edit"></i>
-        <span>Edit</span>
-      </button>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-        <dl class="dl-horizontal">
-          <dt>IP:</dt>
-          <dd ng-bind="::vm.ethernet.ip"></dd>
-          <dt>Netmask:</dt>
-          <dd ng-bind="::vm.ethernet.netmask"></dd>
-          <dt>Gateway:</dt>
-          <dd ng-bind="::vm.ethernet.gateway"></dd>
-        </dl>
-      </div>
-    </div>
+    <md-menu md-position-mode="target-right target">
+      <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+        <md-icon md-menu-origin md-svg-icon="webapp:more-vert"></md-icon>
+      </md-button>
+      <md-menu-content width="2">
+        <md-menu-item>
+          <md-button>
+            <div layout="row">
+              <md-icon md-menu-origin md-svg-icon="webapp:refresh"></md-icon>
+              <p flex>Refresh</p>
+            </div>
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button ng-click="sanjiWindowMgr.goToEditState()">
+            <div layout="row">
+              <md-icon md-menu-origin md-svg-icon="webapp:settings"></md-icon>
+              <p flex>Setting</p>
+            </div>
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+    <md-content class="ethernet-info">
+      <small class="md-subheader">IP</small>
+      <h2 ng-bind="::vm.ethernet.ip"></h2>
+      <br/>
+      <small class="md-subheader">Netmask</small>
+      <h2 ng-bind="::vm.ethernet.netmask"></h2>
+      <br/>
+      <small class="md-subheader">Gateway</small>
+      <h2 ng-bind="::vm.ethernet.gateway"></h2>
+    </md-content>
   </script>
 
   <script type ="text/ng-template" id="mx-ethernet-edit.tpl.html">
@@ -71,55 +84,44 @@
       role="form"
       name="form"
       ng-submit=""
+      layout="column"
+      layout-padding
       novalidate>
 
-      <div class="form-group">
-        <label for="ip{{::$index +1}}" class="col-sm-4 control-label">
-          IP:
-        </label>
-        <div class="col-sm-6">
-          <input id="ip"
-            ng-model="vm.ethernet.ip"
-            name="ip"
-            type="text"
-            class="form-control"
-            placeholder="0.0.0.0">
+      <md-content>
+        <md-input-container>
+          <label>IP</label>
+          <input ng-model="vm.ethernet.ip">
+        </md-input-container>
+        <md-input-container>
+          <label>Netmask</label>
+          <input ng-model="vm.ethernet.netmask">
+        </md-input-container>
+        <md-input-container>
+          <label>Gateway</label>
+          <input ng-model="vm.ethernet.gateway">
+        </md-input-container>
+        <div layout="row" layout-align="end start">
+          <md-fab-speed-dial md-open="vm.isOpen" md-direction="left" class="md-scale">
+            <md-fab-trigger>
+              <md-button aria-label="ethernet menu" class="md-fab md-acent">
+                <md-icon md-svg-src="webapp:menu"></md-icon>
+              </md-button>
+            </md-fab-trigger>
+            <md-fab-actions>
+              <md-button aria-label="save" class="md-fab md-raised md-mini md-primary">
+                <md-icon md-svg-src="webapp:save"></md-icon>
+              </md-button>
+              <md-button aria-label="go back"
+                class="md-fab md-raised md-mini"
+                ng-click="sanjiWindowMgr.goToInfoState()">
+                <md-icon md-svg-src="webapp:backward"></md-icon>
+              </md-button>
+            </md-fab-actions>
+          </md-fab-speed-dial>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="netmask" class="col-sm-4 control-label">
-          Netmask:
-        </label>
-        <div class="col-sm-6">
-          <input id="netmask"
-            ng-model="vm.ethernet.netmask"
-            name="netmask"
-            type="text"
-            class="form-control"
-            placeholder="0.0.0.0">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="gateway" class="col-sm-4 control-label">
-          Gateway:
-        </label>
-        <div class="col-sm-6">
-          <input id="gateway"
-            ng-model="vm.ethernet.gateway"
-            name="gateway"
-            type="text"
-            class="form-control"
-            placeholder="0.0.0.0"
-            >
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-xs-2 col-xs-offset-8 text-right">
-          <button class="btn btn-primary">
-            <span>Save</span>
-          </button>
-        </div>
-      </div>
+      </md-content>
+
     </form>
   </script>
 </body>

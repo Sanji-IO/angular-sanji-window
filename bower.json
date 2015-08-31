@@ -29,8 +29,8 @@
     "README.md"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.5",
-    "angular": "~1.4.4",
-    "angular-animate": "~1.4.4"
+    "angular": "~1.4.5",
+    "angular-animate": "~1.4.5",
+    "angular-material": "~0.10.1"
   }
 }

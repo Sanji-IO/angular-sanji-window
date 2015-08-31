@@ -4,7 +4,7 @@ import SanjiWindowService from './sanji-window.service';
 import SanjiWindowController from './sanji-window.controller';
 import SanjiWindowDirective from './sanji-window.directive';
 
-angular.module('sanji.window', [])
+angular.module('sanji.window', ['ngMaterial'])
   .service('sanjiWindowService', SanjiWindowService)
   .controller('SanjiWindowController', SanjiWindowController)
   .directive('sanjiWindow', SanjiWindowDirective.directiveFactory);
