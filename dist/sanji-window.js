@@ -305,7 +305,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 5 */
 /***/ function(module, exports) {
 
-	var v1="<md-card layout=column>\n    <div class=\"card-header\" layout=\"row\" layout-padding>\n      <h3 flex=\"33\" class=\"card-title\">\n        <md-icon md-menu-origin md-svg-icon=\"webapp:ethernet-settings\"></md-icon>\n        {{sanjiWindowMgr.title}}\n      </h3>\n    </div>\n    <md-card-content>\n      <div ng-transclude></div>\n    </md-card-content>\n  </md-card>";
+	var v1="<md-card layout=column>\n    <div class=\"card-header\" layout=\"row\" layout-padding>\n      <h3 flex=\"33\" class=\"card-title\">\n        {{sanjiWindowMgr.title}}\n      </h3>\n    </div>\n    <md-card-content>\n      <div ng-transclude></div>\n    </md-card-content>\n  </md-card>";
 	window.angular.module(["ng"]).run(["$templateCache",function(c){c.put("sanji-window.tpl.html", v1)}]);
 	module.exports=v1;
 
