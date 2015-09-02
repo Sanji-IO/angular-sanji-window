@@ -1,3 +1,18 @@
+md-card {
+  position: relative; }
+  md-card > .card-header {
+    background-color: #f7f7f7; }
+    md-card > .card-header md-icon {
+      padding-bottom: 3px; }
+    md-card > .card-header > .card-title {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 500; }
+  md-card > md-card-content md-menu {
+    position: absolute;
+    top: 0;
+    right: 0; }
+
 .panel {
   border-top: 1px solid #ddd;
   border-left: 1px solid #ddd;

@@ -74,7 +74,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _sanjiWindowDirective2 = _interopRequireDefault(_sanjiWindowDirective);
 	
-	angular.module('sanji.window', []).service('sanjiWindowService', _sanjiWindowService2['default']).controller('SanjiWindowController', _sanjiWindowController2['default']).directive('sanjiWindow', _sanjiWindowDirective2['default'].directiveFactory);
+	angular.module('sanji.window', ['ngMaterial']).service('sanjiWindowService', _sanjiWindowService2['default']).controller('SanjiWindowController', _sanjiWindowController2['default']).directive('sanjiWindow', _sanjiWindowDirective2['default'].directiveFactory);
 
 /***/ },
 /* 1 */
@@ -305,7 +305,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 5 */
 /***/ function(module, exports) {
 
-	var v1="<div class=\"panel\">\n    <div class=\"mx-panel-heading clearfix\">\n      <div class=\"mx-panel-heading__title pull-left\">\n        <span ng-bind=\"sanjiWindowMgr.title\"></span>\n      </div>\n    </div>\n    <div class=\"mx-slide-toggle\">\n      <div class=\"panel-body\">\n        <div ng-transclude></div>\n        <!-- <div ng-if=\"!!contentUrl\" ng-include=\"contentUrl\"></div> -->\n      </div>\n      <div class=\"panel-footer clearfix\" ng-show=\"sanjiWindowMgr.isShowFooter()\">\n        <button type=\"button\" class=\"btn btn-info\" ng-click=\"sanjiWindowMgr.goBack()\">\n          <i class=\"fa fa-arrow-left\"></i>\n          Back\n        </button>\n      </div>\n    </div>\n  </div>";
+	var v1="<md-card layout=column>\n    <div class=\"card-header\" layout=\"row\" layout-padding>\n      <h3 flex=\"33\" class=\"card-title\">\n        <md-icon md-menu-origin md-svg-icon=\"webapp:ethernet-settings\"></md-icon>\n        {{sanjiWindowMgr.title}}\n      </h3>\n    </div>\n    <md-card-content>\n      <div ng-transclude></div>\n    </md-card-content>\n  </md-card>";
 	window.angular.module(["ng"]).run(["$templateCache",function(c){c.put("sanji-window.tpl.html", v1)}]);
 	module.exports=v1;
 
