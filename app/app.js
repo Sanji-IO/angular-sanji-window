@@ -1,9 +1,7 @@
-import 'angular-material.css';
 import './app.scss';
+import 'angular-material.css';
 import 'angular';
-import 'angular-animate';
-import 'angular-aria';
-import 'angular-material.js';
+import 'angular-material';
 import './sanji-window';
 
 class AppController {
