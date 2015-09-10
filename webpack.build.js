@@ -10,7 +10,6 @@ config.devtool = 'source-map';
 config.entry = {
   'angular-module': './sanji-window/index.js'
 };
-config.output.libraryTarget = 'umd';
 
 config.module.loaders = [
   {
@@ -22,6 +21,11 @@ config.module.loaders = [
 config.plugins.push(
   new ExtractTextPlugin('sanji-window.css'),
   new WebpackNotifierPlugin({title: 'Webpack'}),
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false
+    }
+  }),
   new webpack.optimize.DedupePlugin()
 );
 module.exports = config;

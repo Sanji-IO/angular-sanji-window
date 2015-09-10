@@ -1,6 +1,4 @@
-require('angular');
-require('angular-material');
-require('./dist/sanji-window.css');
-require('./dist/sanji-window.js');
+import 'angular';
+import sanjiWindow from './app/sanji-window';
 
-module.exports = 'sanji.window';
+export default sanjiWindow

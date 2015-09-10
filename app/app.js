@@ -1,5 +1,5 @@
-import './app.scss';
 import 'angular-material.css';
+import './app.scss';
 import 'angular';
 import 'angular-material';
 import './sanji-window';
