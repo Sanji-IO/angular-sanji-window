@@ -17,7 +17,6 @@ var config = {
     // npm-linked packages can locate missing dependencies in app's node_modules
     fallback: nodeRoot,
     alias: {
-      'angular': nodeRoot + '/angular/angular.js',
       'angular-material.css': nodeRoot + '/angular-material/angular-material.css'
     },
     extensions: ['', '.js', '.json', 'html', 'scss', 'css']
@@ -28,7 +27,6 @@ var config = {
     ],
     loaders: [
       {test: /\.js$/, loader: 'ng-annotate!babel', exclude: /(node_modules)/},
-      // {test: /\.js$/, loader: 'babel?optional[]=runtime&stage=0', include: /(angular-material)/},
       {test: /\.html$/, loader: 'ng-cache?prefix=[dir]/[dir]', exclude: /(node_modules)/}
     ],
     noParse: []
