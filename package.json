@@ -2,6 +2,7 @@
   "name": "angular-sanji-window",
   "version": "1.0.10",
   "description": "Sanji window",
+  "main": "index",
   "scripts": {
     "test": "NODE_ENV=test karma start",
     "start": "NODE_ENV=development node server/dev-server.js",
