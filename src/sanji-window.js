@@ -12,7 +12,7 @@
       restrict: 'EA',
       replace: true,
       scope: {
-        title: '@',
+        title: '@windowName',
         contentUrl: '@',
         data: '=',
         contentBack: '&'
