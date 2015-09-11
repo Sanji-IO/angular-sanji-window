@@ -12,7 +12,7 @@
       restrict: 'EA',
       replace: true,
       scope: {
-        title: '@',
+        title: '@windowName',
         contentUrl: '@',
         data: '=',
         contentBack: '&'
@@ -54,6 +54,7 @@
       'sanji-connection-problem'
     ];
     this.setContentBackCallback = null;
+    this.oneTimeBackCallback = null;
   }
 
   SanjiWindowConfig.prototype.setTitle = function(title) {
@@ -113,6 +114,11 @@
 
     if (null !== this.setContentBackCallback && angular.isFunction(this.setContentBackCallback)) {
       this.setContentBackCallback();
+    }
+
+    if (null !== this.oneTimeBackCallback && angular.isFunction(this.oneTimeBackCallback)) {
+      this.oneTimeBackCallback();
+      this.oneTimeBackCallback = null;
     }
 
     states.pop();
