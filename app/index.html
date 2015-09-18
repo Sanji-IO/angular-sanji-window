@@ -25,7 +25,7 @@
   </md-toolbar>
   <div layout="row" layout-padding layout-align="center center">
     <div flex="33" flex-offset="66">
-      <sanji-window window-name="Ethernet 1" window-states="ctrl.states">
+      <sanji-window window-name="Ethernet 1" window-states="{{ctrl.states}}">
 
         <div ng-controller="EthernetController as vm"
         ng-switch="vm.sanjiWindowMgr.getWindowStatus()">
@@ -42,7 +42,7 @@
   </div>
   <div layout="row" layout-padding layout-align="center center">
     <div flex="33" flex-offset="66">
-      <sanji-window window-name="Ethernet 2" window-states="ctrl.states">
+      <sanji-window window-name="Ethernet 2" window-states="{{ctrl.states}}">
 
       <div ng-controller="EthernetController as vm"
         ng-switch="vm.sanjiWindowMgr.getWindowStatus()">
