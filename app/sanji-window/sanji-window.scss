@@ -1,150 +1,31 @@
-@import "bourbon";
-@import "variables";
-@import "mixins";
+$card-header-height: 42px;
+$card-header-btn-height: 42px;
+$card-header-btn-width: 42px;
+$card-header-color: #5e5e5e;
 
 md-card {
   position: relative;
   > .card-header {
     background-color: #f7f7f7;
+    height: $card-header-height;
+    min-height: $card-header-height;
+    color: $card-header-color;
 
-    md-icon {
-      padding-bottom: 3px;
+    > .md-toolbar-tools {
+      height: $card-header-height;
+      min-height: $card-header-height;
+
+      > .md-menu {
+        padding: 0;
+
+        > .md-icon-button {
+          width: $card-header-btn-width;
+          height: $card-header-height;
+          min-height: $card-header-height;
+          line-height: $card-header-height;
+          color: $card-header-color;
+        }
+      }
     }
-
-    > .card-title {
-      margin: 0;
-      font-size: 17px;
-      font-weight: 500;
-    }
-  }
-
-  > md-card-content {
-    md-menu {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-  }
-}
-
-.panel {
-  @include sexy-border-shadow();
-}
-
-.mx-panel-heading-btn {
-  display: block;
-  color: white;
-  @extend .close;
-}
-
-.mx-panel-heading-btn__help {
-  display: block;
-  @extend .close;
-  margin-right: 20px;
-}
-
-.mx-panel-heading {
-  @include user-select(none);
-  @extend .panel-heading;
-  padding: 6px 13px 1px 13px;
-  color: white;
-  background-color: $mx-panel-heading-bg;
-  border-color: $mx-panel-border;
-  cursor: pointer;
-}
-
-.mx-panel-heading__title {
-  font-size: 13px;
-  i.fa {
-    font-size: 14px;
-  }
-  letter-spacing: 0.0625em;
-}
-
-.mx-panel-body {
-  @extend .panel-body;
-  position: relative;
-  overflow: auto;
-}
-
-.mx-panel-footer {
-  @extend .panel-footer;
-  height: $mx-panel-footer-height;
-}
-
-.mx-module-info-wrap {
-  width: 200px;
-  margin: 0 auto;
-}
-
-.mx-slide-toggle {
-
-    overflow: hidden;
-
-    &.ng-hide-add,
-    &.ng-hide-remove {
-      display: block !important;
-      // http://cubic-bezier.com/#.14,.94,.1,.82
-      @include transition(all, .2s, cubic-bezier(.14, .94, 1, .82));
-    }
-
-    // auto
-    &.ng-hide-add.ng-hide-add-active,
-    &.ng-hide-remove {
-      max-height: 0;
-    }
-    &.ng-hide-add,
-    &.ng-hide-remove.ng-hide-remove-active {
-      max-height: 1500px;
-    }
-
-    &.footer.ng-hide-add.ng-hide-add-active,
-    &.footer.ng-hide-remove {
-      max-height: 0;
-    }
-    &.footer.ng-hide-add,
-    &.footer.ng-hide-remove.ng-hide-remove-active {
-      max-height: 1500px + $mx-panel-footer-height;
-    }
-
-}
-
-/* ------------------------------------------- */
-/* Slide Left
-/* ------------------------------------------- */
-
-.slide-left {
-  &.ng-animate {
-    transition: all 0 ease-in-out;
-  }
-
-  max-width: 100%;
-
-  &.ng-enter {
-    @include transform(translateX(1200px));
-    @include transition-duration(300ms);
-    opacity: 0;
-  }
-
-  &.ng-enter.ng-enter-active {
-    @include transform(translateX(0));
-    @include transition-duration(300ms);
-    opacity: 1;
-  }
-
-  &.ng-leave {
-    position: absolute;
-    @include transition-duration(10ms);
-    opacity: 0;
-  }
-
-  &.ng-leave.ng-leave-active {
-    @include transition-duration(10ms);
-    opacity: 0;
-  }
-
-  &.ng-enter, &.ng-leave {
-    width: 100%;
-    height: 100%;
   }
 }

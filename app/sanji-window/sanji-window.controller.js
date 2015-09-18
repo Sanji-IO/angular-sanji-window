@@ -1,8 +1,11 @@
-const $inject = ['$log', '$scope', 'sanjiWindowService'];
+const $inject = ['$log', '$scope'];
 class SanjiWindowController {
   constructor(...injects) {
     SanjiWindowController.$inject.forEach((item, index) => this[item] = injects[index]);
-    this.$scope.sanjiWindowMgr = angular.copy(this.sanjiWindowService);
+    let deregistration = this.$scope.$on('init-sanji-window', (event, instance) => {
+      this.sanjiWindowMgr = instance;
+    });
+    this.$scope.$on('$destroy', deregistration);
   }
 }
 SanjiWindowController.$inject = $inject;

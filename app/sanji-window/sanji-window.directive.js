@@ -9,14 +9,14 @@ class SanjiWindowDirective {
     this.templateUrl = 'sanji-window.tpl.html';
     this.restrict = 'EA';
     this.replace = true;
+    this.scope = {
+      windowName: '@',
+      windowStates: '='
+    };
     this.transclude = true;
     this.controller = 'SanjiWindowController';
-  }
-
-  link(scope, elemnt, attrs) {
-    if (attrs.title) {
-      scope.sanjiWindowMgr.setTitle(attrs.title);
-    }
+    this.controllerAs = 'vm';
+    this.bindToController = true;
   }
 
   static directiveFactory(...injects) {

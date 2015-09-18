@@ -1,97 +1,108 @@
 class SanjiWindowService {
   constructor() {
-    this.id = '_' + Math.random().toString(36).substr(2, 9);
-    this.title = '';
-    this.contentUrl = '';
-    this.navigateContent = 'sanji-loading';
-    this.recordState = [this.navigateContent];
-    this.animateClass = 'slide-left';
-    this.isProcessing = false;
-    this.excludeStatusArray = [
-      'sanji-loading',
-      'sanji-info',
-      'sanji-processing',
-      'sanji-connection-problem'
-    ];
-    this.setContentBackCallback = null;
-    this.oneTimeBackCallback = null;
+    this.collection = [];
   }
 
-  setTitle(title) {
-    this.title = title;
+  static factory() {
+    return new SanjiWindowService();
   }
 
-  getTitle() {
-    return this.title;
+  findById(id) {
+    return this.collection.find(model => model.id === id);
   }
 
-  setContentUrl(url) {
-    this.contentUrl = url;
+  register(scope, instance) {
+    scope.$emit('init-sanji-window', instance);
   }
 
-  navigateTo(state) {
-    this.recordState.push(state);
-    this.navigateContent = state;
+  _addInstance(instance) {
+    this.collection.push(instance);
   }
 
-  getWindowStatus() {
-    return this.navigateContent;
-  }
+  create(options) {
+    let instance = null;
+    options = options || {};
+    class sanjiWindowInstance {
+      constructor(options) {
+        this.id = '_' + Math.random().toString(36).substr(2, 9);
+        this.name = options.name || '';
+        this.navigateContent = options.navigateContent || '';
+        this.recordState = options.recordState || [];
+        this.setContentBackCallback = null;
+        this.oneTimeBackCallback = null;
+      }
 
-  isEqualToCurrentState(state) {
-    return (this.navigateContent === state ) ? true : false;
-  }
+      setWindowName(name) {
+        this.name = name;
+      }
 
-  goToProcessingState() {
-    this.reset();
-    this.navigateTo('sanji-processing');
-  }
+      getWindowName() {
+        return this.name;
+      }
 
-  goToInfoState() {
-    this.navigateTo('sanji-info');
-  }
+      navigateTo(state) {
+        if (-1 === this.recordState.indexOf(state)) {
+          this.recordState.push(state);
+          this.navigateContent = state;
+        }
+      }
 
-  goToEditState() {
-    this.navigateTo('sanji-edit');
-  }
+      getWindowStatus() {
+        return this.navigateContent;
+      }
 
-  goToAddState() {
-    this.navigateTo('sanji-add');
-  }
+      isEqualToCurrentState(state) {
+        return (this.navigateContent === state ) ? true : false;
+      }
 
-  goToProblemState() {
-    this.reset();
-    this.navigateTo('sanji-connection-problem');
-  }
+      goToProcessingState() {
+        this.reset();
+        this.navigateTo('sanji-processing');
+      }
 
-  goBack() {
-    let states = this.recordState;
+      goToInfoState() {
+        this.navigateTo('sanji-info');
+      }
 
-    if (null !== this.setContentBackCallback &&
-        angular.isFunction(this.setContentBackCallback)) {
-      this.setContentBackCallback();
+      goToEditState() {
+        this.navigateTo('sanji-edit');
+      }
+
+      goToAddState() {
+        this.navigateTo('sanji-add');
+      }
+
+      goToProblemState() {
+        this.reset();
+        this.navigateTo('sanji-connection-problem');
+      }
+
+      goBack() {
+        let states = this.recordState;
+
+        if (null !== this.setContentBackCallback &&
+            angular.isFunction(this.setContentBackCallback)) {
+          this.setContentBackCallback();
+        }
+
+        if (null !== this.oneTimeBackCallback &&
+            angular.isFunction(this.oneTimeBackCallback)) {
+          this.oneTimeBackCallback();
+          this.oneTimeBackCallback = null;
+        }
+
+        states.pop();
+        this.navigateContent = states[states.length - 1];
+      }
+
+      reset() {
+        this.recordState.length = 0;
+      }
     }
-
-    if (null !== this.oneTimeBackCallback &&
-        angular.isFunction(this.oneTimeBackCallback)) {
-      this.oneTimeBackCallback();
-      this.oneTimeBackCallback = null;
-    }
-
-    states.pop();
-    this.navigateContent = states[states.length - 1];
+    instance = new sanjiWindowInstance(options);
+    this._addInstance(instance);
+    return instance;
   }
 
-  reset() {
-    this.recordState.length = 0;
-  }
-
-  isShowFooter() {
-    return (-1 !== this.excludeStatusArray.indexOf(this.navigateContent)) ? false : true;
-  }
-
-  addHideFooterStatus(status) {
-    this.excludeStatusArray.push(status);
-  }
 }
 export default SanjiWindowService;

@@ -13,7 +13,7 @@
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
 </head>
 
-<body ng-app="webapp" layout="column">
+<body ng-app="webapp" layout="column" ng-controller="AppController as ctrl">
   <!--[if lt IE 8]>
   <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
@@ -25,9 +25,27 @@
   </md-toolbar>
   <div layout="row" layout-padding layout-align="center center">
     <div flex="33" flex-offset="66">
-      <sanji-window title="Ethernet">
+      <sanji-window window-name="Ethernet 1" window-states="ctrl.states">
 
-        <div ng-controller="EthernetController as vm" ng-switch="sanjiWindowMgr.getWindowStatus()">
+        <div ng-controller="EthernetController as vm"
+        ng-switch="vm.sanjiWindowMgr.getWindowStatus()">
+          <div ng-switch-when="sanji-info">
+            <div ng-include="'mx-ethernet-info.tpl.html'"></div>
+          </div>
+          <div ng-switch-when="sanji-edit">
+            <div ng-include="'mx-ethernet-edit.tpl.html'"></div>
+          </div>
+        </div>
+
+      </sanji-window>
+    </div>
+  </div>
+  <div layout="row" layout-padding layout-align="center center">
+    <div flex="33" flex-offset="66">
+      <sanji-window window-name="Ethernet 2" window-states="ctrl.states">
+
+      <div ng-controller="EthernetController as vm"
+        ng-switch="vm.sanjiWindowMgr.getWindowStatus()">
           <div ng-switch-when="sanji-info">
             <div ng-include="'mx-ethernet-info.tpl.html'"></div>
           </div>
@@ -45,29 +63,6 @@
 
   <script type ="text/ng-template" id="mx-ethernet-info.tpl.html">
     <div class="ethernet-info">
-      <md-menu md-position-mode="target-right target">
-        <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-          <md-icon md-menu-origin md-svg-icon="webapp:more-vert"></md-icon>
-        </md-button>
-        <md-menu-content width="2">
-          <md-menu-item>
-            <md-button>
-              <div layout="row">
-                <md-icon md-menu-origin md-svg-icon="webapp:refresh"></md-icon>
-                <p flex>Refresh</p>
-              </div>
-            </md-button>
-          </md-menu-item>
-          <md-menu-item>
-            <md-button ng-click="sanjiWindowMgr.goToEditState()">
-              <div layout="row">
-                <md-icon md-menu-origin md-svg-icon="webapp:settings"></md-icon>
-                <p flex>Setting</p>
-              </div>
-            </md-button>
-          </md-menu-item>
-        </md-menu-content>
-      </md-menu>
       <md-content>
         <small class="md-subheader">IP</small>
         <h2 ng-bind="::vm.ethernet.ip"></h2>
@@ -107,17 +102,18 @@
           <md-fab-speed-dial md-open="vm.isOpen" md-direction="left" class="md-scale">
             <md-fab-trigger>
               <md-button aria-label="ethernet menu" class="md-fab md-acent">
-                <md-icon md-svg-src="webapp:menu"></md-icon>
+                <ng-md-icon icon="menu" ng-attr-style="fill: white"></ng-md-icon>
               </md-button>
             </md-fab-trigger>
             <md-fab-actions>
               <md-button aria-label="save" class="md-fab md-raised md-mini md-primary">
-                <md-icon md-svg-src="webapp:save"></md-icon>
+                <ng-md-icon icon="save" ng-attr-style="fill: white"></ng-md-icon>
               </md-button>
               <md-button aria-label="go back"
                 class="md-fab md-raised md-mini"
-                ng-click="sanjiWindowMgr.goToInfoState()">
-                <md-icon md-svg-src="webapp:backward"></md-icon>
+                ng-click="vm.sanjiWindowMgr.goBack()">
+                <ng-md-icon icon="keyboard_backspace"
+                ng-attr-style="fill: #e5e5e5"></ng-md-icon>
               </md-button>
             </md-fab-actions>
           </md-fab-speed-dial>
