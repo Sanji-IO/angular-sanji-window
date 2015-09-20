@@ -2,15 +2,19 @@ const $inject = ['$log', '$scope', 'sanjiWindowService'];
 class SanjiWindowController {
   constructor(...injects) {
     SanjiWindowController.$inject.forEach((item, index) => this[item] = injects[index]);
-    this.states = [];
     this.sanjiWindowMgr = this.sanjiWindowService.create();
+    this.$scope.$on('$destroy', () => {
+      this.sanjiWindowMgr.clearStates();
+      this.sanjiWindowService.destroy(this.sanjiWindowMgr.getId());
+    });
   }
 
   register(state) {
+    let sanjiWindowMgr = this.sanjiWindowMgr;
     if (state.isDefault) {
-      this.sanjiWindowMgr.navigateTo(state.name);
+      sanjiWindowMgr.navigateTo(state.name);
     }
-    this.states.push(state);
+    sanjiWindowMgr.addState(state);
   }
 }
 SanjiWindowController.$inject = $inject;

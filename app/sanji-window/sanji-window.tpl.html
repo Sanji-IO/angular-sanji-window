@@ -10,7 +10,7 @@
             <ng-md-icon md-menu-origin icon="apps" ng-attr-style="fill: #5e5e5e"></ng-md-icon>
           </md-button>
           <md-menu-content width="4">
-            <md-menu-item ng-repeat="state in vm.states track by $index">
+            <md-menu-item ng-repeat="state in vm.sanjiWindowMgr.states track by $index">
               <md-button aria-label="{{::state.linkName}}"
               ng-click="vm.sanjiWindowMgr.navigateTo(state.name)">
                 <div layout="row">

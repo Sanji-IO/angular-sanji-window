@@ -11,7 +11,9 @@ class SanjiWindowService {
     this.collection.push(instance);
   }
 
-  destroy() {
+  destroy(id) {
+    let idx = this.collection.findIndex((item) => item.id === id);
+    this.collection.splice(idx, 1);
   }
 
   create(options) {
@@ -20,48 +22,25 @@ class SanjiWindowService {
     class sanjiWindowInstance {
       constructor(options) {
         this.id = '_' + Math.random().toString(36).substr(2, 9);
+        this.states = [];
         this.name = options.name || '';
         this.navigateContent = options.navigateContent || '';
       }
 
-      setWindowName(name) {
-        this.name = name;
-      }
-
-      getWindowName() {
-        return this.name;
+      getId() {
+        return this.id;
       }
 
       navigateTo(state) {
         this.navigateContent = state;
       }
 
-      getWindowStatus() {
-        return this.navigateContent;
+      addState(state) {
+        this.states.push(state);
       }
 
-      isEqualToCurrentState(state) {
-        return (this.navigateContent === state ) ? true : false;
-      }
-
-      goToProcessingState() {
-        this.navigateTo('sanji-processing');
-      }
-
-      goToInfoState() {
-        this.navigateTo('sanji-info');
-      }
-
-      goToEditState() {
-        this.navigateTo('sanji-edit');
-      }
-
-      goToAddState() {
-        this.navigateTo('sanji-add');
-      }
-
-      goToProblemState() {
-        this.navigateTo('sanji-connection-problem');
+      clearStates() {
+        this.states.length = 0;
       }
     }
     instance = new sanjiWindowInstance(options);
