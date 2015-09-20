@@ -13,7 +13,7 @@
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
 </head>
 
-<body ng-app="webapp" layout="column" ng-controller="AppController as ctrl">
+<body ng-app="webapp" layout="column">
   <!--[if lt IE 8]>
   <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
@@ -108,12 +108,6 @@
             <md-fab-actions>
               <md-button aria-label="save" class="md-fab md-raised md-mini md-primary">
                 <ng-md-icon icon="save" ng-attr-style="fill: white"></ng-md-icon>
-              </md-button>
-              <md-button aria-label="go back"
-                class="md-fab md-raised md-mini"
-                ng-click="vm.sanjiWindowMgr.goBack()">
-                <ng-md-icon icon="keyboard_backspace"
-                ng-attr-style="fill: #e5e5e5"></ng-md-icon>
               </md-button>
             </md-fab-actions>
           </md-fab-speed-dial>

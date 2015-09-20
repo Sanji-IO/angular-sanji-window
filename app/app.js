@@ -7,14 +7,6 @@ import 'angular';
 import 'angular-material';
 import './sanji-window';
 
-class AppController {
-  constructor(...injects) {
-    AppController.$inject.forEach((item, index) => this[item] = injects[index]);
-  }
-}
-AppController.$inject = [];
-export default AppController;
-
 class EthernetController {
   constructor(...injects) {
     EthernetController.$inject.forEach((item, index) => this[item] = injects[index]);
@@ -55,5 +47,4 @@ angular.module('webapp', ['sanji.window'])
     $mdThemingProvider.theme('default')
     .primaryPalette('moxa-material');
   })
-  .controller('AppController', AppController)
   .controller('EthernetController', EthernetController);
