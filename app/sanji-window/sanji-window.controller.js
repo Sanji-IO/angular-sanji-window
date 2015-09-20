@@ -1,12 +1,16 @@
-const $inject = ['$log', '$scope'];
+const $inject = ['$log', '$scope', 'sanjiWindowService'];
 class SanjiWindowController {
   constructor(...injects) {
     SanjiWindowController.$inject.forEach((item, index) => this[item] = injects[index]);
-    let deregistration = this.$scope.$on('init-sanji-window', (event, instance) => {
-      this.sanjiWindowMgr = instance;
-    });
-    this.states = this.$scope.$eval(this.windowStates);
-    this.$scope.$on('$destroy', deregistration);
+    this.states = [];
+    this.sanjiWindowMgr = this.sanjiWindowService.create();
+  }
+
+  register(state) {
+    if (state.isDefault) {
+      this.sanjiWindowMgr.navigateTo(state.name);
+    }
+    this.states.push(state);
   }
 }
 SanjiWindowController.$inject = $inject;

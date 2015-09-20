@@ -10,7 +10,6 @@ import './sanji-window';
 class AppController {
   constructor(...injects) {
     AppController.$inject.forEach((item, index) => this[item] = injects[index]);
-    this.states = [{name: 'sanji-edit', linkName: 'Settings', icon: 'settings'}];
   }
 }
 AppController.$inject = [];
@@ -19,17 +18,14 @@ export default AppController;
 class EthernetController {
   constructor(...injects) {
     EthernetController.$inject.forEach((item, index) => this[item] = injects[index]);
-    this.sanjiWindowMgr = this.sanjiWindowService.create();
-    this.sanjiWindowService.register(this.$scope, this.sanjiWindowMgr);
     this.ethernet = {
       ip: '192.168.31.204',
       netmask: '255.255.255.0',
       gateway: '192.168.31.254'
     };
-    this.sanjiWindowMgr.goToInfoState();
   }
 }
-EthernetController.$inject = ['$scope', 'sanjiWindowService'];
+EthernetController.$inject = [];
 export default EthernetController;
 
 angular.module('webapp', ['sanji.window'])

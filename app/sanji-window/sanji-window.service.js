@@ -7,16 +7,11 @@ class SanjiWindowService {
     return new SanjiWindowService();
   }
 
-  findById(id) {
-    return this.collection.find(model => model.id === id);
-  }
-
-  register(scope, instance) {
-    scope.$emit('init-sanji-window', instance);
-  }
-
   _addInstance(instance) {
     this.collection.push(instance);
+  }
+
+  destroy() {
   }
 
   create(options) {
@@ -27,9 +22,6 @@ class SanjiWindowService {
         this.id = '_' + Math.random().toString(36).substr(2, 9);
         this.name = options.name || '';
         this.navigateContent = options.navigateContent || '';
-        this.recordState = options.recordState || [];
-        this.setContentBackCallback = null;
-        this.oneTimeBackCallback = null;
       }
 
       setWindowName(name) {
@@ -41,10 +33,7 @@ class SanjiWindowService {
       }
 
       navigateTo(state) {
-        if (-1 === this.recordState.indexOf(state)) {
-          this.recordState.push(state);
-          this.navigateContent = state;
-        }
+        this.navigateContent = state;
       }
 
       getWindowStatus() {
@@ -56,7 +45,6 @@ class SanjiWindowService {
       }
 
       goToProcessingState() {
-        this.reset();
         this.navigateTo('sanji-processing');
       }
 
@@ -73,30 +61,7 @@ class SanjiWindowService {
       }
 
       goToProblemState() {
-        this.reset();
         this.navigateTo('sanji-connection-problem');
-      }
-
-      goBack() {
-        let states = this.recordState;
-
-        if (null !== this.setContentBackCallback &&
-            angular.isFunction(this.setContentBackCallback)) {
-          this.setContentBackCallback();
-        }
-
-        if (null !== this.oneTimeBackCallback &&
-            angular.isFunction(this.oneTimeBackCallback)) {
-          this.oneTimeBackCallback();
-          this.oneTimeBackCallback = null;
-        }
-
-        states.pop();
-        this.navigateContent = states[states.length - 1];
-      }
-
-      reset() {
-        this.recordState.length = 0;
       }
     }
     instance = new sanjiWindowInstance(options);

@@ -25,34 +25,34 @@
   </md-toolbar>
   <div layout="row" layout-padding layout-align="center center">
     <div flex="33" flex-offset="66">
-      <sanji-window window-name="Ethernet 1" window-states="{{ctrl.states}}">
+      <sanji-window window-name="Ethernet 1">
 
-        <div ng-controller="EthernetController as vm"
-        ng-switch="vm.sanjiWindowMgr.getWindowStatus()">
-          <div ng-switch-when="sanji-info">
-            <div ng-include="'mx-ethernet-info.tpl.html'"></div>
-          </div>
-          <div ng-switch-when="sanji-edit">
-            <div ng-include="'mx-ethernet-edit.tpl.html'"></div>
-          </div>
-        </div>
+        <sanji-window-state state-name="sanji-info" default-state
+        link-name="Information" icon="">
+          <div ng-include="'mx-ethernet-info.tpl.html'"></div>
+        </sanji-window-state>
+
+        <sanji-window-state state-name="sanji-edit"
+        link-name="Settings" icon="settings">
+          <div ng-include="'mx-ethernet-edit.tpl.html'"></div>
+        </sanji-window-state>
 
       </sanji-window>
     </div>
   </div>
   <div layout="row" layout-padding layout-align="center center">
     <div flex="33" flex-offset="66">
-      <sanji-window window-name="Ethernet 2" window-states="{{ctrl.states}}">
+      <sanji-window window-name="Ethernet 2">
 
-      <div ng-controller="EthernetController as vm"
-        ng-switch="vm.sanjiWindowMgr.getWindowStatus()">
-          <div ng-switch-when="sanji-info">
-            <div ng-include="'mx-ethernet-info.tpl.html'"></div>
-          </div>
-          <div ng-switch-when="sanji-edit">
-            <div ng-include="'mx-ethernet-edit.tpl.html'"></div>
-          </div>
-        </div>
+        <sanji-window-state state-name="sanji-info" default-state
+        link-name="Information" icon="">
+          <div ng-include="'mx-ethernet-info.tpl.html'"></div>
+        </sanji-window-state>
+
+        <sanji-window-state state-name="sanji-edit"
+        link-name="Settings" icon="settings">
+          <div ng-include="'mx-ethernet-edit.tpl.html'"></div>
+        </sanji-window-state>
 
       </sanji-window>
     </div>
@@ -62,7 +62,7 @@
   </div>
 
   <script type ="text/ng-template" id="mx-ethernet-info.tpl.html">
-    <div class="ethernet-info">
+    <div class="ethernet-info" ng-controller="EthernetController as vm">
       <md-content>
         <small class="md-subheader">IP</small>
         <h2 ng-bind="::vm.ethernet.ip"></h2>
@@ -77,7 +77,7 @@
   </script>
 
   <script type ="text/ng-template" id="mx-ethernet-edit.tpl.html">
-    <form class="form-horizontal"
+    <form class="form-horizontal" ng-controller="EthernetController as vm"
       role="form"
       name="form"
       ng-submit=""
