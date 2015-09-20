@@ -16,7 +16,6 @@ class SanjiWindowDirective {
     this.bindToController = {
       windowName: '@',
       windowStates: '@'
-      // windowDefaultState: '@'
     };
   }
 
