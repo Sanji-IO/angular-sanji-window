@@ -6,12 +6,14 @@ class SanjiWindowStateController {
 
   init(topCtrl, attrs) {
     this.sanjiWindowMgr = topCtrl.sanjiWindowMgr;
-    topCtrl.register({
-      name: this.stateName,
-      linkName: this.linkName,
-      icon: this.icon,
-      isDefault: undefined !== attrs.defaultState ? true : false
-    });
+    if (undefined !== this.stateName && undefined !== this.linkName) {
+      topCtrl.register({
+        name: this.stateName,
+        linkName: this.linkName,
+        icon: this.icon,
+        isDefault: undefined !== attrs.defaultState ? true : false
+      });
+    }
   }
 }
 SanjiWindowStateController.$inject = $inject;
