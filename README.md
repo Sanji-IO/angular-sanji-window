@@ -37,7 +37,7 @@ import sjWindow from 'angular-sanji-window';
 angular.module('yourApp', [sjWindow]);
 ```
 
-Define your states:
+Define your states:  
 Note: You need to define default-state.
 
 ```html
