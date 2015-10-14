@@ -58,8 +58,8 @@
   "license": "MIT",
   "homepage": "https://github.com/zack9433/angular-sanji-window",
   "dependencies": {
-    "angular": "~1.4.5",
-    "angular-material": "~0.11.0",
+    "angular": "~1.4.7",
+    "angular-material": "~0.11.3",
     "angular-material-icons": "~0.6.0",
     "svg-morpheus": "alexk111/SVG-Morpheus#v0.1.8"
   }
