@@ -28,6 +28,10 @@ class SanjiWindowService {
     let instance = null;
     options = options || {};
 
+    if (undefined === id) {
+      throw new Error('Please give a window id.');
+    }
+
     if (this._isIdExist(id)) {
       throw new Error('The window id ' + id + ' is already exist.');
     }
