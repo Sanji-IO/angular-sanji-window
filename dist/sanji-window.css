@@ -1,2 +1,20 @@
-md-card{position:relative}md-card>.card-header{background-color:#f7f7f7;color:#5e5e5e}md-card>.card-header,md-card>.card-header>.md-toolbar-tools{height:42px;min-height:42px}md-card>.card-header>.md-toolbar-tools>.md-menu{padding:0}md-card>.card-header>.md-toolbar-tools>.md-menu>.md-icon-button{width:42px;height:42px;min-height:42px;line-height:42px;color:#5e5e5e}
+md-card {
+  position: relative; }
+  md-card > .card-header {
+    background-color: #f7f7f7;
+    height: 42px;
+    min-height: 42px;
+    color: #5e5e5e; }
+    md-card > .card-header > .md-toolbar-tools {
+      height: 42px;
+      min-height: 42px; }
+      md-card > .card-header > .md-toolbar-tools > .md-menu {
+        padding: 0; }
+        md-card > .card-header > .md-toolbar-tools > .md-menu > .md-icon-button {
+          width: 42px;
+          height: 42px;
+          min-height: 42px;
+          line-height: 42px;
+          color: #5e5e5e; }
+
 /*# sourceMappingURL=sanji-window.css.map*/

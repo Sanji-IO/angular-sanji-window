@@ -12,6 +12,10 @@ config.entry = {
 };
 config.output.library = 'sjWindow';
 config.output.libraryTarget = 'umd';
+config.externals = {
+  'angular-material': 'ngMaterial',
+  'angular-material-icons': 'ngMdIcons'
+};
 
 config.module.loaders = [
   {
@@ -23,11 +27,7 @@ config.module.loaders = [
 config.plugins.push(
   new ExtractTextPlugin('sanji-window.css'),
   new WebpackNotifierPlugin({title: 'Webpack'}),
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false
-    }
-  }),
-  new webpack.optimize.DedupePlugin()
+  new webpack.optimize.DedupePlugin(),
+  new webpack.optimize.AggressiveMergingPlugin()
 );
 module.exports = config;
