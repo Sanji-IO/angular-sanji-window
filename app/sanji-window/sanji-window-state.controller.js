@@ -6,7 +6,7 @@ class SanjiWindowStateController {
 
   init(topCtrl, attrs) {
     this.sanjiWindowMgr = topCtrl.sanjiWindowMgr;
-    if (undefined !== this.stateName && undefined !== this.linkName) {
+    if (undefined !== this.stateName) {
       topCtrl.register({
         name: this.stateName,
         linkName: this.linkName,

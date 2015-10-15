@@ -1,5 +1,5 @@
 const injectMap = new WeakMap();
-const $inject = ['$log'];
+const $inject = [];
 class SanjiWindowStateDirective {
   constructor(injects) {
     SanjiWindowStateDirective.directiveFactory.$inject.forEach((item, index) => {

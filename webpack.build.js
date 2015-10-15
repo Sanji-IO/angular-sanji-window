@@ -10,6 +10,8 @@ config.devtool = 'source-map';
 config.entry = {
   'angular-module': './sanji-window/index.js'
 };
+config.output.library = 'sjWindow';
+config.output.libraryTarget = 'umd';
 
 config.module.loaders = [
   {
