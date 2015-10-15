@@ -12,17 +12,30 @@ class SanjiWindowService {
   }
 
   destroy(id) {
-    let idx = this.collection.findIndex((item) => item.id === id);
+    let idx = this.collection.findIndex(item => item.id === id);
     this.collection.splice(idx, 1);
   }
 
-  create(options) {
+  _isIdExist(id) {
+    return -1 !== this.collection.findIndex(item => item.id === id) ? true : false;
+  }
+
+  get(id) {
+    return this.collection.find(item => item.id === id);
+  }
+
+  create(id, options) {
     let instance = null;
     options = options || {};
+
+    if (this._isIdExist(id)) {
+      throw new Error('The window id ' + id + ' is already exist.');
+    }
+
     class sanjiWindowInstance {
       constructor(options) {
-        this.id = '_' + Math.random().toString(36).substr(2, 9);
         this.states = [];
+        this.id = id;
         this.name = options.name || '';
         this.navigateContent = options.navigateContent || '';
       }
