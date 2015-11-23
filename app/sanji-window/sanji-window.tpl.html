@@ -11,7 +11,7 @@
           <span>{{vm.windowName}}</span>
         </h3>
         <div class="card-btn-group">
-          <md-button type="button" aria-label="Refresh" class="md-icon-button" ng-click="vm.refresh()">
+          <md-button ng-if="undefined!==vm.showLoadingBtn" type="button" aria-label="Refresh" class="md-icon-button" ng-click="vm.refresh()">
             <ng-md-icon icon="refresh"></ng-md-icon>
           </md-button>
           <md-menu md-position-mode="target-right target">

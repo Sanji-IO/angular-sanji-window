@@ -15,7 +15,8 @@ class SanjiWindowDirective {
     this.controllerAs = 'vm';
     this.bindToController = {
       windowId: '@',
-      windowName: '@'
+      windowName: '@',
+      showLoadingBtn: '@'
     };
   }
 

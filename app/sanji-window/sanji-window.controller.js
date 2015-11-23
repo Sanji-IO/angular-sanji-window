@@ -1,4 +1,4 @@
-const $inject = ['$rootScope', '$scope', 'sanjiWindowService', '$http', '$q'];
+const $inject = ['$scope', 'sanjiWindowService'];
 class SanjiWindowController {
   constructor(...injects) {
     SanjiWindowController.$inject.forEach((item, index) => this[item] = injects[index]);
