@@ -1,27 +1,37 @@
 <script type ="text/ng-template" id="sanji-window.tpl.html">
   <md-card layout=column>
-    <md-toolbar class="card-header" md-scroll-shrink ng-if="true">
+    <div ng-if="vm.sanjiWindowMgr.isLoading" class="sj-window-loading">
+      <div layout layout-sm="column" layout-align="space-around">
+        <md-progress-circular class="sj-spinner-bg md-whiteframe-10dp" md-diameter="35px" md-mode="indeterminate"></md-progress-circular>
+      </div>
+    </div>
+    <md-toolbar class="card-header" md-scroll-shrink>
       <div class="md-toolbar-tools">
         <h3>
           <span>{{vm.windowName}}</span>
         </h3>
-        <md-menu md-position-mode="target-right target">
-          <md-button aria-label="Open menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-            <ng-md-icon md-menu-origin icon="apps" ng-attr-style="fill: #5e5e5e"></ng-md-icon>
+        <div class="card-btn-group">
+          <md-button type="button" aria-label="Refresh" class="md-icon-button" ng-click="vm.refresh()">
+            <ng-md-icon icon="refresh"></ng-md-icon>
           </md-button>
-          <md-menu-content width="4">
-            <md-menu-item ng-repeat="state in vm.sanjiWindowMgr.states | filter:undefined!==state.linkName as results track by $index">
-              <md-button aria-label="{{::state.linkName}}"
-              ng-click="vm.sanjiWindowMgr.navigateTo(state.name)">
-                <div layout="row">
-                  <p flex ng-bind="::state.linkName"></p>
-                  <ng-md-icon ng-if="undefined!==state.icon"
-                    md-menu-origin icon="{{::state.icon}}" ng-attr-style="fill: #5e5e5e"></ng-md-icon>
-                </div>
-              </md-button>
-            </md-menu-item>
-          </md-menu-content>
-        </md-menu>
+          <md-menu md-position-mode="target-right target">
+            <md-button type="button" aria-label="Open menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+              <ng-md-icon md-menu-origin icon="apps" ng-attr-style="fill: #5e5e5e"></ng-md-icon>
+            </md-button>
+            <md-menu-content width="4">
+              <md-menu-item ng-repeat="state in vm.sanjiWindowMgr.states | filter:undefined!==state.linkName as results track by $index">
+                <md-button type="button" aria-label="{{::state.linkName}}"
+                ng-click="vm.sanjiWindowMgr.navigateTo(state.name)">
+                  <div layout>
+                    <p flex ng-bind="::state.linkName"></p>
+                    <ng-md-icon ng-if="undefined!==state.icon"
+                      md-menu-origin icon="{{::state.icon}}" ng-attr-style="fill: #5e5e5e"></ng-md-icon>
+                  </div>
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </div>
       </div>
     </md-toolbar>
     <md-card-content>

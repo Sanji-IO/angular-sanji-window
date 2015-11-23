@@ -42,6 +42,7 @@ class SanjiWindowService {
         this.id = id;
         this.name = options.name || '';
         this.navigateContent = options.navigateContent || '';
+        this.isLoading = false;
       }
 
       getId() {
@@ -58,6 +59,14 @@ class SanjiWindowService {
 
       clearStates() {
         this.states.length = 0;
+      }
+
+      showLoading() {
+        this.isLoading = true;
+      }
+
+      clearLoading() {
+        this.isLoading = false;
       }
     }
     instance = new sanjiWindowInstance(options);

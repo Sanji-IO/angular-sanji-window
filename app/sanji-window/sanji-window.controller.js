@@ -1,4 +1,4 @@
-const $inject = ['$scope', 'sanjiWindowService'];
+const $inject = ['$rootScope', '$scope', 'sanjiWindowService', '$http', '$q'];
 class SanjiWindowController {
   constructor(...injects) {
     SanjiWindowController.$inject.forEach((item, index) => this[item] = injects[index]);
@@ -15,6 +15,10 @@ class SanjiWindowController {
       sanjiWindowMgr.navigateTo(state.name);
     }
     sanjiWindowMgr.addState(state);
+  }
+
+  refresh() {
+    this.sanjiWindowMgr.showLoading();
   }
 }
 SanjiWindowController.$inject = $inject;

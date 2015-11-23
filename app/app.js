@@ -17,7 +17,7 @@ class EthernetController {
     };
   }
 }
-EthernetController.$inject = [];
+EthernetController.$inject = ['$scope', '$http'];
 export default EthernetController;
 
 angular.module('webapp', ['sanji.window'])

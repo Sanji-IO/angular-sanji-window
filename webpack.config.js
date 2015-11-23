@@ -29,7 +29,6 @@ var config = {
     ],
     loaders: [
       {test: /\.js$/, loader: 'ng-annotate!babel', exclude: /(node_modules)/},
-      {test: /eventemitter2/, loader: 'imports?define=>false'}, // Turn off AMD module loading on eventemitter2
       {test: /\.html$/, loader: 'ng-cache?prefix=[dir]/[dir]', exclude: /(node_modules)/}
     ],
     noParse: []

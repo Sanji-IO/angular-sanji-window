@@ -15,17 +15,64 @@ md-card {
       height: $card-header-height;
       min-height: $card-header-height;
 
-      > .md-menu {
-        padding: 0;
+      > .card-btn-group {
+        margin: auto;
+        margin-right: -8px;
 
         > .md-icon-button {
+          margin-right: 0;
           width: $card-header-btn-width;
           height: $card-header-height;
           min-height: $card-header-height;
           line-height: $card-header-height;
           color: $card-header-color;
         }
+
+        > .md-menu {
+          padding: 0;
+
+          > .md-icon-button {
+            width: $card-header-btn-width;
+            height: $card-header-height;
+            min-height: $card-header-height;
+            line-height: $card-header-height;
+            color: $card-header-color;
+          }
+        }
       }
+
     }
   }
 }
+
+.sj-window-loading {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  opacity: .7;
+  z-index: 1001;
+}
+
+.sj-window-loading.ng-enter, .animate-if.ng-leave {
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+
+.sj-window-loading.ng-enter,
+.sj-window-loading.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+.sj-window-loading.ng-leave,
+.sj-window-loading.ng-enter.ng-enter-active {
+  opacity: .7;
+}
+
+.sj-spinner-bg {
+  background-color: #fff;
+  padding: 15px !important;
+  border-radius: 50%;
+}
+
