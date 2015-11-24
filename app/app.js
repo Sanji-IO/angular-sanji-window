@@ -1,5 +1,6 @@
 import 'angular-material.css';
 import 'angular-material-icons.css';
+import 'angular-busy.css';
 import './app.scss';
 
 import 'svg-morpheus';

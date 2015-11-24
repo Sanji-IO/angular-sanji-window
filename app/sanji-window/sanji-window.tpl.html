@@ -1,10 +1,6 @@
 <script type ="text/ng-template" id="sanji-window.tpl.html">
-  <md-card layout=column>
-    <div ng-if="vm.sanjiWindowMgr.isLoading" class="sj-window-loading">
-      <div layout layout-sm="column" layout-align="space-around">
-        <md-progress-circular class="sj-spinner-bg md-whiteframe-10dp" md-diameter="35px" md-mode="indeterminate"></md-progress-circular>
-      </div>
-    </div>
+  <md-card layout=column cg-busy="{promise: vm.sanjiWindowMgr.promise, templateUrl:
+    'sanji-window-loading.tpl.html'}">
     <md-toolbar class="card-header" md-scroll-shrink>
       <div class="md-toolbar-tools">
         <h3>
