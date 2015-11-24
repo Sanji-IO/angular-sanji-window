@@ -10,12 +10,12 @@
           <md-button ng-if="undefined!==vm.showLoadingBtn" type="button" aria-label="Refresh" class="md-icon-button" ng-click="vm.refresh()">
             <ng-md-icon icon="refresh"></ng-md-icon>
           </md-button>
-          <md-menu md-position-mode="target-right target">
+          <md-menu ng-if="1 < vm.sanjiWindowMgr.links.length" md-position-mode="target-right target">
             <md-button type="button" aria-label="Open menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
               <ng-md-icon md-menu-origin icon="apps" ng-attr-style="fill: #5e5e5e"></ng-md-icon>
             </md-button>
             <md-menu-content width="4">
-              <md-menu-item ng-repeat="state in vm.sanjiWindowMgr.states | filter:undefined!==state.linkName as results track by $index">
+              <md-menu-item ng-repeat="state in vm.sanjiWindowMgr.links track by $index">
                 <md-button type="button" aria-label="{{::state.linkName}}"
                 ng-click="vm.sanjiWindowMgr.navigateTo(state.name)">
                   <div layout>

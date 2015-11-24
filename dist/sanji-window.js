@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("ngMaterial"), require("ngMdIcons"));
+		module.exports = factory(require("cgBusy"), require("ngMaterial"), require("ngMdIcons"));
 	else if(typeof define === 'function' && define.amd)
-		define(["ngMaterial", "ngMdIcons"], factory);
+		define(["cgBusy", "ngMaterial", "ngMdIcons"], factory);
 	else if(typeof exports === 'object')
-		exports["sjWindow"] = factory(require("ngMaterial"), require("ngMdIcons"));
+		exports["sjWindow"] = factory(require("cgBusy"), require("ngMaterial"), require("ngMdIcons"));
 	else
-		root["sjWindow"] = factory(root["ngMaterial"], root["ngMdIcons"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_8__, __WEBPACK_EXTERNAL_MODULE_9__) {
+		root["sjWindow"] = factory(root["cgBusy"], root["ngMaterial"], root["ngMdIcons"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_9__, __WEBPACK_EXTERNAL_MODULE_10__, __WEBPACK_EXTERNAL_MODULE_11__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -62,15 +62,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _angularMaterial = __webpack_require__(8);
+	var _angularMaterial = __webpack_require__(10);
 	
 	var _angularMaterial2 = _interopRequireDefault(_angularMaterial);
 	
-	var _angularMaterialIcons = __webpack_require__(9);
+	var _angularMaterialIcons = __webpack_require__(11);
 	
 	var _angularMaterialIcons2 = _interopRequireDefault(_angularMaterialIcons);
 	
+	__webpack_require__(9);
+	
 	__webpack_require__(1);
+	
+	__webpack_require__(8);
 	
 	__webpack_require__(7);
 	
@@ -94,7 +98,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _sanjiWindowStateDirective2 = _interopRequireDefault(_sanjiWindowStateDirective);
 	
-	var app = angular.module('sanji.window', [_angularMaterial2['default'], _angularMaterialIcons2['default']]);
+	var app = angular.module('sanji.window', [_angularMaterial2['default'], _angularMaterialIcons2['default'], 'cgBusy']);
 	app.factory('sanjiWindowService', _sanjiWindowService2['default'].factory);
 	app.controller('SanjiWindowController', _sanjiWindowController2['default']);
 	app.controller('SanjiWindowStateController', _sanjiWindowStateController2['default']);
@@ -240,7 +244,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var $inject = ['$scope', 'sanjiWindowService'];
+	var $inject = ['$rootScope', '$scope', 'sanjiWindowService'];
 	
 	var SanjiWindowController = (function () {
 	  function SanjiWindowController() {
@@ -270,6 +274,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        sanjiWindowMgr.navigateTo(state.name);
 	      }
 	      sanjiWindowMgr.addState(state);
+	    }
+	  }, {
+	    key: 'refresh',
+	    value: function refresh() {
+	      this.$rootScope.$broadcast('sj:window:refresh', { id: this.windowId, promise: this.sanjiWindowMgr.promise });
 	    }
 	  }]);
 	
@@ -314,7 +323,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.controllerAs = 'vm';
 	    this.bindToController = {
 	      windowId: '@',
-	      windowName: '@'
+	      windowName: '@',
+	      showLoadingBtn: '@'
 	    };
 	  }
 	
@@ -404,9 +414,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	          _classCallCheck(this, sanjiWindowInstance);
 	
 	          this.states = [];
+	          this.links = [];
 	          this.id = id;
 	          this.name = options.name || '';
 	          this.navigateContent = options.navigateContent || '';
+	          this.promise = null;
 	        }
 	
 	        _createClass(sanjiWindowInstance, [{
@@ -422,11 +434,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }, {
 	          key: 'addState',
 	          value: function addState(state) {
+	            if (state.linkName) {
+	              this.links.push(state);
+	            }
 	            this.states.push(state);
 	          }
 	        }, {
 	          key: 'clearStates',
 	          value: function clearStates() {
+	            this.links.length = 0;
 	            this.states.length = 0;
 	          }
 	        }]);
@@ -455,21 +471,35 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 7 */
 /***/ function(module, exports) {
 
-	var v1="<md-card layout=column>\n    <md-toolbar class=\"card-header\" md-scroll-shrink ng-if=\"true\">\n      <div class=\"md-toolbar-tools\">\n        <h3>\n          <span>{{vm.windowName}}</span>\n        </h3>\n        <md-menu md-position-mode=\"target-right target\">\n          <md-button aria-label=\"Open menu\" class=\"md-icon-button\" ng-click=\"$mdOpenMenu($event)\">\n            <ng-md-icon md-menu-origin icon=\"apps\" ng-attr-style=\"fill: #5e5e5e\"></ng-md-icon>\n          </md-button>\n          <md-menu-content width=\"4\">\n            <md-menu-item ng-repeat=\"state in vm.sanjiWindowMgr.states | filter:undefined!==state.linkName as results track by $index\">\n              <md-button aria-label=\"{{::state.linkName}}\"\n              ng-click=\"vm.sanjiWindowMgr.navigateTo(state.name)\">\n                <div layout=\"row\">\n                  <p flex ng-bind=\"::state.linkName\"></p>\n                  <ng-md-icon ng-if=\"undefined!==state.icon\"\n                    md-menu-origin icon=\"{{::state.icon}}\" ng-attr-style=\"fill: #5e5e5e\"></ng-md-icon>\n                </div>\n              </md-button>\n            </md-menu-item>\n          </md-menu-content>\n        </md-menu>\n      </div>\n    </md-toolbar>\n    <md-card-content>\n      <div ng-transclude></div>\n    </md-card-content>\n  </md-card>";
-	window.angular.module(["ng"]).run(["$templateCache",function(c){c.put("sanji-window.tpl.html", v1)}]);
+	var v1="<div layout layout-sm=\"column\" layout-align=\"space-around\">\n    <md-progress-circular class=\"sj-spinner-bg md-whiteframe-10dp\" md-diameter=\"35px\" md-mode=\"indeterminate\"></md-progress-circular>\n  </div>";
+	window.angular.module(["ng"]).run(["$templateCache",function(c){c.put("sanji-window-loading.tpl.html", v1)}]);
 	module.exports=v1;
 
 /***/ },
 /* 8 */
 /***/ function(module, exports) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_8__;
+	var v1="<md-card layout=column cg-busy=\"{promise: vm.sanjiWindowMgr.promise, templateUrl:\n    'sanji-window-loading.tpl.html'}\">\n    <md-toolbar class=\"card-header\" md-scroll-shrink>\n      <div class=\"md-toolbar-tools\">\n        <h3>\n          <span>{{vm.windowName}}</span>\n        </h3>\n        <div class=\"card-btn-group\">\n          <md-button ng-if=\"undefined!==vm.showLoadingBtn\" type=\"button\" aria-label=\"Refresh\" class=\"md-icon-button\" ng-click=\"vm.refresh()\">\n            <ng-md-icon icon=\"refresh\"></ng-md-icon>\n          </md-button>\n          <md-menu ng-if=\"1 < vm.sanjiWindowMgr.links.length\" md-position-mode=\"target-right target\">\n            <md-button type=\"button\" aria-label=\"Open menu\" class=\"md-icon-button\" ng-click=\"$mdOpenMenu($event)\">\n              <ng-md-icon md-menu-origin icon=\"apps\" ng-attr-style=\"fill: #5e5e5e\"></ng-md-icon>\n            </md-button>\n            <md-menu-content width=\"4\">\n              <md-menu-item ng-repeat=\"state in vm.sanjiWindowMgr.links track by $index\">\n                <md-button type=\"button\" aria-label=\"{{::state.linkName}}\"\n                ng-click=\"vm.sanjiWindowMgr.navigateTo(state.name)\">\n                  <div layout>\n                    <p flex ng-bind=\"::state.linkName\"></p>\n                    <ng-md-icon ng-if=\"undefined!==state.icon\"\n                      md-menu-origin icon=\"{{::state.icon}}\" ng-attr-style=\"fill: #5e5e5e\"></ng-md-icon>\n                  </div>\n                </md-button>\n              </md-menu-item>\n            </md-menu-content>\n          </md-menu>\n        </div>\n      </div>\n    </md-toolbar>\n    <md-card-content>\n      <div ng-transclude></div>\n    </md-card-content>\n  </md-card>";
+	window.angular.module(["ng"]).run(["$templateCache",function(c){c.put("sanji-window.tpl.html", v1)}]);
+	module.exports=v1;
 
 /***/ },
 /* 9 */
 /***/ function(module, exports) {
 
 	module.exports = __WEBPACK_EXTERNAL_MODULE_9__;
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_10__;
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_11__;
 
 /***/ }
 /******/ ])

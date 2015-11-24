@@ -14,7 +14,8 @@ config.output.library = 'sjWindow';
 config.output.libraryTarget = 'umd';
 config.externals = {
   'angular-material': 'ngMaterial',
-  'angular-material-icons': 'ngMdIcons'
+  'angular-material-icons': 'ngMdIcons',
+  'angular-busy': 'cgBusy'
 };
 
 config.module.loaders = [

@@ -39,6 +39,7 @@ class SanjiWindowService {
     class sanjiWindowInstance {
       constructor(options) {
         this.states = [];
+        this.links = [];
         this.id = id;
         this.name = options.name || '';
         this.navigateContent = options.navigateContent || '';
@@ -54,10 +55,14 @@ class SanjiWindowService {
       }
 
       addState(state) {
+        if (state.linkName) {
+          this.links.push(state);
+        }
         this.states.push(state);
       }
 
       clearStates() {
+        this.links.length = 0;
         this.states.length = 0;
       }
     }
