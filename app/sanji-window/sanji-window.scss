@@ -20,6 +20,7 @@ $card-header-color: #5e5e5e;
 
 .sj-window-loading {
   position: absolute;
+  padding-top: 50px;
   top: 0;
   bottom: 0;
   left: 0;
@@ -45,7 +46,7 @@ $card-header-color: #5e5e5e;
 
 .sj-spinner-bg {
   background-color: #fff;
-  padding: 15px !important;
+  padding: 5px !important;
   border-radius: 50%;
 }
 
