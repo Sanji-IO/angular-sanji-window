@@ -77,44 +77,40 @@
   </script>
 
   <script type ="text/ng-template" id="mx-ethernet-edit.tpl.html">
-    <form class="form-horizontal" ng-controller="EthernetController as vm"
-      role="form"
-      name="form"
-      ng-submit=""
-      layout="column"
-      layout-padding
-      novalidate>
+      <form ng-controller="EthernetController as vm"
+        role="form"
+        name="form"
+        ng-submit=""
+        novalidate>
 
-      <md-content>
-        <md-input-container>
-          <label>IP</label>
-          <input ng-model="vm.ethernet.ip">
-        </md-input-container>
-        <md-input-container>
-          <label>Netmask</label>
-          <input ng-model="vm.ethernet.netmask">
-        </md-input-container>
-        <md-input-container>
-          <label>Gateway</label>
-          <input ng-model="vm.ethernet.gateway">
-        </md-input-container>
-        <div layout="row" layout-align="end start">
-          <md-fab-speed-dial md-open="vm.isOpen" md-direction="left" class="md-scale">
-            <md-fab-trigger>
-              <md-button aria-label="ethernet menu" class="md-fab md-acent">
-                <ng-md-icon icon="menu" ng-attr-style="fill: white"></ng-md-icon>
-              </md-button>
-            </md-fab-trigger>
-            <md-fab-actions>
-              <md-button aria-label="save" class="md-fab md-raised md-mini md-primary">
-                <ng-md-icon icon="save" ng-attr-style="fill: white"></ng-md-icon>
-              </md-button>
-            </md-fab-actions>
-          </md-fab-speed-dial>
-        </div>
-      </md-content>
+            <md-input-container class="md-block">
+              <label>IP</label>
+              <input ng-model="vm.ethernet.ip">
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Netmask</label>
+              <input ng-model="vm.ethernet.netmask">
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Gateway</label>
+              <input ng-model="vm.ethernet.gateway">
+            </md-input-container>
+            <div layout="row" layout-align="end start">
+              <md-fab-speed-dial md-open="vm.isOpen" md-direction="left" class="md-scale">
+                <md-fab-trigger>
+                  <md-button aria-label="ethernet menu" class="md-fab md-acent">
+                    <ng-md-icon icon="menu" ng-attr-style="fill: white"></ng-md-icon>
+                  </md-button>
+                </md-fab-trigger>
+                <md-fab-actions>
+                  <md-button aria-label="save" class="md-fab md-raised md-mini md-primary">
+                    <ng-md-icon icon="save" ng-attr-style="fill: white"></ng-md-icon>
+                  </md-button>
+                </md-fab-actions>
+              </md-fab-speed-dial>
+            </div>
 
-    </form>
+        </form>
   </script>
 </body>
 

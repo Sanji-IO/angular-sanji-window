@@ -3,44 +3,17 @@ $card-header-btn-height: 42px;
 $card-header-btn-width: 42px;
 $card-header-color: #5e5e5e;
 
-md-card {
+.sj-window {
   position: relative;
-  > .card-header {
+
+  > .sj-window-header {
+    padding-top: 0;
+    padding-bottom: 0;
     background-color: #f7f7f7;
-    height: $card-header-height;
-    min-height: $card-header-height;
     color: $card-header-color;
 
-    > .md-toolbar-tools {
-      height: $card-header-height;
-      min-height: $card-header-height;
-
-      > .card-btn-group {
-        margin: auto;
-        margin-right: -8px;
-
-        > .md-icon-button {
-          margin-right: 0;
-          width: $card-header-btn-width;
-          height: $card-header-height;
-          min-height: $card-header-height;
-          line-height: $card-header-height;
-          color: $card-header-color;
-        }
-
-        > .md-menu {
-          padding: 0;
-
-          > .md-icon-button {
-            width: $card-header-btn-width;
-            height: $card-header-height;
-            min-height: $card-header-height;
-            line-height: $card-header-height;
-            color: $card-header-color;
-          }
-        }
-      }
-
+    .sj-window-btn-group {
+      text-align: right;
     }
   }
 }

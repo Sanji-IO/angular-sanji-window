@@ -1,12 +1,10 @@
 <script type ="text/ng-template" id="sanji-window.tpl.html">
-  <md-card layout=column cg-busy="{promise: vm.sanjiWindowMgr.promise, templateUrl:
+  <md-card class="sj-window layout=column cg-busy="{promise: vm.sanjiWindowMgr.promise, templateUrl:
     'sanji-window-loading.tpl.html'}">
-    <md-toolbar class="card-header" md-scroll-shrink>
-      <div class="md-toolbar-tools">
-        <h3>
-          <span>{{vm.windowName}}</span>
-        </h3>
-        <div class="card-btn-group">
+    <md-card-header class="sj-window-header">
+      <md-card-header-text layout layout-align="space-between center">
+        <h3 flex>{{vm.windowName}}</h3>
+        <div flex class="sj-window-btn-group">
           <md-button ng-if="undefined!==vm.showLoadingBtn" type="button" aria-label="Refresh" class="md-icon-button" ng-click="vm.refresh()">
             <ng-md-icon icon="refresh"></ng-md-icon>
           </md-button>
@@ -28,8 +26,8 @@
             </md-menu-content>
           </md-menu>
         </div>
-      </div>
-    </md-toolbar>
+      </md-card-header-text>
+    </md-card-header>
     <md-card-content>
       <div ng-transclude></div>
     </md-card-content>
