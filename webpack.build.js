@@ -27,7 +27,6 @@ config.module.loaders = [
 
 config.plugins.push(
   new ExtractTextPlugin('sanji-window.css'),
-  new WebpackNotifierPlugin({title: 'Webpack'}),
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.AggressiveMergingPlugin()
 );
