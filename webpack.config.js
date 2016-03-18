@@ -10,7 +10,7 @@ var config = {
   context: appRoot,
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'sanji-window.js'
+    filename: 'angular-sanji-window.js'
   },
   resolve: {
     root: [nodeRoot],

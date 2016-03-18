@@ -4,7 +4,7 @@ import 'angular-busy.css';
 import './app.scss';
 
 import 'svg-morpheus';
-import 'angular';
+import angular from 'angular';
 import 'angular-material';
 import './sanji-window';
 

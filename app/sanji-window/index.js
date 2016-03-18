@@ -1,3 +1,4 @@
+import angular from 'angular';
 import ngMaterial from 'angular-material';
 import ngMdIcons from 'angular-material-icons';
 import 'angular-busy';
