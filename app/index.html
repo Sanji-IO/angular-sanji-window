@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Sanji Window Demo</title>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+</head>
+
+<body ng-app="webapp" layout="column">
+  <!--[if lt IE 8]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h3>Sanji Window Demo</h3>
+    </div>
+  </md-toolbar>
+  <div layout="row" layout-padding layout-align="center center">
+    <div flex="33">
+      <sanji-window window-id="window1" window-name="Ethernet 1" show-loading-btn>
+
+        <sanji-window-state state-name="sanji-info" default-state
+        link-name="Information" icon="">
+          <div ng-include="'mx-ethernet-info.tpl.html'"></div>
+        </sanji-window-state>
+
+        <sanji-window-state state-name="sanji-edit"
+        link-name="Settings" icon="settings">
+          <div ng-include="'mx-ethernet-edit.tpl.html'"></div>
+        </sanji-window-state>
+
+      </sanji-window>
+    </div>
+  </div>
+  <div layout="row" layout-padding layout-align="center center">
+    <div flex="33">
+      <sanji-window window-id="window2" window-name="Ethernet 2">
+
+        <sanji-window-state state-name="sanji-info" default-state
+        link-name="Information" icon="">
+          <div ng-include="'mx-ethernet-info.tpl.html'"></div>
+        </sanji-window-state>
+
+        <sanji-window-state state-name="sanji-edit"
+        link-name="Settings" icon="settings">
+          <div ng-include="'mx-ethernet-edit.tpl.html'"></div>
+        </sanji-window-state>
+
+      </sanji-window>
+    </div>
+  </div>
+  <div layout="row" layout-align="center center">
+    <span class="md-caption">from the Sanji Team</span>
+  </div>
+
+  <script type ="text/ng-template" id="mx-ethernet-info.tpl.html">
+    <div class="ethernet-info" ng-controller="EthernetController as vm">
+      <md-content>
+        <small class="md-subheader">IP</small>
+        <h2 ng-bind="::vm.ethernet.ip"></h2>
+        <br/>
+        <small class="md-subheader">Netmask</small>
+        <h2 ng-bind="::vm.ethernet.netmask"></h2>
+        <br/>
+        <small class="md-subheader">Gateway</small>
+        <h2 ng-bind="::vm.ethernet.gateway"></h2>
+      </md-content>
+    </div>
+  </script>
+
+  <script type ="text/ng-template" id="mx-ethernet-edit.tpl.html">
+      <form ng-controller="EthernetController as vm"
+        role="form"
+        name="form"
+        ng-submit=""
+        novalidate>
+
+            <md-input-container class="md-block">
+              <label>IP</label>
+              <input ng-model="vm.ethernet.ip">
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Netmask</label>
+              <input ng-model="vm.ethernet.netmask">
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Gateway</label>
+              <input ng-model="vm.ethernet.gateway">
+            </md-input-container>
+            <div layout="row" layout-align="end start">
+              <md-fab-speed-dial md-open="vm.isOpen" md-direction="left" class="md-scale">
+                <md-fab-trigger>
+                  <md-button aria-label="ethernet menu" class="md-fab md-acent">
+                    <ng-md-icon icon="menu" ng-attr-style="fill: white"></ng-md-icon>
+                  </md-button>
+                </md-fab-trigger>
+                <md-fab-actions>
+                  <md-button aria-label="save" class="md-fab md-raised md-mini md-primary">
+                    <ng-md-icon icon="save" ng-attr-style="fill: white"></ng-md-icon>
+                  </md-button>
+                </md-fab-actions>
+              </md-fab-speed-dial>
+            </div>
+
+        </form>
+  </script>
+</body>
+
+</html>

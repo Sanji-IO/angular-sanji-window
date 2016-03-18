@@ -1,0 +1,52 @@
+$card-header-height: 42px;
+$card-header-btn-height: 42px;
+$card-header-btn-width: 42px;
+$card-header-color: #5e5e5e;
+
+.sj-window {
+  position: relative;
+
+  > .sj-window-header {
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: #f7f7f7;
+    color: $card-header-color;
+
+    .sj-window-btn-group {
+      text-align: right;
+    }
+  }
+}
+
+.sj-window-loading {
+  position: absolute;
+  padding-top: 50px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  opacity: .7;
+  z-index: 1001;
+}
+
+.sj-window-loading.ng-enter, .animate-if.ng-leave {
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+
+.sj-window-loading.ng-enter,
+.sj-window-loading.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+.sj-window-loading.ng-leave,
+.sj-window-loading.ng-enter.ng-enter-active {
+  opacity: .7;
+}
+
+.sj-spinner-bg {
+  background-color: #fff;
+  padding: 5px !important;
+  border-radius: 50%;
+}
+
