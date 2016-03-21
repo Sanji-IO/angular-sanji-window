@@ -20,8 +20,7 @@ var config = {
       'angular-material.css': nodeRoot + '/angular-material/angular-material.css',
       'angular-material-icons.css': nodeRoot + '/angular-material-icons/angular-material-icons.css',
       'angular-busy.css': nodeRoot + '/angular-busy/dist/angular-busy.css',
-      'angular-busy': nodeRoot + '/angular-busy/dist/angular-busy.js',
-      'svg-morpheus': nodeRoot + '/svg-morpheus/compile/unminified/svg-morpheus.js'
+      'angular-busy': nodeRoot + '/angular-busy/dist/angular-busy.js'
     },
     extensions: ['', '.js', '.json', 'html', 'scss', 'css']
   },
