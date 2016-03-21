@@ -3,6 +3,10 @@ $card-header-btn-height: 42px;
 $card-header-btn-width: 42px;
 $card-header-color: #5e5e5e;
 
+.sj-header-color {
+  color: $card-header-color;
+}
+
 .sj-window {
   position: relative;
 
@@ -14,6 +18,16 @@ $card-header-color: #5e5e5e;
 
     .sj-window-btn-group {
       text-align: right;
+    }
+
+    .sj-menu-icon {
+      background-repeat: no-repeat no-repeat;
+      display: inline-block;
+      vertical-align: middle;
+      fill: currentColor;
+      height: 24px;
+      width: 24px;
+      margin: auto 3px auto 0;
     }
   }
 }
