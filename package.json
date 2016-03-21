@@ -80,9 +80,9 @@
   "homepage": "https://github.com/Sanji-IO/angular-sanji-window",
   "dependencies": {
     "angular": "~1.5.0",
-    "angular-busy": "cgross/angular-busy#v4.1.3",
+    "angular-busy": "~4.1.3",
     "angular-material": "~1.0.5",
     "angular-material-icons": "~0.6.0"
   },
-  "version": "2.1.3"
+  "version": "2.1.4"
 }

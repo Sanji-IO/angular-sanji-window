@@ -19,8 +19,7 @@ var config = {
     alias: {
       'angular-material.css': nodeRoot + '/angular-material/angular-material.css',
       'angular-material-icons.css': nodeRoot + '/angular-material-icons/angular-material-icons.css',
-      'angular-busy.css': nodeRoot + '/angular-busy/dist/angular-busy.css',
-      'angular-busy': nodeRoot + '/angular-busy/dist/angular-busy.js'
+      'angular-busy.css': nodeRoot + '/angular-busy/angular-busy.css'
     },
     extensions: ['', '.js', '.json', 'html', 'scss', 'css']
   },
