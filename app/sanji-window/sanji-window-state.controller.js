@@ -1,17 +1,19 @@
-const $inject = ['$log', '$scope'];
+const $inject = [];
 class SanjiWindowStateController {
   constructor(...injects) {
     SanjiWindowStateController.$inject.forEach((item, index) => this[item] = injects[index]);
+    this.sanjiWindowMgr = null;
   }
 
-  init(topCtrl, attrs) {
-    this.sanjiWindowMgr = topCtrl.sanjiWindowMgr;
+  $onInit() {
+    this.sanjiWindowMgr = this.parent.sanjiWindowMgr;
+    console.log(this.sanjiWindowMgr);
     if (undefined !== this.stateName) {
-      topCtrl.register({
+      this.parent.register({
         name: this.stateName,
         linkName: this.linkName,
         icon: this.icon,
-        isDefault: undefined !== attrs.defaultState ? true : false
+        isDefault: undefined !== this.defaultState ? true : false
       });
     }
   }
