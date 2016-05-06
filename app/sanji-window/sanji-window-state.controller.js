@@ -7,7 +7,6 @@ class SanjiWindowStateController {
 
   $onInit() {
     this.sanjiWindowMgr = this.parent.sanjiWindowMgr;
-    console.log(this.sanjiWindowMgr);
     if (undefined !== this.stateName) {
       this.parent.register({
         name: this.stateName,
