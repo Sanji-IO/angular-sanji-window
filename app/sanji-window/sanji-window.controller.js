@@ -3,10 +3,11 @@ class SanjiWindowController {
   constructor(...injects) {
     SanjiWindowController.$inject.forEach((item, index) => this[item] = injects[index]);
     this.sanjiWindowMgr = this.sanjiWindowService.create(this.windowId, {name: this.windowName});
-    this.$scope.$on('$destroy', () => {
-      this.sanjiWindowMgr.clearStates();
-      this.sanjiWindowService.destroy(this.sanjiWindowMgr.getId());
-    });
+  }
+
+  $onDestroy() {
+    this.sanjiWindowMgr.clearStates();
+    this.sanjiWindowService.destroy(this.sanjiWindowMgr.getId());
   }
 
   register(state) {
@@ -18,7 +19,10 @@ class SanjiWindowController {
   }
 
   refresh() {
-    this.$rootScope.$broadcast('sj:window:refresh', {id: this.windowId, promise: this.sanjiWindowMgr.promise});
+    this.$rootScope.$broadcast('sj:window:refresh', {
+      id: this.windowId,
+      promise: this.sanjiWindowMgr.promise
+    });
   }
 }
 SanjiWindowController.$inject = $inject;
