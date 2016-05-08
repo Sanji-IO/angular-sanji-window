@@ -18,4 +18,4 @@ app.controller('SanjiWindowController', SanjiWindowController);
 app.controller('SanjiWindowStateController', SanjiWindowStateController);
 app.component('sanjiWindow', SanjiWindowComponent);
 app.component('sanjiWindowState', SanjiWindowStateComponent);
-export default app = app.name
+export default app = app.name;
