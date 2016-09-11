@@ -1,10 +1,11 @@
 'use strict';
 
-var webpack = require('webpack');
-var WebpackNotifierPlugin = require('webpack-notifier');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var bourbon = require('node-bourbon').includePaths;
-var config = require('./webpack.config.js');
+const webpack = require('webpack');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const bourbon = require('node-bourbon').includePaths;
+const config = require('./webpack.config.js');
 
 config.devtool = 'source-map';
 config.entry = {
@@ -42,17 +43,32 @@ config.externals = {
 config.module.loaders = [
   {
     test: /\.scss$/,
-    loader: ExtractTextPlugin.extract('style-loader', 'css!autoprefixer?browsers=last 2 versions!sass?includePaths[]=' + bourbon)
+    loader: ExtractTextPlugin.extract({
+      notExtractLoader: 'style-loader',
+      loader: 'css!postcss!sass?includePaths[]=' + bourbon
+    })
   }
 ].concat(config.module.loaders);
 
+config.module.postLoaders = [
+  {test: /\.js$/, loader: 'ng-annotate', exclude: /(node_modules)/}
+];
+config.postcss = [ autoprefixer({ browsers: ['last 2 versions'] }) ];
+
 config.plugins.push(
   new ExtractTextPlugin('angular-sanji-window.css'),
+  new LodashModuleReplacementPlugin,
   new webpack.optimize.DedupePlugin(),
-  new webpack.optimize.AggressiveMergingPlugin(),
+  new webpack.LoaderOptionsPlugin({
+    minimize: true,
+    debug: false,
+    quiet: true
+  }),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
-      warnings: false
+      screw_ie8: true,
+      warnings: false,
+      dead_code: true
     }
   })
 );

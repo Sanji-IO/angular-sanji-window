@@ -1,4 +1,11 @@
 {
   "presets": ["es2015"],
-  "plugins": ["transform-runtime", "add-module-exports"]
+  "plugins": ["lodash"],
+  "env": {
+    "test": {
+      "plugins": [
+        ["__coverage__", {"ignore": "*.+(test|spec).*"}]
+      ]
+    }
+  }
 }

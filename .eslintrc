@@ -8,12 +8,25 @@
   "env": {
     "es6": true,
     "browser": true,
-    "node": true
+    "node": true,
+    "mocha": true,
+    "protractor": true
+  },
+  "globals": {
+    "angular": true,
+    "FileSaver": true,
+    "sinon": true,
+    "expect": true,
+    "__DEV__": true,
+    "__TEST__": true,
+    "__RELEASE__": true,
+    "__BASE_PATH__": true
   },
   "rules": {
     "indent": [ 2, 2 ],
     "quotes": [ 2, "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
     "linebreak-style": [ 2, "unix" ],
-    "semi": [ 2, "always" ]
+    "semi": [ 2, "always" ],
+    "no-console": 0
   }
 }
