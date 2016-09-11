@@ -1,10 +1,10 @@
 'use strict';
 
-var webpack = require('webpack');
-var WebpackNotifierPlugin = require('webpack-notifier');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var bourbon = require('node-bourbon').includePaths;
-var config = require('./webpack.config.js');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const bourbon = require('node-bourbon').includePaths;
+const config = require('./webpack.config.js');
 
 config.ip = 'localhost';
 config.port = 8080;
@@ -18,19 +18,22 @@ config.entry = {
   ]
 };
 config.module.loaders = [
-  {test: /\.scss/, loader: 'style!css!autoprefixer?browsers=last 2 versions!sass?includePaths[]=' + bourbon},
-  {test: /\.css$/, loader: 'style!css!autoprefixer?browsers=last 2 versions'},
-  {test: /\.(png|jpg|gif|jpeg)$/, loader: 'url-loader?limit=8192'},
-  {test: /\.(woff|woff2)$/, loader: "url?limit=10000&minetype=application/font-woff"},
-  {test: /\.(ttf|eot|svg)$/, loader: "file"}
+  {test: /\.scss/, loader: 'style!css!postcss!sass?includePaths[]=' + bourbon},
+  {test: /\.css$/, loader: 'style!css!postcss?browsers=last 2 versions'},
+  {test: /\.(png|jpg|gif|jpeg)$/, loader: 'url-loader?limit=8192', exclude: /node_modules/},
+  {test: /\.(woff|woff2)$/, loader: 'url?limit=10000&minetype=application/font-woff', exclude: /node_modules/},
+  {test: /\.(ttf|eot|svg)$/, loader: 'file', exclude: /node_modules/}
 ].concat(config.module.loaders);
+
+config.module.postLoaders = [
+  {test: /\.js$/, loader: 'ng-annotate', exclude: /(node_modules)/}
+];
+config.postcss = [ autoprefixer({ browsers: ['last 2 versions'] }) ];
 
 config.plugins.push(
   new webpack.HotModuleReplacementPlugin(),
-  new WebpackNotifierPlugin({title: 'Webpack'}),
   new HtmlWebpackPlugin({
-    template: 'app/index.html',
-    inject: 'body',
+    template: 'index.html',
     hash: true
   })
 );
