@@ -20,8 +20,7 @@
                 ng-click="vm.sanjiWindowMgr.navigateTo(state.name)">
                   <div layout>
                     <p flex ng-bind="::state.linkName"></p>
-                    <ng-md-icon ng-if="undefined!==state.icon"
-                      md-menu-origin icon="{{::state.icon}}"></ng-md-icon>
+                    <md-icon ng-if= "undefined!==state.icon" ng-md-icon md-menu-origin icon="{{::state.icon}}"></md-icon>
                   </div>
                 </md-button>
               </md-menu-item>
