@@ -1,5 +1,3 @@
-'use strict';
-
 const webpack = require('webpack');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const autoprefixer = require('autoprefixer');
@@ -40,7 +38,8 @@ config.externals = {
   }
 };
 
-config.module.loaders = [
+config.module.rules = [
+  {test: /\.js$/, loader: 'ng-annotate', exclude: /(node_modules)/, enforce: 'post'},
   {
     test: /\.scss$/,
     loader: ExtractTextPlugin.extract({
@@ -48,12 +47,7 @@ config.module.loaders = [
       loader: 'css!postcss!sass?includePaths[]=' + bourbon
     })
   }
-].concat(config.module.loaders);
-
-config.module.postLoaders = [
-  {test: /\.js$/, loader: 'ng-annotate', exclude: /(node_modules)/}
-];
-config.postcss = [ autoprefixer({ browsers: ['last 2 versions'] }) ];
+].concat(config.module.rules);
 
 config.plugins.push(
   new ExtractTextPlugin('angular-sanji-window.css'),
@@ -62,7 +56,12 @@ config.plugins.push(
   new webpack.LoaderOptionsPlugin({
     minimize: true,
     debug: false,
-    quiet: true
+    quiet: true,
+    options:{
+      postcss: [
+        autoprefixer({ browsers: ['last 2 versions'] })
+      ]
+    }
   }),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
