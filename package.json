@@ -12,14 +12,14 @@
     }
   },
   "scripts": {
-    "test": "NODE_ENV=test BABEL_ENV=test karma start",
-    "test:once": "BABEL_ENV=test karma start",
-    "prebuild": "rm -rf dist && mkdir dist",
-    "build": "NODE_ENV=production webpack --config webpack.build.js --display-modules",
+    "test": "cross-env NODE_ENV=test BABEL_ENV=test karma start",
+    "test:once": "cross-env BABEL_ENV=test karma start",
+    "prebuild": "rimraf dist && mkdir dist",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.build.js --display-modules",
     "commit": "git-cz",
     "check-coverage": "istanbul check-coverage --statements 90 --branches 90 --functions 90 --lines 90",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
-    "start": "NODE_ENV=development node server/dev-server.js",
+    "start": "cross-env NODE_ENV=development node server/dev-server.js",
     "publish-latest": "publish-latest",
     "semantic-release": "semantic-release pre && npm publish && npm run publish-latest && semantic-release post"
   },
