@@ -20,7 +20,8 @@ class EthernetController {
 EthernetController.$inject = ['$scope', '$http'];
 export default EthernetController;
 
-angular.module('webapp', ['sanji.window'])
+angular
+  .module('webapp', ['sanji.window'])
   .config(($mdIconProvider, $mdThemingProvider) => {
     $mdThemingProvider.definePalette('moxa-material', {
       '50': '#E6F3F3',
@@ -33,18 +34,23 @@ angular.module('webapp', ['sanji.window'])
       '700': '#006565',
       '800': '#006565',
       '900': '#006565',
-      'A100': '#006565',
-      'A200': '#006565',
-      'A400': '#006565',
-      'A700': '#006565',
-      'contrastDefaultColor': 'light',    // whether, by default, text (contrast)
-                                          // on this palette should be dark or light
-      'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
-       '200', '300', '400', 'A100'],
-      'contrastLightColors': undefined    // could also specify this if default was 'dark'
+      A100: '#006565',
+      A200: '#006565',
+      A400: '#006565',
+      A700: '#006565',
+      contrastDefaultColor: 'light', // whether, by default, text (contrast)
+      // on this palette should be dark or light
+      contrastDarkColors: [
+        '50',
+        '100', //hues which contrast should be 'dark' by default
+        '200',
+        '300',
+        '400',
+        'A100'
+      ],
+      contrastLightColors: undefined // could also specify this if default was 'dark'
     });
 
-    $mdThemingProvider.theme('default')
-    .primaryPalette('moxa-material');
+    $mdThemingProvider.theme('default').primaryPalette('moxa-material');
   })
   .controller('EthernetController', EthernetController);
