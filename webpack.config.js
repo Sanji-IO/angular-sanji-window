@@ -20,9 +20,13 @@ const config = {
   },
   module: {
     rules: [
-      { test: /\.js$/, loader: 'eslint', exclude: /node_modules/, enforce: 'pre' },
-      { test: /\.js$/, loader: 'babel?cacheDirectory', exclude: /node_modules/ },
-      { test: /\.html$/, loader: 'ng-cache?prefix=[dir]/[dir]', exclude: [/node_modules/, path.join(__dirname, '/app/index.html')] }
+      { test: /\.js$/, use: 'eslint-loader', exclude: /node_modules/, enforce: 'pre' },
+      { test: /\.js$/, use: 'babel-loader?cacheDirectory', exclude: /node_modules/ },
+      {
+        test: /\.html$/,
+        use: 'ng-cache-loader?prefix=[dir]/[dir]',
+        exclude: [/node_modules/, path.join(__dirname, '/app/index.html')]
+      }
     ]
   },
   plugins: [
