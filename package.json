@@ -2,6 +2,7 @@
   "name": "angular-sanji-window",
   "author": "Zack Yang <zack9433@gmail.com> (https://github.com/zack9433)",
   "description": "Display content in a window at specific stage",
+  "version": "0.0.0-development",
   "main": "dist/angular-sanji-window.js",
   "config": {
     "ghooks": {
