@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV;
 const nodeRoot = path.join(__dirname, 'node_modules');
 const appRoot = path.join(__dirname, 'app');
@@ -30,7 +29,6 @@ const config = {
     ]
   },
   plugins: [
-    new ProgressBarPlugin(),
     new webpack.DefinePlugin({
       __TEST__: 'test' === NODE_ENV,
       __DEV__: 'development' === NODE_ENV,

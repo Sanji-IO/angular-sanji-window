@@ -1,7 +1,10 @@
 const $inject = ['$rootScope', '$scope', 'sanjiWindowService'];
 class SanjiWindowController {
   constructor(...injects) {
-    SanjiWindowController.$inject.forEach((item, index) => this[item] = injects[index]);
+    SanjiWindowController.$inject.forEach((item, index) => (this[item] = injects[index]));
+  }
+
+  $onInit() {
     this.sanjiWindowMgr = this.sanjiWindowService.create(this.windowId, { name: this.windowName });
   }
 
