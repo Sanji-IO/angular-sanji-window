@@ -13,7 +13,7 @@
     }
   },
   "scripts": {
-    "test": "cross-env NODE_ENV=test BABEL_ENV=test karma start",
+    "test": "echo \"Error: no test specified\"",
     "test:once": "cross-env BABEL_ENV=test karma start",
     "prebuild": "rimraf dist && mkdir dist",
     "build": "cross-env NODE_ENV=production webpack --config webpack.build.js --display-modules",
@@ -39,11 +39,7 @@
   "bugs": {
     "url": "https://github.com/Sanji-IO/angular-sanji-window/issues"
   },
-  "keywords": [
-    "sanji",
-    "angular-sanji",
-    "angular-sanji-window"
-  ],
+  "keywords": ["sanji", "angular-sanji", "angular-sanji-window"],
   "license": "MIT",
   "homepage": "https://github.com/Sanji-IO/angular-sanji-window",
   "dependencies": {
