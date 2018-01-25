@@ -27,6 +27,12 @@
   },
   "devDependencies": {
     "angular-mocks": "~1.6.8",
+    "angular": "~1.6.8",
+    "angular-animate": "~1.6.8",
+    "angular-aria": "~1.6.8",
+    "angular-busy": "~4.1.4",
+    "angular-material": "~1.1.6",
+    "angular-material-icons": "^0.7.1",
     "codecov.io": "~0.1.6",
     "sanji-common-devs-ui": "^7.0.0",
     "semantic-release": "^12.2.4",
@@ -42,10 +48,10 @@
   "keywords": ["sanji", "angular-sanji", "angular-sanji-window"],
   "license": "MIT",
   "homepage": "https://github.com/Sanji-IO/angular-sanji-window",
-  "dependencies": {
-    "angular": "~1.6.8",
-    "angular-animate": "~1.6.8",
-    "angular-aria": "~1.6.8",
+  "peerDependencies": {
+    "angular": ">=1.5.0 <1.7.0",
+    "angular-animate": ">=1.5.0 <1.7.0",
+    "angular-aria": ">=1.5.0 <1.7.0",
     "angular-busy": "~4.1.4",
     "angular-material": "~1.1.6",
     "angular-material-icons": "^0.7.1"

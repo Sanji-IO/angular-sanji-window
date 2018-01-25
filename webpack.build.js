@@ -10,32 +10,7 @@ config.entry = {
 };
 config.output.library = 'sjWindow';
 config.output.libraryTarget = 'umd';
-config.externals = {
-  angular: {
-    root: 'angular',
-    commonjs2: 'angular',
-    commonjs: 'angular',
-    amd: 'angular'
-  },
-  'angular-material': {
-    root: 'ngMaterial',
-    commonjs2: 'angular-material',
-    commonjs: 'angular-material',
-    amd: 'angular-material'
-  },
-  'angular-busy': {
-    root: 'ngBusy',
-    commonjs2: 'angular-busy',
-    commonjs: 'angular-busy',
-    amd: 'angular-busy'
-  },
-  'angular-material-icons': {
-    root: 'ngMdIcons',
-    commonjs2: 'angular-material-icons',
-    commonjs: 'angular-material-icons',
-    amd: 'angular-material-icons'
-  }
-};
+config.externals = ['angular', 'angular-material', 'angular-busy', 'angular-material-icons'];
 
 config.module.rules = [
   {
