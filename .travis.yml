@@ -20,7 +20,8 @@ before_install:
 
 before_script: greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload
-after_success: yarn travis-deploy-once "yarn semantic-release"
+after_success: 
+  - yarn travis-deploy-once "yarn semantic-release"
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
